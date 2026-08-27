@@ -250,8 +250,8 @@ No corpus files are tracked in this repository.
 ## Quickstart
 
 ```bash
-git clone https://github.com/hulln/slovene-word-order-repro.git
-cd slovene-word-order-repro
+git clone https://github.com/hulln/sl-word-order-repro.git
+cd sl-word-order-repro
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```

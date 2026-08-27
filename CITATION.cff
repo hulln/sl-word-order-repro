@@ -7,8 +7,8 @@ abstract: >-
   subject-verb-object word-order analyses of a master's thesis on genre and
   register variation in Slovenian.
 type: software
-repository-code: "https://github.com/hulln/slovene-word-order-repro"
-url: "https://github.com/hulln/slovene-word-order-repro"
+repository-code: "https://github.com/hulln/sl-word-order-repro"
+url: "https://github.com/hulln/sl-word-order-repro"
 authors:
   - family-names: "Hüll"
     given-names: "Nives"
