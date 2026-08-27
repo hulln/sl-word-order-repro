@@ -335,6 +335,8 @@ you obtain is the one the thesis analysed.
 ## Running it
 
 ```bash
+git clone https://github.com/hulln/slovene-word-order-repro.git
+cd slovene-word-order-repro
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
