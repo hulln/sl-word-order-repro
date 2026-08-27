@@ -1,0 +1,16 @@
+# Corpus files are not distributed through Git.
+# See inputs/README.md for how to obtain each corpus, and
+# prepared/checksums.sha256 to verify what you obtained.
+*.conllu
+*.conllu.gz
+*.vert
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store

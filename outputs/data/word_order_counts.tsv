@@ -1,0 +1,109 @@
+corpus_id	corpus	pattern	count	total	proportion	extraction_status
+ssj	UD Slovenian-SSJ	SVO	1406	1969	0.714068	stark_direct_exact
+ssj	UD Slovenian-SSJ	SOV	132	1969	0.067039	stark_direct_exact
+ssj	UD Slovenian-SSJ	VSO	80	1969	0.040630	stark_direct_exact
+ssj	UD Slovenian-SSJ	VOS	37	1969	0.018791	stark_direct_exact
+ssj	UD Slovenian-SSJ	OSV	32	1969	0.016252	stark_direct_exact
+ssj	UD Slovenian-SSJ	OVS	282	1969	0.143220	stark_direct_exact
+sst	UD Slovenian-SST	SVO	108	168	0.642857	stark_direct_exact
+sst	UD Slovenian-SST	SOV	18	168	0.107143	stark_direct_exact
+sst	UD Slovenian-SST	VSO	16	168	0.095238	stark_direct_exact
+sst	UD Slovenian-SST	VOS	4	168	0.023810	stark_direct_exact
+sst	UD Slovenian-SST	OSV	4	168	0.023810	stark_direct_exact
+sst	UD Slovenian-SST	OVS	18	168	0.107143	stark_direct_exact
+suk-literary	SUK literary	SVO	112	162	0.691358	stark_direct_exact
+suk-literary	SUK literary	SOV	8	162	0.049383	stark_direct_exact
+suk-literary	SUK literary	VSO	6	162	0.037037	stark_direct_exact
+suk-literary	SUK literary	VOS	4	162	0.024691	stark_direct_exact
+suk-literary	SUK literary	OSV	4	162	0.024691	stark_direct_exact
+suk-literary	SUK literary	OVS	28	162	0.172840	stark_direct_exact
+suk-publicistic	SUK publicistic/general	SVO	2035	2837	0.717307	stark_direct_exact
+suk-publicistic	SUK publicistic/general	SOV	193	2837	0.068030	stark_direct_exact
+suk-publicistic	SUK publicistic/general	VSO	102	2837	0.035953	stark_direct_exact
+suk-publicistic	SUK publicistic/general	VOS	51	2837	0.017977	stark_direct_exact
+suk-publicistic	SUK publicistic/general	OSV	46	2837	0.016214	stark_direct_exact
+suk-publicistic	SUK publicistic/general	OVS	410	2837	0.144519	stark_direct_exact
+suk-professional	SUK professional	SVO	831	1105	0.752036	stark_direct_exact
+suk-professional	SUK professional	SOV	50	1105	0.045249	stark_direct_exact
+suk-professional	SUK professional	VSO	46	1105	0.041629	stark_direct_exact
+suk-professional	SUK professional	VOS	17	1105	0.015385	stark_direct_exact
+suk-professional	SUK professional	OSV	20	1105	0.018100	stark_direct_exact
+suk-professional	SUK professional	OVS	141	1105	0.127602	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	SVO	1708	1920	0.889583	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	SOV	89	1920	0.046354	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	VSO	16	1920	0.008333	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	VOS	7	1920	0.003646	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	OSV	8	1920	0.004167	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	OVS	92	1920	0.047917	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	SVO	346	352	0.982955	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	SOV	3	352	0.008523	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	VSO	1	352	0.002841	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	VOS	0	352	0.000000	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	OSV	0	352	0.000000	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	OVS	2	352	0.005682	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	SVO	582	608	0.957237	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	SOV	2	608	0.003289	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	VSO	8	608	0.013158	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	VOS	0	608	0.000000	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	OSV	2	608	0.003289	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	OVS	14	608	0.023026	stark_direct_exact
+janes-news	JANES-News	SVO	41928	57631	0.727525	verified_reference_stark_direct_exact
+janes-news	JANES-News	SOV	3348	57631	0.058094	verified_reference_stark_direct_exact
+janes-news	JANES-News	VSO	3077	57631	0.053391	verified_reference_stark_direct_exact
+janes-news	JANES-News	VOS	1805	57631	0.031320	verified_reference_stark_direct_exact
+janes-news	JANES-News	OSV	1499	57631	0.026010	verified_reference_stark_direct_exact
+janes-news	JANES-News	OVS	5974	57631	0.103659	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	SVO	120350	162867	0.738947	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	SOV	9867	162867	0.060583	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	VSO	6899	162867	0.042360	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	VOS	4387	162867	0.026936	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	OSV	4379	162867	0.026887	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	OVS	16985	162867	0.104288	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	SVO	111712	159153	0.701916	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	SOV	9516	159153	0.059792	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	VSO	12236	159153	0.076882	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	VOS	7319	159153	0.045987	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	OSV	4418	159153	0.027759	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	OVS	13952	159153	0.087664	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	SVO	384653	496602	0.774570	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	SOV	28770	496602	0.057934	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	VSO	17310	496602	0.034857	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	VOS	11291	496602	0.022737	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	OSV	10597	496602	0.021339	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	OVS	43981	496602	0.088564	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	SVO	8232	11281	0.729723	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	SOV	455	11281	0.040333	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	VSO	754	11281	0.066838	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	VOS	492	11281	0.043613	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	OSV	286	11281	0.025352	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	OVS	1062	11281	0.094141	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	SVO	225336	296395	0.760256	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	SOV	10613	296395	0.035807	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	VSO	7554	296395	0.025486	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	VOS	6398	296395	0.021586	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	OSV	4386	296395	0.014798	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	OVS	42108	296395	0.142067	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	SVO	337886	497572	0.679070	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	SOV	31837	497572	0.063985	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	VSO	18345	497572	0.036869	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	VOS	17326	497572	0.034821	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	OSV	10377	497572	0.020855	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	OVS	81801	497572	0.164400	verified_reference_stark_direct_exact
+kdsp	KDSP	SVO	32121	48234	0.665941	verified_reference_stark_direct_exact
+kdsp	KDSP	SOV	2478	48234	0.051375	verified_reference_stark_direct_exact
+kdsp	KDSP	VSO	5310	48234	0.110088	verified_reference_stark_direct_exact
+kdsp	KDSP	VOS	2103	48234	0.043600	verified_reference_stark_direct_exact
+kdsp	KDSP	OSV	1186	48234	0.024588	verified_reference_stark_direct_exact
+kdsp	KDSP	OVS	5036	48234	0.104408	verified_reference_stark_direct_exact
+human-essays	Human essays	SVO	1237	1671	0.740275	verified_reference_stark_direct_exact
+human-essays	Human essays	SOV	109	1671	0.065230	verified_reference_stark_direct_exact
+human-essays	Human essays	VSO	132	1671	0.078995	verified_reference_stark_direct_exact
+human-essays	Human essays	VOS	11	1671	0.006583	verified_reference_stark_direct_exact
+human-essays	Human essays	OSV	37	1671	0.022142	verified_reference_stark_direct_exact
+human-essays	Human essays	OVS	145	1671	0.086774	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	SVO	2902	3248	0.893473	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	SOV	125	3248	0.038485	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	VSO	45	3248	0.013855	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	VOS	5	3248	0.001539	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	OSV	25	3248	0.007697	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	OVS	146	3248	0.044951	verified_reference_stark_direct_exact

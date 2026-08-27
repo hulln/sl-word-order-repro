@@ -1,0 +1,485 @@
+test_family	test_id	corpus_a	corpus_b	statistic_name	statistic	df	p_value	p_adjusted	effect_name	effect_value	n_a	n_b	permutations	seed	notes
+all_pairwise	ssj__sst__chi_square	ssj	sst	pearson_chi_square	17.0933572327	5	0.00432610363683				1969	168			2 x 6 distribution
+all_pairwise	ssj__sst__jsd	ssj	sst	descriptive_distance					jensen_shannon_distance_base2	0.124362	1969	168			square-root Jensen-Shannon distance
+all_pairwise	ssj__sst__cosine	ssj	sst	descriptive_similarity					cosine_similarity	0.993005	1969	168			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__suk-literary__chi_square	ssj	suk-literary	pearson_chi_square	2.67118146376	5	0.75052245239				1969	162			2 x 6 distribution
+all_pairwise	ssj__suk-literary__jsd	ssj	suk-literary	descriptive_distance					jensen_shannon_distance_base2	0.055552	1969	162			square-root Jensen-Shannon distance
+all_pairwise	ssj__suk-literary__cosine	ssj	suk-literary	descriptive_similarity					cosine_similarity	0.998530	1969	162			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__suk-publicistic__chi_square	ssj	suk-publicistic	pearson_chi_square	0.76090581427	5	0.979459594362				1969	2837			2 x 6 distribution
+all_pairwise	ssj__suk-publicistic__jsd	ssj	suk-publicistic	descriptive_distance					jensen_shannon_distance_base2	0.010815	1969	2837			square-root Jensen-Shannon distance
+all_pairwise	ssj__suk-publicistic__cosine	ssj	suk-publicistic	descriptive_similarity					cosine_similarity	0.999977	1969	2837			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__suk-professional__chi_square	ssj	suk-professional	pearson_chi_square	8.96066801444	5	0.110643300178				1969	1105			2 x 6 distribution
+all_pairwise	ssj__suk-professional__jsd	ssj	suk-professional	descriptive_distance					jensen_shannon_distance_base2	0.048759	1969	1105			square-root Jensen-Shannon distance
+all_pairwise	ssj__suk-professional__cosine	ssj	suk-professional	descriptive_similarity					cosine_similarity	0.999014	1969	1105			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__aigent-gpt5__chi_square	ssj	aigent-gpt5	pearson_chi_square	211.116299758	5	1.18696002753e-43				1969	1920			2 x 6 distribution
+all_pairwise	ssj__aigent-gpt5__jsd	ssj	aigent-gpt5	descriptive_distance					jensen_shannon_distance_base2	0.203479	1969	1920			square-root Jensen-Shannon distance
+all_pairwise	ssj__aigent-gpt5__cosine	ssj	aigent-gpt5	descriptive_similarity					cosine_similarity	0.987471	1969	1920			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__aigent-gams27b__chi_square	ssj	aigent-gams27b	pearson_chi_square	116.900742352	5	1.42222338266e-23				1969	352			2 x 6 distribution
+all_pairwise	ssj__aigent-gams27b__jsd	ssj	aigent-gams27b	descriptive_distance					jensen_shannon_distance_base2	0.350343	1969	352			square-root Jensen-Shannon distance
+all_pairwise	ssj__aigent-gams27b__cosine	ssj	aigent-gams27b	descriptive_similarity					cosine_similarity	0.976308	1969	352			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__aigent-gemma2-27b__chi_square	ssj	aigent-gemma2-27b	pearson_chi_square	157.952048417	5	2.70381739136e-32				1969	608			2 x 6 distribution
+all_pairwise	ssj__aigent-gemma2-27b__jsd	ssj	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.302254	1969	608			square-root Jensen-Shannon distance
+all_pairwise	ssj__aigent-gemma2-27b__cosine	ssj	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.979748	1969	608			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__janes-news__chi_square	ssj	janes-news	pearson_chi_square	54.0527724197	5	2.04413238545e-10				1969	57631			2 x 6 distribution
+all_pairwise	ssj__janes-news__jsd	ssj	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.071840	1969	57631			square-root Jensen-Shannon distance
+all_pairwise	ssj__janes-news__cosine	ssj	janes-news	descriptive_similarity					cosine_similarity	0.997984	1969	57631			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__janes-blog__chi_square	ssj	janes-blog	pearson_chi_square	44.2862753117	5	2.02607042558e-08				1969	162867			2 x 6 distribution
+all_pairwise	ssj__janes-blog__jsd	ssj	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.063119	1969	162867			square-root Jensen-Shannon distance
+all_pairwise	ssj__janes-blog__cosine	ssj	janes-blog	descriptive_similarity					cosine_similarity	0.998150	1969	162867			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__janes-forum__chi_square	ssj	janes-forum	pearson_chi_square	144.339124002	5	2.1381945982e-29				1969	159153			2 x 6 distribution
+all_pairwise	ssj__janes-forum__jsd	ssj	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.120428	1969	159153			square-root Jensen-Shannon distance
+all_pairwise	ssj__janes-forum__cosine	ssj	janes-forum	descriptive_similarity					cosine_similarity	0.995057	1969	159153			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__janes-tweet__chi_square	ssj	janes-tweet	pearson_chi_square	83.6660327101	5	1.43308423632e-16				1969	496602			2 x 6 distribution
+all_pairwise	ssj__janes-tweet__jsd	ssj	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.079768	1969	496602			square-root Jensen-Shannon distance
+all_pairwise	ssj__janes-tweet__cosine	ssj	janes-tweet	descriptive_similarity					cosine_similarity	0.996271	1969	496602			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__janes-wiki__chi_square	ssj	janes-wiki	pearson_chi_square	117.31175469	5	1.16403303387e-23				1969	11281			2 x 6 distribution
+all_pairwise	ssj__janes-wiki__jsd	ssj	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.113502	1969	11281			square-root Jensen-Shannon distance
+all_pairwise	ssj__janes-wiki__cosine	ssj	janes-wiki	descriptive_similarity					cosine_similarity	0.995698	1969	11281			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__classla-wikipedia__chi_square	ssj	classla-wikipedia	pearson_chi_square	77.0084842394	5	3.54203640454e-15				1969	296395			2 x 6 distribution
+all_pairwise	ssj__classla-wikipedia__jsd	ssj	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.073182	1969	296395			square-root Jensen-Shannon distance
+all_pairwise	ssj__classla-wikipedia__cosine	ssj	classla-wikipedia	descriptive_similarity					cosine_similarity	0.998619	1969	296395			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__parlamint__chi_square	ssj	parlamint	pearson_chi_square	26.4227840142	5	7.38707943847e-05				1969	497572			2 x 6 distribution
+all_pairwise	ssj__parlamint__jsd	ssj	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.053823	1969	497572			square-root Jensen-Shannon distance
+all_pairwise	ssj__parlamint__cosine	ssj	parlamint	descriptive_similarity					cosine_similarity	0.998910	1969	497572			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__kdsp__chi_square	ssj	kdsp	pearson_chi_square	160.134149454	5	9.26758329401e-33				1969	48234			2 x 6 distribution
+all_pairwise	ssj__kdsp__jsd	ssj	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.140811	1969	48234			square-root Jensen-Shannon distance
+all_pairwise	ssj__kdsp__cosine	ssj	kdsp	descriptive_similarity					cosine_similarity	0.992602	1969	48234			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__human-essays__chi_square	ssj	human-essays	pearson_chi_square	60.1637115796	5	1.12436434875e-11				1969	1671			2 x 6 distribution
+all_pairwise	ssj__human-essays__jsd	ssj	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.110817	1969	1671			square-root Jensen-Shannon distance
+all_pairwise	ssj__human-essays__cosine	ssj	human-essays	descriptive_similarity					cosine_similarity	0.995341	1969	1671			cosine similarity of six-order proportion vectors
+all_pairwise	ssj__gpt5-essays__chi_square	ssj	gpt5-essays	pearson_chi_square	302.574607228	5	2.79978841161e-63				1969	3248			2 x 6 distribution
+all_pairwise	ssj__gpt5-essays__jsd	ssj	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.204535	1969	3248			square-root Jensen-Shannon distance
+all_pairwise	ssj__gpt5-essays__cosine	ssj	gpt5-essays	descriptive_similarity					cosine_similarity	0.986830	1969	3248			cosine similarity of six-order proportion vectors
+all_pairwise	sst__suk-literary__chi_square	sst	suk-literary	pearson_chi_square	10.5326396631	5	0.0614754815299				168	162			2 x 6 distribution
+all_pairwise	sst__suk-literary__jsd	sst	suk-literary	descriptive_distance					jensen_shannon_distance_base2	0.153922	168	162			square-root Jensen-Shannon distance
+all_pairwise	sst__suk-literary__cosine	sst	suk-literary	descriptive_similarity					cosine_similarity	0.988412	168	162			cosine similarity of six-order proportion vectors
+all_pairwise	sst__suk-publicistic__chi_square	sst	suk-publicistic	pearson_chi_square	21.2849460128	5	0.00071554023141				168	2837			2 x 6 distribution
+all_pairwise	sst__suk-publicistic__jsd	sst	suk-publicistic	descriptive_distance					jensen_shannon_distance_base2	0.132272	168	2837			square-root Jensen-Shannon distance
+all_pairwise	sst__suk-publicistic__cosine	sst	suk-publicistic	descriptive_similarity					cosine_similarity	0.992425	168	2837			cosine similarity of six-order proportion vectors
+all_pairwise	sst__suk-professional__chi_square	sst	suk-professional	pearson_chi_square	22.788332375	5	0.000370510046884				168	1105			2 x 6 distribution
+all_pairwise	sst__suk-professional__jsd	sst	suk-professional	descriptive_distance					jensen_shannon_distance_base2	0.147591	168	1105			square-root Jensen-Shannon distance
+all_pairwise	sst__suk-professional__cosine	sst	suk-professional	descriptive_similarity					cosine_similarity	0.990572	168	1105			cosine similarity of six-order proportion vectors
+all_pairwise	sst__aigent-gpt5__chi_square	sst	aigent-gpt5	pearson_chi_square	130.660360245	5	1.72357691834e-26				168	1920			2 x 6 distribution
+all_pairwise	sst__aigent-gpt5__jsd	sst	aigent-gpt5	descriptive_distance					jensen_shannon_distance_base2	0.272077	168	1920			square-root Jensen-Shannon distance
+all_pairwise	sst__aigent-gpt5__cosine	sst	aigent-gpt5	descriptive_similarity					cosine_similarity	0.977978	168	1920			cosine similarity of six-order proportion vectors
+all_pairwise	sst__aigent-gams27b__chi_square	sst	aigent-gams27b	pearson_chi_square	119.35214314	5	4.30472483519e-24				168	352			2 x 6 distribution
+all_pairwise	sst__aigent-gams27b__jsd	sst	aigent-gams27b	descriptive_distance					jensen_shannon_distance_base2	0.406787	168	352			square-root Jensen-Shannon distance
+all_pairwise	sst__aigent-gams27b__cosine	sst	aigent-gams27b	descriptive_similarity					cosine_similarity	0.964813	168	352			cosine similarity of six-order proportion vectors
+all_pairwise	sst__aigent-gemma2-27b__chi_square	sst	aigent-gemma2-27b	pearson_chi_square	142.617961798	5	4.96690957495e-29				168	608			2 x 6 distribution
+all_pairwise	sst__aigent-gemma2-27b__jsd	sst	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.362977	168	608			square-root Jensen-Shannon distance
+all_pairwise	sst__aigent-gemma2-27b__cosine	sst	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.968248	168	608			cosine similarity of six-order proportion vectors
+all_pairwise	sst__janes-news__chi_square	sst	janes-news	pearson_chi_square	14.4055643174	5	0.0132284433758				168	57631			2 x 6 distribution
+all_pairwise	sst__janes-news__jsd	sst	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.109328	168	57631			square-root Jensen-Shannon distance
+all_pairwise	sst__janes-news__cosine	sst	janes-news	descriptive_similarity					cosine_similarity	0.993726	168	57631			cosine similarity of six-order proportion vectors
+all_pairwise	sst__janes-blog__chi_square	sst	janes-blog	pearson_chi_square	19.2947705026	5	0.00169362522235				168	162867			2 x 6 distribution
+all_pairwise	sst__janes-blog__jsd	sst	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.121686	168	162867			square-root Jensen-Shannon distance
+all_pairwise	sst__janes-blog__cosine	sst	janes-blog	descriptive_similarity					cosine_similarity	0.992645	168	162867			cosine similarity of six-order proportion vectors
+all_pairwise	sst__janes-forum__chi_square	sst	janes-forum	pearson_chi_square	10.4737122847	5	0.0628730026265				168	159153			2 x 6 distribution
+all_pairwise	sst__janes-forum__jsd	sst	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.099769	168	159153			square-root Jensen-Shannon distance
+all_pairwise	sst__janes-forum__cosine	sst	janes-forum	descriptive_similarity					cosine_similarity	0.995131	168	159153			cosine similarity of six-order proportion vectors
+all_pairwise	sst__janes-tweet__chi_square	sst	janes-tweet	pearson_chi_square	29.0463855439	5	2.27067566781e-05				168	496602			2 x 6 distribution
+all_pairwise	sst__janes-tweet__jsd	sst	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.144892	168	496602			square-root Jensen-Shannon distance
+all_pairwise	sst__janes-tweet__cosine	sst	janes-tweet	descriptive_similarity					cosine_similarity	0.989928	168	496602			cosine similarity of six-order proportion vectors
+all_pairwise	sst__janes-wiki__chi_square	sst	janes-wiki	pearson_chi_square	23.39497656	5	0.000283642565411				168	11281			2 x 6 distribution
+all_pairwise	sst__janes-wiki__jsd	sst	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.132522	168	11281			square-root Jensen-Shannon distance
+all_pairwise	sst__janes-wiki__cosine	sst	janes-wiki	descriptive_similarity					cosine_similarity	0.991945	168	11281			cosine similarity of six-order proportion vectors
+all_pairwise	sst__classla-wikipedia__chi_square	sst	classla-wikipedia	pearson_chi_square	61.2842540352	5	6.59502779089e-12				168	296395			2 x 6 distribution
+all_pairwise	sst__classla-wikipedia__jsd	sst	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.187173	168	296395			square-root Jensen-Shannon distance
+all_pairwise	sst__classla-wikipedia__cosine	sst	classla-wikipedia	descriptive_similarity					cosine_similarity	0.986866	168	296395			cosine similarity of six-order proportion vectors
+all_pairwise	sst__parlamint__chi_square	sst	parlamint	pearson_chi_square	24.7275383185	5	0.000157264696081				168	497572			2 x 6 distribution
+all_pairwise	sst__parlamint__jsd	sst	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.138438	168	497572			square-root Jensen-Shannon distance
+all_pairwise	sst__parlamint__cosine	sst	parlamint	descriptive_similarity					cosine_similarity	0.990725	168	497572			cosine similarity of six-order proportion vectors
+all_pairwise	sst__kdsp__chi_square	sst	kdsp	pearson_chi_square	12.0889338263	5	0.0335892941336				168	48234			2 x 6 distribution
+all_pairwise	sst__kdsp__jsd	sst	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.099543	168	48234			square-root Jensen-Shannon distance
+all_pairwise	sst__kdsp__cosine	sst	kdsp	descriptive_similarity					cosine_similarity	0.995732	168	48234			cosine similarity of six-order proportion vectors
+all_pairwise	sst__human-essays__chi_square	sst	human-essays	pearson_chi_square	12.651712512	5	0.0268706450394				168	1671			2 x 6 distribution
+all_pairwise	sst__human-essays__jsd	sst	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.106166	168	1671			square-root Jensen-Shannon distance
+all_pairwise	sst__human-essays__cosine	sst	human-essays	descriptive_similarity					cosine_similarity	0.994953	168	1671			cosine similarity of six-order proportion vectors
+all_pairwise	sst__gpt5-essays__chi_square	sst	gpt5-essays	pearson_chi_square	136.444263142	5	1.01922435969e-27				168	3248			2 x 6 distribution
+all_pairwise	sst__gpt5-essays__jsd	sst	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.269455	168	3248			square-root Jensen-Shannon distance
+all_pairwise	sst__gpt5-essays__cosine	sst	gpt5-essays	descriptive_similarity					cosine_similarity	0.977398	168	3248			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__suk-publicistic__chi_square	suk-literary	suk-publicistic	pearson_chi_square	2.82306471761	5	0.727241347558				162	2837			2 x 6 distribution
+all_pairwise	suk-literary__suk-publicistic__jsd	suk-literary	suk-publicistic	descriptive_distance					jensen_shannon_distance_base2	0.056432	162	2837			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__suk-publicistic__cosine	suk-literary	suk-publicistic	descriptive_similarity					cosine_similarity	0.998538	162	2837			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__suk-professional__chi_square	suk-literary	suk-professional	pearson_chi_square	4.05434912526	5	0.541617863338				162	1105			2 x 6 distribution
+all_pairwise	suk-literary__suk-professional__jsd	suk-literary	suk-professional	descriptive_distance					jensen_shannon_distance_base2	0.068576	162	1105			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__suk-professional__cosine	suk-literary	suk-professional	descriptive_similarity					cosine_similarity	0.996855	162	1105			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__aigent-gpt5__chi_square	suk-literary	aigent-gpt5	pearson_chi_square	82.2863113101	5	2.78804577909e-16				162	1920			2 x 6 distribution
+all_pairwise	suk-literary__aigent-gpt5__jsd	suk-literary	aigent-gpt5	descriptive_distance					jensen_shannon_distance_base2	0.235216	162	1920			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__aigent-gpt5__cosine	suk-literary	aigent-gpt5	descriptive_similarity					cosine_similarity	0.979944	162	1920			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__aigent-gams27b__chi_square	suk-literary	aigent-gams27b	pearson_chi_square	99.2618472475	5	7.56161279579e-20				162	352			2 x 6 distribution
+all_pairwise	suk-literary__aigent-gams27b__jsd	suk-literary	aigent-gams27b	descriptive_distance					jensen_shannon_distance_base2	0.371823	162	352			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__aigent-gams27b__cosine	suk-literary	aigent-gams27b	descriptive_similarity					cosine_similarity	0.967460	162	352			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__aigent-gemma2-27b__chi_square	suk-literary	aigent-gemma2-27b	pearson_chi_square	110.136839234	5	3.83338120861e-22				162	608			2 x 6 distribution
+all_pairwise	suk-literary__aigent-gemma2-27b__jsd	suk-literary	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.321044	162	608			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__aigent-gemma2-27b__cosine	suk-literary	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.971861	162	608			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__janes-news__chi_square	suk-literary	janes-news	pearson_chi_square	8.99364265074	5	0.109318000058				162	57631			2 x 6 distribution
+all_pairwise	suk-literary__janes-news__jsd	suk-literary	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.090916	162	57631			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__janes-news__cosine	suk-literary	janes-news	descriptive_similarity					cosine_similarity	0.994431	162	57631			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__janes-blog__chi_square	suk-literary	janes-blog	pearson_chi_square	8.286733199	5	0.141125161136				162	162867			2 x 6 distribution
+all_pairwise	suk-literary__janes-blog__jsd	suk-literary	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.085797	162	162867			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__janes-blog__cosine	suk-literary	janes-blog	descriptive_similarity					cosine_similarity	0.994494	162	162867			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__janes-forum__chi_square	suk-literary	janes-forum	pearson_chi_square	18.6941404847	5	0.00219121549958				162	159153			2 x 6 distribution
+all_pairwise	suk-literary__janes-forum__jsd	suk-literary	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.134791	162	159153			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__janes-forum__cosine	suk-literary	janes-forum	descriptive_similarity					cosine_similarity	0.990713	162	159153			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__janes-tweet__chi_square	suk-literary	janes-tweet	pearson_chi_square	14.770088162	5	0.011391242359				162	496602			2 x 6 distribution
+all_pairwise	suk-literary__janes-tweet__jsd	suk-literary	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.109856	162	496602			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__janes-tweet__cosine	suk-literary	janes-tweet	descriptive_similarity					cosine_similarity	0.991416	162	496602			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__janes-wiki__chi_square	suk-literary	janes-wiki	pearson_chi_square	14.4873109289	5	0.0127930179763				162	11281			2 x 6 distribution
+all_pairwise	suk-literary__janes-wiki__jsd	suk-literary	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.119340	162	11281			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__janes-wiki__cosine	suk-literary	janes-wiki	descriptive_similarity					cosine_similarity	0.992143	162	11281			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__classla-wikipedia__chi_square	suk-literary	classla-wikipedia	pearson_chi_square	4.91358766625	5	0.42651693178				162	296395			2 x 6 distribution
+all_pairwise	suk-literary__classla-wikipedia__jsd	suk-literary	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.069302	162	296395			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__classla-wikipedia__cosine	suk-literary	classla-wikipedia	descriptive_similarity					cosine_similarity	0.997618	162	296395			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__parlamint__chi_square	suk-literary	parlamint	pearson_chi_square	1.23753256223	5	0.941226348421				162	497572			2 x 6 distribution
+all_pairwise	suk-literary__parlamint__jsd	suk-literary	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.039216	162	497572			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__parlamint__cosine	suk-literary	parlamint	descriptive_similarity					cosine_similarity	0.999604	162	497572			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__kdsp__chi_square	suk-literary	kdsp	pearson_chi_square	16.564990832	5	0.00540315186876				162	48234			2 x 6 distribution
+all_pairwise	suk-literary__kdsp__jsd	suk-literary	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.148107	162	48234			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__kdsp__cosine	suk-literary	kdsp	descriptive_similarity					cosine_similarity	0.989668	162	48234			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__human-essays__chi_square	suk-literary	human-essays	pearson_chi_square	22.0657326151	5	0.000508745307391				162	1671			2 x 6 distribution
+all_pairwise	suk-literary__human-essays__jsd	suk-literary	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.146833	162	1671			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__human-essays__cosine	suk-literary	human-essays	descriptive_similarity					cosine_similarity	0.989973	162	1671			cosine similarity of six-order proportion vectors
+all_pairwise	suk-literary__gpt5-essays__chi_square	suk-literary	gpt5-essays	pearson_chi_square	99.1827542783	5	7.85742655913e-20				162	3248			2 x 6 distribution
+all_pairwise	suk-literary__gpt5-essays__jsd	suk-literary	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.234401	162	3248			square-root Jensen-Shannon distance
+all_pairwise	suk-literary__gpt5-essays__cosine	suk-literary	gpt5-essays	descriptive_similarity					cosine_similarity	0.979344	162	3248			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__suk-professional__chi_square	suk-publicistic	suk-professional	pearson_chi_square	10.8033803699	5	0.0554207851758				2837	1105			2 x 6 distribution
+all_pairwise	suk-publicistic__suk-professional__jsd	suk-publicistic	suk-professional	descriptive_distance					jensen_shannon_distance_base2	0.050983	2837	1105			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__suk-professional__cosine	suk-publicistic	suk-professional	descriptive_similarity					cosine_similarity	0.998949	2837	1105			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__aigent-gpt5__chi_square	suk-publicistic	aigent-gpt5	pearson_chi_square	222.668106036	5	3.98454684909e-46				2837	1920			2 x 6 distribution
+all_pairwise	suk-publicistic__aigent-gpt5__jsd	suk-publicistic	aigent-gpt5	descriptive_distance					jensen_shannon_distance_base2	0.199125	2837	1920			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__aigent-gpt5__cosine	suk-publicistic	aigent-gpt5	descriptive_similarity					cosine_similarity	0.987618	2837	1920			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__aigent-gams27b__chi_square	suk-publicistic	aigent-gams27b	pearson_chi_square	117.026286932	5	1.33780722997e-23				2837	352			2 x 6 distribution
+all_pairwise	suk-publicistic__aigent-gams27b__jsd	suk-publicistic	aigent-gams27b	descriptive_distance					jensen_shannon_distance_base2	0.347622	2837	352			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__aigent-gams27b__cosine	suk-publicistic	aigent-gams27b	descriptive_similarity					cosine_similarity	0.976419	2837	352			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__aigent-gemma2-27b__chi_square	suk-publicistic	aigent-gemma2-27b	pearson_chi_square	160.146144304	5	9.21319023002e-33				2837	608			2 x 6 distribution
+all_pairwise	suk-publicistic__aigent-gemma2-27b__jsd	suk-publicistic	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.300338	2837	608			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__aigent-gemma2-27b__cosine	suk-publicistic	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.979798	2837	608			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__janes-news__chi_square	suk-publicistic	janes-news	pearson_chi_square	89.1818310855	5	9.98091831821e-18				2837	57631			2 x 6 distribution
+all_pairwise	suk-publicistic__janes-news__jsd	suk-publicistic	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.078279	2837	57631			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__janes-news__cosine	suk-publicistic	janes-news	descriptive_similarity					cosine_similarity	0.997766	2837	57631			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__janes-blog__chi_square	suk-publicistic	janes-blog	pearson_chi_square	70.267164681	5	9.01639665948e-14				2837	162867			2 x 6 distribution
+all_pairwise	suk-publicistic__janes-blog__jsd	suk-publicistic	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.066555	2837	162867			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__janes-blog__cosine	suk-publicistic	janes-blog	descriptive_similarity					cosine_similarity	0.998046	2837	162867			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__janes-forum__chi_square	suk-publicistic	janes-forum	pearson_chi_square	228.571548464	5	2.16450448801e-47				2837	159153			2 x 6 distribution
+all_pairwise	suk-publicistic__janes-forum__jsd	suk-publicistic	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.128401	2837	159153			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__janes-forum__cosine	suk-publicistic	janes-forum	descriptive_similarity					cosine_similarity	0.994568	2837	159153			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__janes-tweet__chi_square	suk-publicistic	janes-tweet	pearson_chi_square	122.661810988	5	8.56617271496e-25				2837	496602			2 x 6 distribution
+all_pairwise	suk-publicistic__janes-tweet__jsd	suk-publicistic	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.080237	2837	496602			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__janes-tweet__cosine	suk-publicistic	janes-tweet	descriptive_similarity					cosine_similarity	0.996226	2837	496602			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__janes-wiki__chi_square	suk-publicistic	janes-wiki	pearson_chi_square	175.995859621	5	3.83211741268e-36				2837	11281			2 x 6 distribution
+all_pairwise	suk-publicistic__janes-wiki__jsd	suk-publicistic	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.120759	2837	11281			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__janes-wiki__cosine	suk-publicistic	janes-wiki	descriptive_similarity					cosine_similarity	0.995307	2837	11281			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__classla-wikipedia__chi_square	suk-publicistic	classla-wikipedia	pearson_chi_square	101.849016071	5	2.15401923623e-20				2837	296395			2 x 6 distribution
+all_pairwise	suk-publicistic__classla-wikipedia__jsd	suk-publicistic	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.070094	2837	296395			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__classla-wikipedia__cosine	suk-publicistic	classla-wikipedia	descriptive_similarity					cosine_similarity	0.998689	2837	296395			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__parlamint__chi_square	suk-publicistic	parlamint	pearson_chi_square	39.6099116128	5	1.78978755323e-07				2837	497572			2 x 6 distribution
+all_pairwise	suk-publicistic__parlamint__jsd	suk-publicistic	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.055417	2837	497572			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__parlamint__cosine	suk-publicistic	parlamint	descriptive_similarity					cosine_similarity	0.998910	2837	497572			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__kdsp__chi_square	suk-publicistic	kdsp	pearson_chi_square	253.669807818	5	8.9670384892e-53				2837	48234			2 x 6 distribution
+all_pairwise	suk-publicistic__kdsp__jsd	suk-publicistic	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.150618	2837	48234			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__kdsp__cosine	suk-publicistic	kdsp	descriptive_similarity					cosine_similarity	0.991783	2837	48234			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__human-essays__chi_square	suk-publicistic	human-essays	pearson_chi_square	78.8331011706	5	1.47201132929e-15				2837	1671			2 x 6 distribution
+all_pairwise	suk-publicistic__human-essays__jsd	suk-publicistic	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.116948	2837	1671			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__human-essays__cosine	suk-publicistic	human-essays	descriptive_similarity					cosine_similarity	0.994935	2837	1671			cosine similarity of six-order proportion vectors
+all_pairwise	suk-publicistic__gpt5-essays__chi_square	suk-publicistic	gpt5-essays	pearson_chi_square	332.003042584	5	1.30889733849e-69				2837	3248			2 x 6 distribution
+all_pairwise	suk-publicistic__gpt5-essays__jsd	suk-publicistic	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.201159	2837	3248			square-root Jensen-Shannon distance
+all_pairwise	suk-publicistic__gpt5-essays__cosine	suk-publicistic	gpt5-essays	descriptive_similarity					cosine_similarity	0.986927	2837	3248			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__aigent-gpt5__chi_square	suk-professional	aigent-gpt5	pearson_chi_square	138.471632922	5	3.78008507228e-28				1105	1920			2 x 6 distribution
+all_pairwise	suk-professional__aigent-gpt5__jsd	suk-professional	aigent-gpt5	descriptive_distance					jensen_shannon_distance_base2	0.180665	1105	1920			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__aigent-gpt5__cosine	suk-professional	aigent-gpt5	descriptive_similarity					cosine_similarity	0.992162	1105	1920			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__aigent-gams27b__chi_square	suk-professional	aigent-gams27b	pearson_chi_square	92.1891222631	5	2.32958900672e-18				1105	352			2 x 6 distribution
+all_pairwise	suk-professional__aigent-gams27b__jsd	suk-professional	aigent-gams27b	descriptive_distance					jensen_shannon_distance_base2	0.319538	1105	352			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__aigent-gams27b__cosine	suk-professional	aigent-gams27b	descriptive_similarity					cosine_similarity	0.983824	1105	352			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__aigent-gemma2-27b__chi_square	suk-professional	aigent-gemma2-27b	pearson_chi_square	116.306452421	5	1.89999514881e-23				1105	608			2 x 6 distribution
+all_pairwise	suk-professional__aigent-gemma2-27b__jsd	suk-professional	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.265926	1105	608			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__aigent-gemma2-27b__cosine	suk-professional	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.986899	1105	608			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__janes-news__chi_square	suk-professional	janes-news	pearson_chi_square	24.276948855	5	0.000192056900808				1105	57631			2 x 6 distribution
+all_pairwise	suk-professional__janes-news__jsd	suk-professional	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.068274	1105	57631			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__janes-news__cosine	suk-professional	janes-news	descriptive_similarity					cosine_similarity	0.998987	1105	57631			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__janes-blog__chi_square	suk-professional	janes-blog	pearson_chi_square	18.8593785989	5	0.00204155969163				1105	162867			2 x 6 distribution
+all_pairwise	suk-professional__janes-blog__jsd	suk-professional	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.058904	1105	162867			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__janes-blog__cosine	suk-professional	janes-blog	descriptive_similarity					cosine_similarity	0.999179	1105	162867			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__janes-forum__chi_square	suk-professional	janes-forum	pearson_chi_square	71.6612801519	5	4.62112201253e-14				1105	159153			2 x 6 distribution
+all_pairwise	suk-professional__janes-forum__jsd	suk-professional	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.119906	1105	159153			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__janes-forum__cosine	suk-professional	janes-forum	descriptive_similarity					cosine_similarity	0.996229	1105	159153			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__janes-tweet__chi_square	suk-professional	janes-tweet	pearson_chi_square	27.3553186607	5	4.86358942737e-05				1105	496602			2 x 6 distribution
+all_pairwise	suk-professional__janes-tweet__jsd	suk-professional	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.063779	1105	496602			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__janes-tweet__cosine	suk-professional	janes-tweet	descriptive_similarity					cosine_similarity	0.998336	1105	496602			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__janes-wiki__chi_square	suk-professional	janes-wiki	pearson_chi_square	44.4432971915	5	1.88261655695e-08				1105	11281			2 x 6 distribution
+all_pairwise	suk-professional__janes-wiki__jsd	suk-professional	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.098485	1105	11281			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__janes-wiki__cosine	suk-professional	janes-wiki	descriptive_similarity					cosine_similarity	0.997754	1105	11281			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__classla-wikipedia__chi_square	suk-professional	classla-wikipedia	pearson_chi_square	18.4617905657	5	0.00242000814976				1105	296395			2 x 6 distribution
+all_pairwise	suk-professional__classla-wikipedia__jsd	suk-professional	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.051035	1105	296395			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__classla-wikipedia__cosine	suk-professional	classla-wikipedia	descriptive_similarity					cosine_similarity	0.999506	1105	296395			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__parlamint__chi_square	suk-professional	parlamint	pearson_chi_square	36.8364411057	5	6.4590888475e-07				1105	497572			2 x 6 distribution
+all_pairwise	suk-professional__parlamint__jsd	suk-professional	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.084528	1105	497572			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__parlamint__cosine	suk-professional	parlamint	descriptive_similarity					cosine_similarity	0.996651	1105	497572			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__kdsp__chi_square	suk-professional	kdsp	pearson_chi_square	86.8325591951	5	3.10676469691e-17				1105	48234			2 x 6 distribution
+all_pairwise	suk-professional__kdsp__jsd	suk-professional	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.140886	1105	48234			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__kdsp__cosine	suk-professional	kdsp	descriptive_similarity					cosine_similarity	0.993065	1105	48234			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__human-essays__chi_square	suk-professional	human-essays	pearson_chi_square	35.6431224896	5	1.11942129533e-06				1105	1671			2 x 6 distribution
+all_pairwise	suk-professional__human-essays__jsd	suk-professional	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.099323	1105	1671			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__human-essays__cosine	suk-professional	human-essays	descriptive_similarity					cosine_similarity	0.996939	1105	1671			cosine similarity of six-order proportion vectors
+all_pairwise	suk-professional__gpt5-essays__chi_square	suk-professional	gpt5-essays	pearson_chi_square	175.924716003	5	3.96850594611e-36				1105	3248			2 x 6 distribution
+all_pairwise	suk-professional__gpt5-essays__jsd	suk-professional	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.176114	1105	3248			square-root Jensen-Shannon distance
+all_pairwise	suk-professional__gpt5-essays__cosine	suk-professional	gpt5-essays	descriptive_similarity					cosine_similarity	0.991930	1105	3248			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__aigent-gams27b__chi_square	aigent-gpt5	aigent-gams27b	pearson_chi_square	30.1567499498	5	1.3736929413e-05				1920	352			2 x 6 distribution
+all_pairwise	aigent-gpt5__aigent-gams27b__jsd	aigent-gpt5	aigent-gams27b	descriptive_distance					jensen_shannon_distance_base2	0.175147	1920	352			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__aigent-gams27b__cosine	aigent-gpt5	aigent-gams27b	descriptive_similarity					cosine_similarity	0.997870	1920	352			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__aigent-gemma2-27b__chi_square	aigent-gpt5	aigent-gemma2-27b	pearson_chi_square	36.3852582535	5	7.95319989441e-07				1920	608			2 x 6 distribution
+all_pairwise	aigent-gpt5__aigent-gemma2-27b__jsd	aigent-gpt5	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.149850	1920	608			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__aigent-gemma2-27b__cosine	aigent-gpt5	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.998361	1920	608			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__janes-news__chi_square	aigent-gpt5	janes-news	pearson_chi_square	282.147542432	5	6.8799032714e-59				1920	57631			2 x 6 distribution
+all_pairwise	aigent-gpt5__janes-news__jsd	aigent-gpt5	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.206284	1920	57631			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__janes-news__cosine	aigent-gpt5	janes-news	descriptive_similarity					cosine_similarity	0.992654	1920	57631			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__janes-blog__chi_square	aigent-gpt5	janes-blog	pearson_chi_square	250.436580015	5	4.43042155025e-52				1920	162867			2 x 6 distribution
+all_pairwise	aigent-gpt5__janes-blog__jsd	aigent-gpt5	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.190688	1920	162867			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__janes-blog__cosine	aigent-gpt5	janes-blog	descriptive_similarity					cosine_similarity	0.993777	1920	162867			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__janes-forum__chi_square	aigent-gpt5	janes-forum	pearson_chi_square	365.408667416	5	8.41518699371e-77				1920	159153			2 x 6 distribution
+all_pairwise	aigent-gpt5__janes-forum__jsd	aigent-gpt5	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.241384	1920	159153			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__janes-forum__cosine	aigent-gpt5	janes-forum	descriptive_similarity					cosine_similarity	0.989805	1920	159153			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__janes-tweet__chi_square	aigent-gpt5	janes-tweet	pearson_chi_square	168.803527402	5	1.31330641366e-34				1920	496602			2 x 6 distribution
+all_pairwise	aigent-gpt5__janes-tweet__jsd	aigent-gpt5	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.155533	1920	496602			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__janes-tweet__cosine	aigent-gpt5	janes-tweet	descriptive_similarity					cosine_similarity	0.996778	1920	496602			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__janes-wiki__chi_square	aigent-gpt5	janes-wiki	pearson_chi_square	295.915521446	5	7.56356928603e-62				1920	11281			2 x 6 distribution
+all_pairwise	aigent-gpt5__janes-wiki__jsd	aigent-gpt5	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.224797	1920	11281			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__janes-wiki__cosine	aigent-gpt5	janes-wiki	descriptive_similarity					cosine_similarity	0.992033	1920	11281			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__classla-wikipedia__chi_square	aigent-gpt5	classla-wikipedia	pearson_chi_square	232.727626102	5	2.78301153062e-48				1920	296395			2 x 6 distribution
+all_pairwise	aigent-gpt5__classla-wikipedia__jsd	aigent-gpt5	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.180031	1920	296395			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__classla-wikipedia__cosine	aigent-gpt5	classla-wikipedia	descriptive_similarity					cosine_similarity	0.990792	1920	296395			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__parlamint__chi_square	aigent-gpt5	parlamint	pearson_chi_square	413.811914571	5	3.1264568602e-87				1920	497572			2 x 6 distribution
+all_pairwise	aigent-gpt5__parlamint__jsd	aigent-gpt5	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.239894	1920	497572			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__parlamint__cosine	aigent-gpt5	parlamint	descriptive_similarity					cosine_similarity	0.980273	1920	497572			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__kdsp__chi_square	aigent-gpt5	kdsp	pearson_chi_square	477.913063044	5	4.66726471485e-101				1920	48234			2 x 6 distribution
+all_pairwise	aigent-gpt5__kdsp__jsd	aigent-gpt5	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.277647	1920	48234			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__kdsp__cosine	aigent-gpt5	kdsp	descriptive_similarity					cosine_similarity	0.980886	1920	48234			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__human-essays__chi_square	aigent-gpt5	human-essays	pearson_chi_square	183.312944401	5	1.04905011692e-37				1920	1671			2 x 6 distribution
+all_pairwise	aigent-gpt5__human-essays__jsd	aigent-gpt5	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.197978	1920	1671			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__human-essays__cosine	aigent-gpt5	human-essays	descriptive_similarity					cosine_similarity	0.992522	1920	1671			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gpt5__gpt5-essays__chi_square	aigent-gpt5	gpt5-essays	pearson_chi_square	9.83307888556	5	0.0801054231637				1920	3248			2 x 6 distribution
+all_pairwise	aigent-gpt5__gpt5-essays__jsd	aigent-gpt5	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.038783	1920	3248			square-root Jensen-Shannon distance
+all_pairwise	aigent-gpt5__gpt5-essays__cosine	aigent-gpt5	gpt5-essays	descriptive_similarity					cosine_similarity	0.999924	1920	3248			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__aigent-gemma2-27b__chi_square	aigent-gams27b	aigent-gemma2-27b	pearson_chi_square	9.0377000495	4	0.0601640359285				352	608			2 x 6 distribution
+all_pairwise	aigent-gams27b__aigent-gemma2-27b__jsd	aigent-gams27b	aigent-gemma2-27b	descriptive_distance					jensen_shannon_distance_base2	0.096370	352	608			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__aigent-gemma2-27b__cosine	aigent-gams27b	aigent-gemma2-27b	descriptive_similarity					cosine_similarity	0.999755	352	608			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__janes-news__chi_square	aigent-gams27b	janes-news	pearson_chi_square	115.793265829	5	2.43982116444e-23				352	57631			2 x 6 distribution
+all_pairwise	aigent-gams27b__janes-news__jsd	aigent-gams27b	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.340538	352	57631			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__janes-news__cosine	aigent-gams27b	janes-news	descriptive_similarity					cosine_similarity	0.984495	352	57631			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__janes-blog__chi_square	aigent-gams27b	janes-blog	pearson_chi_square	108.759131026	5	7.49368916884e-22				352	162867			2 x 6 distribution
+all_pairwise	aigent-gams27b__janes-blog__jsd	aigent-gams27b	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.330387	352	162867			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__janes-blog__cosine	aigent-gams27b	janes-blog	descriptive_similarity					cosine_similarity	0.985706	352	162867			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__janes-forum__chi_square	aigent-gams27b	janes-forum	pearson_chi_square	132.995417219	5	5.50484391894e-27				352	159153			2 x 6 distribution
+all_pairwise	aigent-gams27b__janes-forum__jsd	aigent-gams27b	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.362932	352	159153			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__janes-forum__cosine	aigent-gams27b	janes-forum	descriptive_similarity					cosine_similarity	0.981932	352	159153			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__janes-tweet__chi_square	aigent-gams27b	janes-tweet	pearson_chi_square	87.7153026078	5	2.0279768567e-17				352	496602			2 x 6 distribution
+all_pairwise	aigent-gams27b__janes-tweet__jsd	aigent-gams27b	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.298422	352	496602			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__janes-tweet__cosine	aigent-gams27b	janes-tweet	descriptive_similarity					cosine_similarity	0.990392	352	496602			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__janes-wiki__chi_square	aigent-gams27b	janes-wiki	pearson_chi_square	113.478686161	5	7.53418925392e-23				352	11281			2 x 6 distribution
+all_pairwise	aigent-gams27b__janes-wiki__jsd	aigent-gams27b	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.341485	352	11281			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__janes-wiki__cosine	aigent-gams27b	janes-wiki	descriptive_similarity					cosine_similarity	0.985369	352	11281			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__classla-wikipedia__chi_square	aigent-gams27b	classla-wikipedia	pearson_chi_square	96.2175700284	5	3.30970894225e-19				352	296395			2 x 6 distribution
+all_pairwise	aigent-gams27b__classla-wikipedia__jsd	aigent-gams27b	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.314648	352	296395			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__classla-wikipedia__cosine	aigent-gams27b	classla-wikipedia	descriptive_similarity					cosine_similarity	0.982339	352	296395			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__parlamint__chi_square	aigent-gams27b	parlamint	pearson_chi_square	149.328981109	5	1.85504329423e-30				352	497572			2 x 6 distribution
+all_pairwise	aigent-gams27b__parlamint__jsd	aigent-gams27b	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.380615	352	497572			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__parlamint__cosine	aigent-gams27b	parlamint	descriptive_similarity					cosine_similarity	0.967164	352	497572			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__kdsp__chi_square	aigent-gams27b	kdsp	pearson_chi_square	158.740326867	5	1.83656870837e-32				352	48234			2 x 6 distribution
+all_pairwise	aigent-gams27b__kdsp__jsd	aigent-gams27b	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.392794	352	48234			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__kdsp__cosine	aigent-gams27b	kdsp	descriptive_similarity					cosine_similarity	0.971616	352	48234			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__human-essays__chi_square	aigent-gams27b	human-essays	pearson_chi_square	100.842770562	5	3.51084181897e-20				352	1671			2 x 6 distribution
+all_pairwise	aigent-gams27b__human-essays__jsd	aigent-gams27b	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.327726	352	1671			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__human-essays__cosine	aigent-gams27b	human-essays	descriptive_similarity					cosine_similarity	0.985149	352	1671			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gams27b__gpt5-essays__chi_square	aigent-gams27b	gpt5-essays	pearson_chi_square	29.0155755119	5	2.30250148882e-05				352	3248			2 x 6 distribution
+all_pairwise	aigent-gams27b__gpt5-essays__jsd	aigent-gams27b	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.170167	352	3248			square-root Jensen-Shannon distance
+all_pairwise	aigent-gams27b__gpt5-essays__cosine	aigent-gams27b	gpt5-essays	descriptive_similarity					cosine_similarity	0.998305	352	3248			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__janes-news__chi_square	aigent-gemma2-27b	janes-news	pearson_chi_square	162.435083138	5	2.99574186971e-33				608	57631			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__janes-news__jsd	aigent-gemma2-27b	janes-news	descriptive_distance					jensen_shannon_distance_base2	0.291694	608	57631			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__janes-news__cosine	aigent-gemma2-27b	janes-news	descriptive_similarity					cosine_similarity	0.987214	608	57631			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__janes-blog__chi_square	aigent-gemma2-27b	janes-blog	pearson_chi_square	151.609586726	5	6.06555183596e-31				608	162867			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__janes-blog__jsd	aigent-gemma2-27b	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.282632	608	162867			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__janes-blog__cosine	aigent-gemma2-27b	janes-blog	descriptive_similarity					cosine_similarity	0.988224	608	162867			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__janes-forum__chi_square	aigent-gemma2-27b	janes-forum	pearson_chi_square	190.739904575	5	2.71424923756e-39				608	159153			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__janes-forum__jsd	aigent-gemma2-27b	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.316102	608	159153			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__janes-forum__cosine	aigent-gemma2-27b	janes-forum	descriptive_similarity					cosine_similarity	0.984699	608	159153			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__janes-tweet__chi_square	aigent-gemma2-27b	janes-tweet	pearson_chi_square	118.278090024	5	7.26745685884e-24				608	496602			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__janes-tweet__jsd	aigent-gemma2-27b	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.252016	608	496602			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__janes-tweet__cosine	aigent-gemma2-27b	janes-tweet	descriptive_similarity					cosine_similarity	0.992314	608	496602			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__janes-wiki__chi_square	aigent-gemma2-27b	janes-wiki	pearson_chi_square	157.159340331	5	3.98910502048e-32				608	11281			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__janes-wiki__jsd	aigent-gemma2-27b	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.290107	608	11281			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__janes-wiki__cosine	aigent-gemma2-27b	janes-wiki	descriptive_similarity					cosine_similarity	0.988167	608	11281			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__classla-wikipedia__chi_square	aigent-gemma2-27b	classla-wikipedia	pearson_chi_square	131.713158122	5	1.03030877846e-26				608	296395			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__classla-wikipedia__jsd	aigent-gemma2-27b	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.262864	608	296395			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__classla-wikipedia__cosine	aigent-gemma2-27b	classla-wikipedia	descriptive_similarity					cosine_similarity	0.985537	608	296395			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__parlamint__chi_square	aigent-gemma2-27b	parlamint	pearson_chi_square	217.499133652	5	5.1008754681e-45				608	497572			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__parlamint__jsd	aigent-gemma2-27b	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.333784	608	497572			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__parlamint__cosine	aigent-gemma2-27b	parlamint	descriptive_similarity					cosine_similarity	0.971300	608	497572			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__kdsp__chi_square	aigent-gemma2-27b	kdsp	pearson_chi_square	231.413078765	5	5.32484458531e-48				608	48234			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__kdsp__jsd	aigent-gemma2-27b	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.342743	608	48234			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__kdsp__cosine	aigent-gemma2-27b	kdsp	descriptive_similarity					cosine_similarity	0.975536	608	48234			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__human-essays__chi_square	aigent-gemma2-27b	human-essays	pearson_chi_square	132.091180872	5	8.56484884559e-27				608	1671			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__human-essays__jsd	aigent-gemma2-27b	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.277051	608	1671			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__human-essays__cosine	aigent-gemma2-27b	human-essays	descriptive_similarity					cosine_similarity	0.987709	608	1671			cosine similarity of six-order proportion vectors
+all_pairwise	aigent-gemma2-27b__gpt5-essays__chi_square	aigent-gemma2-27b	gpt5-essays	pearson_chi_square	29.874023001	5	1.56149660511e-05				608	3248			2 x 6 distribution
+all_pairwise	aigent-gemma2-27b__gpt5-essays__jsd	aigent-gemma2-27b	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.131913	608	3248			square-root Jensen-Shannon distance
+all_pairwise	aigent-gemma2-27b__gpt5-essays__cosine	aigent-gemma2-27b	gpt5-essays	descriptive_similarity					cosine_similarity	0.998858	608	3248			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__janes-blog__chi_square	janes-news	janes-blog	pearson_chi_square	156.970428498	5	4.37646576678e-32				57631	162867			2 x 6 distribution
+all_pairwise	janes-news__janes-blog__jsd	janes-news	janes-blog	descriptive_distance					jensen_shannon_distance_base2	0.025207	57631	162867			square-root Jensen-Shannon distance
+all_pairwise	janes-news__janes-blog__cosine	janes-news	janes-blog	descriptive_similarity					cosine_similarity	0.999852	57631	162867			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__janes-forum__chi_square	janes-news	janes-forum	pearson_chi_square	710.506673755	5	2.62687622609e-151				57631	159153			2 x 6 distribution
+all_pairwise	janes-news__janes-forum__jsd	janes-news	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.056777	57631	159153			square-root Jensen-Shannon distance
+all_pairwise	janes-news__janes-forum__cosine	janes-news	janes-forum	descriptive_similarity					cosine_similarity	0.998961	57631	159153			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__janes-tweet__chi_square	janes-news	janes-tweet	pearson_chi_square	973.95169666	5	2.61841346425e-208				57631	496602			2 x 6 distribution
+all_pairwise	janes-news__janes-tweet__jsd	janes-news	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.055084	57631	496602			square-root Jensen-Shannon distance
+all_pairwise	janes-news__janes-tweet__cosine	janes-news	janes-tweet	descriptive_similarity					cosine_similarity	0.999107	57631	496602			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__janes-wiki__chi_square	janes-news	janes-wiki	pearson_chi_square	135.974812548	5	1.28232231207e-27				57631	11281			2 x 6 distribution
+all_pairwise	janes-news__janes-wiki__jsd	janes-news	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.051049	57631	11281			square-root Jensen-Shannon distance
+all_pairwise	janes-news__janes-wiki__cosine	janes-news	janes-wiki	descriptive_similarity					cosine_similarity	0.999325	57631	11281			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__classla-wikipedia__chi_square	janes-news	classla-wikipedia	pearson_chi_square	3013.64525539	5	0				57631	296395			2 x 6 distribution
+all_pairwise	janes-news__classla-wikipedia__jsd	janes-news	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.098864	57631	296395			square-root Jensen-Shannon distance
+all_pairwise	janes-news__classla-wikipedia__cosine	janes-news	classla-wikipedia	descriptive_similarity					cosine_similarity	0.997538	57631	296395			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__parlamint__chi_square	janes-news	parlamint	pearson_chi_square	1858.83488712	5	0				57631	497572			2 x 6 distribution
+all_pairwise	janes-news__parlamint__jsd	janes-news	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.084149	57631	497572			square-root Jensen-Shannon distance
+all_pairwise	janes-news__parlamint__cosine	janes-news	parlamint	descriptive_similarity					cosine_similarity	0.995149	57631	497572			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__kdsp__chi_square	janes-news	kdsp	pearson_chi_square	1338.8338995	5	2.46487144032e-287				57631	48234			2 x 6 distribution
+all_pairwise	janes-news__kdsp__jsd	janes-news	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.095483	57631	48234			square-root Jensen-Shannon distance
+all_pairwise	janes-news__kdsp__cosine	janes-news	kdsp	descriptive_similarity					cosine_similarity	0.995723	57631	48234			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__human-essays__chi_square	janes-news	human-essays	pearson_chi_square	59.3285235911	5	1.67285671678e-11				57631	1671			2 x 6 distribution
+all_pairwise	janes-news__human-essays__jsd	janes-news	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.094699	57631	1671			square-root Jensen-Shannon distance
+all_pairwise	janes-news__human-essays__cosine	janes-news	human-essays	descriptive_similarity					cosine_similarity	0.998542	57631	1671			cosine similarity of six-order proportion vectors
+all_pairwise	janes-news__gpt5-essays__chi_square	janes-news	gpt5-essays	pearson_chi_square	467.763630412	5	7.22868131073e-99				57631	3248			2 x 6 distribution
+all_pairwise	janes-news__gpt5-essays__jsd	janes-news	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.202158	57631	3248			square-root Jensen-Shannon distance
+all_pairwise	janes-news__gpt5-essays__cosine	janes-news	gpt5-essays	descriptive_similarity					cosine_similarity	0.992442	57631	3248			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__janes-forum__chi_square	janes-blog	janes-forum	pearson_chi_square	2805.88299427	5	0				162867	159153			2 x 6 distribution
+all_pairwise	janes-blog__janes-forum__jsd	janes-blog	janes-forum	descriptive_distance					jensen_shannon_distance_base2	0.079644	162867	159153			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__janes-forum__cosine	janes-blog	janes-forum	descriptive_similarity					cosine_similarity	0.998149	162867	159153			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__janes-tweet__chi_square	janes-blog	janes-tweet	pearson_chi_square	991.211864133	5	4.80242752674e-212				162867	496602			2 x 6 distribution
+all_pairwise	janes-blog__janes-tweet__jsd	janes-blog	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.037536	162867	496602			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__janes-tweet__cosine	janes-blog	janes-tweet	descriptive_similarity					cosine_similarity	0.999502	162867	496602			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__janes-wiki__chi_square	janes-blog	janes-wiki	pearson_chi_square	334.200228403	5	4.40619833365e-70				162867	11281			2 x 6 distribution
+all_pairwise	janes-blog__janes-wiki__jsd	janes-blog	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.071633	162867	11281			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__janes-wiki__cosine	janes-blog	janes-wiki	descriptive_similarity					cosine_similarity	0.998750	162867	11281			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__classla-wikipedia__chi_square	janes-blog	classla-wikipedia	pearson_chi_square	4560.24752485	5	0				162867	296395			2 x 6 distribution
+all_pairwise	janes-blog__classla-wikipedia__jsd	janes-blog	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.086924	162867	296395			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__classla-wikipedia__cosine	janes-blog	classla-wikipedia	descriptive_similarity					cosine_similarity	0.997966	162867	296395			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__parlamint__chi_square	janes-blog	parlamint	pearson_chi_square	4149.48822789	5	0				162867	497572			2 x 6 distribution
+all_pairwise	janes-blog__parlamint__jsd	janes-blog	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.081331	162867	497572			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__parlamint__cosine	janes-blog	parlamint	descriptive_similarity					cosine_similarity	0.995158	162867	497572			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__kdsp__chi_square	janes-blog	kdsp	pearson_chi_square	3623.7019143	5	0				162867	48234			2 x 6 distribution
+all_pairwise	janes-blog__kdsp__jsd	janes-blog	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.119809	162867	48234			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__kdsp__cosine	janes-blog	kdsp	descriptive_similarity					cosine_similarity	0.994015	162867	48234			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__human-essays__chi_square	janes-blog	human-essays	pearson_chi_square	84.437078224	5	9.87817894825e-17				162867	1671			2 x 6 distribution
+all_pairwise	janes-blog__human-essays__jsd	janes-blog	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.098194	162867	1671			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__human-essays__cosine	janes-blog	human-essays	descriptive_similarity					cosine_similarity	0.998137	162867	1671			cosine similarity of six-order proportion vectors
+all_pairwise	janes-blog__gpt5-essays__chi_square	janes-blog	gpt5-essays	pearson_chi_square	420.876468729	5	9.37516147604e-89				162867	3248			2 x 6 distribution
+all_pairwise	janes-blog__gpt5-essays__jsd	janes-blog	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.187813	162867	3248			square-root Jensen-Shannon distance
+all_pairwise	janes-blog__gpt5-essays__cosine	janes-blog	gpt5-essays	descriptive_similarity					cosine_similarity	0.993472	162867	3248			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__janes-tweet__chi_square	janes-forum	janes-tweet	pearson_chi_square	8085.95099863	5	0				159153	496602			2 x 6 distribution
+all_pairwise	janes-forum__janes-tweet__jsd	janes-forum	janes-tweet	descriptive_distance					jensen_shannon_distance_base2	0.101701	159153	496602			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__janes-tweet__cosine	janes-forum	janes-tweet	descriptive_similarity					cosine_similarity	0.997211	159153	496602			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__janes-wiki__chi_square	janes-forum	janes-wiki	pearson_chi_square	102.215819814	5	1.80258449388e-20				159153	11281			2 x 6 distribution
+all_pairwise	janes-forum__janes-wiki__jsd	janes-forum	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.044340	159153	11281			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__janes-wiki__cosine	janes-forum	janes-wiki	descriptive_similarity					cosine_similarity	0.999385	159153	11281			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__classla-wikipedia__chi_square	janes-forum	classla-wikipedia	pearson_chi_square	13559.1326331	5	0				159153	296395			2 x 6 distribution
+all_pairwise	janes-forum__classla-wikipedia__jsd	janes-forum	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.148882	159153	296395			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__classla-wikipedia__cosine	janes-forum	classla-wikipedia	descriptive_similarity					cosine_similarity	0.993823	159153	296395			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__parlamint__chi_square	janes-forum	parlamint	pearson_chi_square	9797.18667426	5	0				159153	497572			2 x 6 distribution
+all_pairwise	janes-forum__parlamint__jsd	janes-forum	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.121854	159153	497572			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__parlamint__cosine	janes-forum	parlamint	descriptive_similarity					cosine_similarity	0.992013	159153	497572			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__kdsp__chi_square	janes-forum	kdsp	pearson_chi_square	728.601173896	5	3.21074569545e-155				159153	48234			2 x 6 distribution
+all_pairwise	janes-forum__kdsp__jsd	janes-forum	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.057699	159153	48234			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__kdsp__cosine	janes-forum	kdsp	descriptive_similarity					cosine_similarity	0.998063	159153	48234			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__human-essays__chi_square	janes-forum	human-essays	pearson_chi_square	62.6108703344	5	3.50472492979e-12				159153	1671			2 x 6 distribution
+all_pairwise	janes-forum__human-essays__jsd	janes-forum	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.112583	159153	1671			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__human-essays__cosine	janes-forum	human-essays	descriptive_similarity					cosine_similarity	0.998379	159153	1671			cosine similarity of six-order proportion vectors
+all_pairwise	janes-forum__gpt5-essays__chi_square	janes-forum	gpt5-essays	pearson_chi_square	610.208402869	5	1.25921063766e-129				159153	3248			2 x 6 distribution
+all_pairwise	janes-forum__gpt5-essays__jsd	janes-forum	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.235908	159153	3248			square-root Jensen-Shannon distance
+all_pairwise	janes-forum__gpt5-essays__cosine	janes-forum	gpt5-essays	descriptive_similarity					cosine_similarity	0.989787	159153	3248			cosine similarity of six-order proportion vectors
+all_pairwise	janes-tweet__janes-wiki__chi_square	janes-tweet	janes-wiki	pearson_chi_square	624.632438907	5	9.61898076945e-133				496602	11281			2 x 6 distribution
+all_pairwise	janes-tweet__janes-wiki__jsd	janes-tweet	janes-wiki	descriptive_distance					jensen_shannon_distance_base2	0.088944	496602	11281			square-root Jensen-Shannon distance
+all_pairwise	janes-tweet__janes-wiki__cosine	janes-tweet	janes-wiki	descriptive_similarity					cosine_similarity	0.998191	496602	11281			cosine similarity of six-order proportion vectors
+all_pairwise	janes-tweet__classla-wikipedia__chi_square	janes-tweet	classla-wikipedia	pearson_chi_square	7724.73767335	5	0				496602	296395			2 x 6 distribution
+all_pairwise	janes-tweet__classla-wikipedia__jsd	janes-tweet	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.086225	496602	296395			square-root Jensen-Shannon distance
+all_pairwise	janes-tweet__classla-wikipedia__cosine	janes-tweet	classla-wikipedia	descriptive_similarity					cosine_similarity	0.997015	496602	296395			cosine similarity of six-order proportion vectors
+all_pairwise	janes-tweet__parlamint__chi_square	janes-tweet	parlamint	pearson_chi_square	15858.0530209	5	0				496602	497572			2 x 6 distribution
+all_pairwise	janes-tweet__parlamint__jsd	janes-tweet	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.107910	496602	497572			square-root Jensen-Shannon distance
+all_pairwise	janes-tweet__parlamint__cosine	janes-tweet	parlamint	descriptive_similarity					cosine_similarity	0.992060	496602	497572			cosine similarity of six-order proportion vectors
+all_pairwise	janes-tweet__kdsp__chi_square	janes-tweet	kdsp	pearson_chi_square	7627.06434028	5	0				496602	48234			2 x 6 distribution
+all_pairwise	janes-tweet__kdsp__jsd	janes-tweet	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.144413	496602	48234			square-root Jensen-Shannon distance
+all_pairwise	janes-tweet__kdsp__cosine	janes-tweet	kdsp	descriptive_similarity					cosine_similarity	0.991720	496602	48234			cosine similarity of six-order proportion vectors
+all_pairwise	janes-tweet__human-essays__chi_square	janes-tweet	human-essays	pearson_chi_square	116.013294953	5	2.19176916936e-23				496602	1671			2 x 6 distribution
+all_pairwise	janes-tweet__human-essays__jsd	janes-tweet	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.100898	496602	1671			square-root Jensen-Shannon distance
+all_pairwise	janes-tweet__human-essays__cosine	janes-tweet	human-essays	descriptive_similarity					cosine_similarity	0.997867	496602	1671			cosine similarity of six-order proportion vectors
+all_pairwise	janes-tweet__gpt5-essays__chi_square	janes-tweet	gpt5-essays	pearson_chi_square	282.895118249	5	4.75291359427e-59				496602	3248			2 x 6 distribution
+all_pairwise	janes-tweet__gpt5-essays__jsd	janes-tweet	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.153296	496602	3248			square-root Jensen-Shannon distance
+all_pairwise	janes-tweet__gpt5-essays__cosine	janes-tweet	gpt5-essays	descriptive_similarity					cosine_similarity	0.996536	496602	3248			cosine similarity of six-order proportion vectors
+all_pairwise	janes-wiki__classla-wikipedia__chi_square	janes-wiki	classla-wikipedia	pearson_chi_square	1200.8174109	5	1.95402966243e-257				11281	296395			2 x 6 distribution
+all_pairwise	janes-wiki__classla-wikipedia__jsd	janes-wiki	classla-wikipedia	descriptive_distance					jensen_shannon_distance_base2	0.120534	11281	296395			square-root Jensen-Shannon distance
+all_pairwise	janes-wiki__classla-wikipedia__cosine	janes-wiki	classla-wikipedia	descriptive_similarity					cosine_similarity	0.996142	11281	296395			cosine similarity of six-order proportion vectors
+all_pairwise	janes-wiki__parlamint__chi_square	janes-wiki	parlamint	pearson_chi_square	772.193504665	5	1.19785750702e-164				11281	497572			2 x 6 distribution
+all_pairwise	janes-wiki__parlamint__jsd	janes-wiki	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.115173	11281	497572			square-root Jensen-Shannon distance
+all_pairwise	janes-wiki__parlamint__cosine	janes-wiki	parlamint	descriptive_similarity					cosine_similarity	0.992697	11281	497572			cosine similarity of six-order proportion vectors
+all_pairwise	janes-wiki__kdsp__chi_square	janes-wiki	kdsp	pearson_chi_square	254.942325201	5	4.78144984401e-53				11281	48234			2 x 6 distribution
+all_pairwise	janes-wiki__kdsp__jsd	janes-wiki	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.074701	11281	48234			square-root Jensen-Shannon distance
+all_pairwise	janes-wiki__kdsp__cosine	janes-wiki	kdsp	descriptive_similarity					cosine_similarity	0.996900	11281	48234			cosine similarity of six-order proportion vectors
+all_pairwise	janes-wiki__human-essays__chi_square	janes-wiki	human-essays	pearson_chi_square	76.921368982	5	3.69361313464e-15				11281	1671			2 x 6 distribution
+all_pairwise	janes-wiki__human-essays__jsd	janes-wiki	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.117246	11281	1671			square-root Jensen-Shannon distance
+all_pairwise	janes-wiki__human-essays__cosine	janes-wiki	human-essays	descriptive_similarity					cosine_similarity	0.998037	11281	1671			cosine similarity of six-order proportion vectors
+all_pairwise	janes-wiki__gpt5-essays__chi_square	janes-wiki	gpt5-essays	pearson_chi_square	457.814812702	5	1.01268149711e-96				11281	3248			2 x 6 distribution
+all_pairwise	janes-wiki__gpt5-essays__jsd	janes-wiki	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.217644	11281	3248			square-root Jensen-Shannon distance
+all_pairwise	janes-wiki__gpt5-essays__cosine	janes-wiki	gpt5-essays	descriptive_similarity					cosine_similarity	0.992152	11281	3248			cosine similarity of six-order proportion vectors
+all_pairwise	classla-wikipedia__parlamint__chi_square	classla-wikipedia	parlamint	pearson_chi_square	7271.20951707	5	0				296395	497572			2 x 6 distribution
+all_pairwise	classla-wikipedia__parlamint__jsd	classla-wikipedia	parlamint	descriptive_distance					jensen_shannon_distance_base2	0.086060	296395	497572			square-root Jensen-Shannon distance
+all_pairwise	classla-wikipedia__parlamint__cosine	classla-wikipedia	parlamint	descriptive_similarity					cosine_similarity	0.997128	296395	497572			cosine similarity of six-order proportion vectors
+all_pairwise	classla-wikipedia__kdsp__chi_square	classla-wikipedia	kdsp	pearson_chi_square	10204.0581681	5	0				296395	48234			2 x 6 distribution
+all_pairwise	classla-wikipedia__kdsp__jsd	classla-wikipedia	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.171720	296395	48234			square-root Jensen-Shannon distance
+all_pairwise	classla-wikipedia__kdsp__cosine	classla-wikipedia	kdsp	descriptive_similarity					cosine_similarity	0.990147	296395	48234			cosine similarity of six-order proportion vectors
+all_pairwise	classla-wikipedia__human-essays__chi_square	classla-wikipedia	human-essays	pearson_chi_square	284.632683303	5	2.01193255328e-59				296395	1671			2 x 6 distribution
+all_pairwise	classla-wikipedia__human-essays__jsd	classla-wikipedia	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.148438	296395	1671			square-root Jensen-Shannon distance
+all_pairwise	classla-wikipedia__human-essays__cosine	classla-wikipedia	human-essays	descriptive_similarity					cosine_similarity	0.994033	296395	1671			cosine similarity of six-order proportion vectors
+all_pairwise	classla-wikipedia__gpt5-essays__chi_square	classla-wikipedia	gpt5-essays	pearson_chi_square	378.947094975	5	1.02047917519e-79				296395	3248			2 x 6 distribution
+all_pairwise	classla-wikipedia__gpt5-essays__jsd	classla-wikipedia	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.180507	296395	3248			square-root Jensen-Shannon distance
+all_pairwise	classla-wikipedia__gpt5-essays__cosine	classla-wikipedia	gpt5-essays	descriptive_similarity					cosine_similarity	0.990448	296395	3248			cosine similarity of six-order proportion vectors
+all_pairwise	parlamint__kdsp__chi_square	parlamint	kdsp	pearson_chi_square	6680.46823186	5	0				497572	48234			2 x 6 distribution
+all_pairwise	parlamint__kdsp__jsd	parlamint	kdsp	descriptive_distance					jensen_shannon_distance_base2	0.140160	497572	48234			square-root Jensen-Shannon distance
+all_pairwise	parlamint__kdsp__cosine	parlamint	kdsp	descriptive_similarity					cosine_similarity	0.990592	497572	48234			cosine similarity of six-order proportion vectors
+all_pairwise	parlamint__human-essays__chi_square	parlamint	human-essays	pearson_chi_square	188.590811138	5	7.81655357039e-39				497572	1671			2 x 6 distribution
+all_pairwise	parlamint__human-essays__jsd	parlamint	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.151789	497572	1671			square-root Jensen-Shannon distance
+all_pairwise	parlamint__human-essays__cosine	parlamint	human-essays	descriptive_similarity					cosine_similarity	0.990608	497572	1671			cosine similarity of six-order proportion vectors
+all_pairwise	parlamint__gpt5-essays__chi_square	parlamint	gpt5-essays	pearson_chi_square	709.001093071	5	5.5589696735e-151				497572	3248			2 x 6 distribution
+all_pairwise	parlamint__gpt5-essays__jsd	parlamint	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.242442	497572	3248			square-root Jensen-Shannon distance
+all_pairwise	parlamint__gpt5-essays__cosine	parlamint	gpt5-essays	descriptive_similarity					cosine_similarity	0.979451	497572	3248			cosine similarity of six-order proportion vectors
+all_pairwise	kdsp__human-essays__chi_square	kdsp	human-essays	pearson_chi_square	91.1257343694	5	3.89759011869e-18				48234	1671			2 x 6 distribution
+all_pairwise	kdsp__human-essays__jsd	kdsp	human-essays	descriptive_distance					jensen_shannon_distance_base2	0.124591	48234	1671			square-root Jensen-Shannon distance
+all_pairwise	kdsp__human-essays__cosine	kdsp	human-essays	descriptive_similarity					cosine_similarity	0.996109	48234	1671			cosine similarity of six-order proportion vectors
+all_pairwise	kdsp__gpt5-essays__chi_square	kdsp	gpt5-essays	pearson_chi_square	787.775673055	5	5.10224825781e-168				48234	3248			2 x 6 distribution
+all_pairwise	kdsp__gpt5-essays__jsd	kdsp	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.270558	48234	3248			square-root Jensen-Shannon distance
+all_pairwise	kdsp__gpt5-essays__cosine	kdsp	gpt5-essays	descriptive_similarity					cosine_similarity	0.981151	48234	3248			cosine similarity of six-order proportion vectors
+all_pairwise	human-essays__gpt5-essays__chi_square	human-essays	gpt5-essays	pearson_chi_square	236.99652716	5	3.3827942032e-49				1671	3248			2 x 6 distribution
+all_pairwise	human-essays__gpt5-essays__jsd	human-essays	gpt5-essays	descriptive_distance					jensen_shannon_distance_base2	0.186091	1671	3248			square-root Jensen-Shannon distance
+all_pairwise	human-essays__gpt5-essays__cosine	human-essays	gpt5-essays	descriptive_similarity					cosine_similarity	0.992582	1671	3248			cosine similarity of six-order proportion vectors
+h1_omnibus	suk_three_genres__permutation_chi_square	suk-literary,suk-publicistic,suk-professional		pearson_3x6_with_permutation_p	13.7657312394	10	0.18399080046				4104		20000	20260715	Pearson asymptotic p=0.183948001853; minimum expected=2.76316; cells under 5=2
+selected_validation	sst__suk-literary__permutation_chi_square	sst	suk-literary	pearson_chi_square_with_permutation_p	10.5326396631	5	0.0571471426429				168	162	20000	20260714	Pearson asymptotic p=0.0614754815299; expected cells under 5=4
+h2_prespecified	sst__suk-professional__permutation_chi_square	sst	suk-professional	pearson_chi_square_with_permutation_p	22.788332375	5	0.00109994500275	0.004399780011			168	1105	20000	20260714	Pearson asymptotic p=0.000370510046884; expected cells under 5=2
+h2_prespecified	sst__suk-publicistic__permutation_chi_square	sst	suk-publicistic	pearson_chi_square_with_permutation_p	21.2849460128	5	0.00164991750412	0.00494975251237			168	2837	20000	20260714	Pearson asymptotic p=0.00071554023141; expected cells under 5=2
+selected_validation	ssj__sst__permutation_chi_square	ssj	sst	pearson_chi_square_with_permutation_p	17.0933572327	5	0.00624968751562				1969	168	20000	20260714	Pearson asymptotic p=0.00432610363683; expected cells under 5=2
+h2_prespecified	suk-literary__suk-publicistic__permutation_chi_square	suk-literary	suk-publicistic	pearson_chi_square_with_permutation_p	2.82306471761	5	0.72811359432	1			162	2837	20000	20260714	Pearson asymptotic p=0.727241347558; expected cells under 5=2
+h2_prespecified	suk-literary__suk-professional__permutation_chi_square	suk-literary	suk-professional	pearson_chi_square_with_permutation_p	4.05434912526	5	0.543272836358	1			162	1105	20000	20260714	Pearson asymptotic p=0.541617863338; expected cells under 5=2
+selected_validation	suk-publicistic__suk-professional__permutation_chi_square	suk-publicistic	suk-professional	pearson_chi_square_with_permutation_p	10.8033803699	5	0.055197240138				2837	1105	20000	20260714	Pearson asymptotic p=0.0554207851758; expected cells under 5=0
+selected_validation	human-essays__gpt5-essays__permutation_chi_square	human-essays	gpt5-essays	pearson_chi_square_with_permutation_p	236.99652716	5	4.9997500125e-05				1671	3248	20000	20260714	Pearson asymptotic p=3.3827942032e-49; expected cells under 5=0
+ner_fisher_manual_ner	ssj__subject__fisher	ssj:entity	ssj:common	fisher_exact_two_sided	1.19260881467		0.110705944349	0.332117833046	odds_ratio	1.19260881467	554	1988			outcome=SVO; entity outcome=411; common outcome=1405; Holm family=manual_ner
+ner_fisher_manual_ner	ssj__object__fisher	ssj:entity	ssj:common	fisher_exact_two_sided	2.02952755906		0.00324721368709	0.0162360684354	odds_ratio	2.02952755906	99	2443			outcome=OVS+OSV; entity outcome=27; common outcome=381; Holm family=manual_ner
+ner_fisher_automatic_ner	sst__subject__fisher	sst:entity	sst:common	fisher_exact_two_sided	0.780530973451		0.652706271864	0.884307985891	odds_ratio	0.780530973451	24	176			outcome=SVO; entity outcome=14; common outcome=113; Holm family=automatic_ner
+ner_fisher_automatic_ner	sst__object__fisher	sst:entity	sst:common	fisher_exact_two_sided	2.22666666667		0.29476932863	0.884307985891	odds_ratio	2.22666666667	8	192			outcome=OVS+OSV; entity outcome=2; common outcome=25; Holm family=automatic_ner
+ner_fisher_manual_ner	suk-literary__subject__fisher	suk-literary:entity	suk-literary:common	fisher_exact_two_sided	4.62389380531		8.46478289324e-06	6.77182631459e-05	odds_ratio	4.62389380531	105	168			outcome=SVO; entity outcome=95; common outcome=113; Holm family=manual_ner
+ner_fisher_manual_ner	suk-literary__object__fisher	suk-literary:entity	suk-literary:common	fisher_exact_two_sided	2.22222222222		0.171271600902	0.342543201804	odds_ratio	2.22222222222	20	253			outcome=OVS+OSV; entity outcome=5; common outcome=33; Holm family=manual_ner
+ner_fisher_manual_ner	suk-publicistic__subject__fisher	suk-publicistic:entity	suk-publicistic:common	fisher_exact_two_sided	0.917471670865		0.307965735239	0.342543201804	odds_ratio	0.917471670865	883	2738			outcome=SVO; entity outcome=612; common outcome=1947; Holm family=manual_ner
+ner_fisher_manual_ner	suk-publicistic__object__fisher	suk-publicistic:entity	suk-publicistic:common	fisher_exact_two_sided	2.32115217769		1.46160314823e-05	0.000102312220376	odds_ratio	2.32115217769	148	3473			outcome=OVS+OSV; entity outcome=46; common outcome=565; Holm family=manual_ner
+ner_fisher_manual_ner	suk-professional__subject__fisher	suk-professional:entity	suk-professional:common	fisher_exact_two_sided	1.7602281668		0.005773286239	0.023093144956	odds_ratio	1.7602281668	188	1105			outcome=SVO; entity outcome=157; common outcome=820; Holm family=manual_ner
+ner_fisher_manual_ner	suk-professional__object__fisher	suk-professional:entity	suk-professional:common	fisher_exact_two_sided	4.05696594427		0.000520639085415	0.00312383451249	odds_ratio	4.05696594427	31	1262			outcome=OVS+OSV; entity outcome=12; common outcome=170; Holm family=manual_ner
+ner_fisher_automatic_ner	janes-news__subject__fisher	janes-news:entity	janes-news:common	fisher_exact_two_sided	1.17222992171		5.62793756598e-15	3.37676253959e-14	odds_ratio	1.17222992171	16155	58236			outcome=SVO; entity outcome=12178; common outcome=42114; Holm family=automatic_ner
+ner_fisher_automatic_ner	janes-news__object__fisher	janes-news:entity	janes-news:common	fisher_exact_two_sided	1.53474855192		3.02512107598e-19	2.11758475318e-18	odds_ratio	1.53474855192	3517	70874			outcome=OVS+OSV; entity outcome=616; common outcome=8614; Holm family=automatic_ner
+ner_fisher_automatic_ner	human-essays__subject__fisher	human-essays:entity	human-essays:common	fisher_exact_two_sided	1.2518679997		0.0177919214238	0.0711676856951	odds_ratio	1.2518679997	860	1769			outcome=SVO; entity outcome=648; common outcome=1255; Holm family=automatic_ner
+ner_fisher_automatic_ner	human-essays__object__fisher	human-essays:entity	human-essays:common	fisher_exact_two_sided	7.16113360324		4.85280931197e-28	3.88224744958e-27	odds_ratio	7.16113360324	171	2458			outcome=OVS+OSV; entity outcome=76; common outcome=247; Holm family=automatic_ner
+ner_fisher_automatic_ner	gpt5-essays__subject__fisher	gpt5-essays:entity	gpt5-essays:common	fisher_exact_two_sided	1.40633283679		0.00499895827479	0.024994791374	odds_ratio	1.40633283679	1136	3261			outcome=SVO; entity outcome=1046; common outcome=2909; Holm family=automatic_ner
+ner_fisher_automatic_ner	gpt5-essays__object__fisher	gpt5-essays:entity	gpt5-essays:common	fisher_exact_two_sided	1.72423802612		0.303759957135	0.884307985891	odds_ratio	1.72423802612	57	4340			outcome=OVS+OSV; entity outcome=4; common outcome=182; Holm family=automatic_ner

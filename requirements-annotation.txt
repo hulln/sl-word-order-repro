@@ -1,0 +1,7 @@
+# Only needed for the stages that add a CLASSLA named-entity layer:
+#   - rebuilding prepared/sst.conllu from UD sources
+#   - adding NER to the essay base corpora
+# CLASSLA pulls in PyTorch, so this install is large; skip it unless you are
+# running those preparation stages.
+-r requirements.txt
+classla==2.2.1

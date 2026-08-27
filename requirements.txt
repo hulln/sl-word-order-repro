@@ -1,0 +1,6 @@
+# Core dependencies: preparation checks, word-order and named-entity analysis,
+# statistics and figures. This is all you need for the lightweight workflow.
+matplotlib==3.9.2
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.14.1

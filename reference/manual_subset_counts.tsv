@@ -1,0 +1,19 @@
+corpus_id	corpus	pattern	count	total	proportion
+suk-literary-manual	SUK literary, manually checked syntax	SVO	69	99	0.696970
+suk-literary-manual	SUK literary, manually checked syntax	SOV	5	99	0.050505
+suk-literary-manual	SUK literary, manually checked syntax	VSO	4	99	0.040404
+suk-literary-manual	SUK literary, manually checked syntax	VOS	3	99	0.030303
+suk-literary-manual	SUK literary, manually checked syntax	OSV	2	99	0.020202
+suk-literary-manual	SUK literary, manually checked syntax	OVS	16	99	0.161616
+suk-publicistic-manual	SUK publicistic/general, manually checked syntax	SVO	765	1103	0.693563
+suk-publicistic-manual	SUK publicistic/general, manually checked syntax	SOV	88	1103	0.079782
+suk-publicistic-manual	SUK publicistic/general, manually checked syntax	VSO	50	1103	0.045331
+suk-publicistic-manual	SUK publicistic/general, manually checked syntax	VOS	24	1103	0.021759
+suk-publicistic-manual	SUK publicistic/general, manually checked syntax	OSV	17	1103	0.015413
+suk-publicistic-manual	SUK publicistic/general, manually checked syntax	OVS	159	1103	0.144152
+suk-professional-manual	SUK professional, manually checked syntax	SVO	317	439	0.722096
+suk-professional-manual	SUK professional, manually checked syntax	SOV	25	439	0.056948
+suk-professional-manual	SUK professional, manually checked syntax	VSO	18	439	0.041002
+suk-professional-manual	SUK professional, manually checked syntax	VOS	10	439	0.022779
+suk-professional-manual	SUK professional, manually checked syntax	OSV	9	439	0.020501
+suk-professional-manual	SUK professional, manually checked syntax	OVS	60	439	0.136674

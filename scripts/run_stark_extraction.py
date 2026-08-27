@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+"""Poženi STARK-ovo besednoredno poizvedbo na enem korpusu CoNLL-U.
+
+Kaj naredi (samo troje):
+  1. če je datoteka prevelika za STARK, jo razreže na kose (na mejah povedi);
+  2. na vsakem kosu požene STARK z NATANKO istimi nastavitvami kot glavna
+     analiza (poizvedba: glagol s samostalniškim osebkom in predmetom);
+  3. STARK-ove zadetke prešteje v šest besednorednih vzorcev in zapiše
+     začasno tabelo za gradnik kanoničnega rezultata.
+
+Glavni gradnik rezultat primerja z neodvisnim neposrednim ekstraktorjem in
+zahteva popolno ujemanje vseh šestih vzorcev in skupnega števila.
+"""
+from __future__ import annotations
+import argparse
+import csv
+import subprocess
+import sys
+from pathlib import Path
+
+# Poizvedba in vzorci — NE spreminjaj, sicer rezultati niso primerljivi.
+POIZVEDBA = "upos=VERB >nsubj upos=NOUN >obj upos=NOUN"
+VZORCI = ["SVO", "SOV", "VSO", "VOS", "OSV", "OVS"]
+
+
+def razdeli_na_kose(vhod: Path, mapa: Path, max_mb: float) -> list[Path]:
+    """Veliko datoteko razreže na kose po ~max_mb, vedno na meji povedi
+    (prazna vrstica), da nobena poved ni presekana. Vrne seznam kosov.
+
+    Ob tem vsako poved tudi OČISTI za STARK (ki se ustavi ob prazni glavi):
+      - koren, zapisan kot HEAD=_ z relacijo root, popravi v HEAD=0
+        (ista tehnična posebnost kot v korpusu SUK);
+      - povedi, v katerih katera druga pojavnica nima številčne glave (torej
+        skladnja zanje sploh ni zapisana), izpusti in jih prešteje.
+    Izpuščene povedi ne morejo vsebovati zadetkov poizvedbe, ker njihove
+    skladenjske povezave ne obstajajo; število izpuščenih se izpiše, da
+    je mogoče vpliv preveriti."""
+    mapa.mkdir(parents=True, exist_ok=True)
+    kosi: list[Path] = []
+    vrstice: list[str] = []
+    velikost = 0
+    max_b = int(max_mb * 1024 * 1024)
+    poved: list[str] = []
+    cakajoci_komentarji: list[str] = []  # komentarni blok, ki čaka svojo poved
+    popravljeni_koreni = 0
+    popravljene_oznake = 0
+    izpuscene_povedi = 0
+
+    def zapisi():
+        nonlocal vrstice, velikost
+        if not vrstice:
+            return
+        pot = mapa / f"kos_{len(kosi)+1:04d}.conllu"
+        pot.write_text("".join(vrstice), encoding="utf-8")
+        kosi.append(pot)
+        vrstice, velikost = [], 0
+
+    def ociscena_poved(p: list[str]) -> list[str] | None:
+        """Vrne očiščeno poved ali None, če jo je treba izpustiti.
+
+        Čiščenje (poizvedba bere le UPOS in DEPREL, zato je vse troje varno):
+          - vrstica pojavnice brez natanko 10 stolpcev -> izpusti celo poved;
+          - neveljaven FEATS/DEPS (npr. gola oznaka MSD v tvitih) -> '_';
+          - koren s HEAD=_ -> HEAD=0; druga pojavnica brez glave -> izpusti poved."""
+        nonlocal popravljeni_koreni, popravljene_oznake
+        cista: list[str] = []
+        for v in p:
+            if not v.startswith("#") and v.strip():
+                cols = v.rstrip("\n").split("\t")
+                if len(cols) != 10:
+                    return None  # ni veljavna vrstica CoNLL-U
+                spremenjena = False
+                if cols[5] != "_" and "=" not in cols[5]:  # FEATS mora biti _ ali Ime=Vrednost
+                    cols[5] = "_"; popravljene_oznake += 1; spremenjena = True
+                if cols[8] != "_" and ":" not in cols[8]:  # DEPS mora biti _ ali glava:rel
+                    cols[8] = "_"; spremenjena = True
+                if cols[0].isdigit() and not cols[6].isdigit():
+                    if cols[7] == "root" and cols[6] == "_":
+                        cols[6] = "0"; popravljeni_koreni += 1; spremenjena = True
+                    else:
+                        return None  # pojavnica brez glave -> poved brez skladnje
+                if spremenjena:
+                    v = "\t".join(cols) + "\n"
+            cista.append(v)
+        return cista
+
+    def sprejmi_poved():
+        nonlocal poved, velikost, izpuscene_povedi, cakajoci_komentarji
+        if not poved:
+            return
+        # Blok, ki vsebuje samo komentarje (npr. ločen '# newdoc' blok v tvitih),
+        # ne sme stati sam — pyconll bi iz njega naredil poved brez pojavnic in
+        # STARK bi se ustavil. Zato ga pripnemo k NASLEDNJI povedi.
+        if all(v.startswith("#") for v in poved):
+            cakajoci_komentarji.extend(poved)
+            poved = []
+            return
+        blok = cakajoci_komentarji + poved
+        cakajoci_komentarji = []
+        cista = ociscena_poved(blok)
+        poved = []
+        if cista is None:
+            izpuscene_povedi += 1
+            return
+        for v in cista:
+            vrstice.append(v)
+            velikost += len(v.encode("utf-8"))
+        vrstice.append("\n")
+        if velikost >= max_b:
+            zapisi()
+
+    with vhod.open(encoding="utf-8-sig") as f:  # utf-8-sig odstrani morebitni BOM
+        for vrstica in f:
+            if not vrstica.strip():
+                sprejmi_poved()
+                continue
+            poved.append(vrstica)
+        sprejmi_poved()
+    zapisi()
+    if popravljeni_koreni or izpuscene_povedi or popravljene_oznake:
+        print(f"  čiščenje: popravljenih korenov {popravljeni_koreni}, "
+              f"popravljenih oznak FEATS {popravljene_oznake}, "
+              f"izpuščenih povedi {izpuscene_povedi}")
+    return kosi
+
+
+def pozeni_stark(stark_py: Path, vhod: Path, izhod: Path, shramba: Path) -> None:
+    """Požene STARK na eni datoteki z nastavitvami javne besednoredne analize."""
+    ukaz = [sys.executable, str(stark_py),
+            "--input", str(vhod), "--output", str(izhod),
+            "--internal_saves", str(shramba),
+            "--query", POIZVEDBA,
+            "--node_type", "form", "--labeled", "yes", "--label_subtypes", "no",
+            "--fixed", "yes", "--complete", "no", "--greedy_counter", "no",
+            "--processing_size", "3", "--node_info", "yes", "--head_info", "yes",
+            "--grew_match", "no", "--depsearch", "no",
+            "--association_measures", "no", "--complexity_measures", "no",
+            "--example", "no"]
+    rezultat = subprocess.run(ukaz, capture_output=True, text=True)
+    if rezultat.returncode != 0:
+        sys.exit(f"STARK se je ustavil z napako na {vhod}:\n{rezultat.stderr[-2000:]}")
+
+
+OZNAKE = {"<nsubj": "S", ">nsubj": "S", "<obj": "O", ">obj": "O"}
+
+
+def razvrsti_drevo(drevo: str) -> str:
+    """Iz STARK-ovega zapisa drevesa (npr. 'mama >nsubj kupuje >obj jabolka')
+    prebere linearni vrstni red in vrne enega od šestih vzorcev.
+
+    Kot oznako relacije štejemo SAMO natanko besede '<nsubj', '>nsubj',
+    '<obj', '>obj'. Vse drugo je beseda iz besedila — tudi npr. '>>' ali
+    '<b>', ki ju spletni zapisi pogosto vsebujejo in bi ju površnejše
+    razpoznavanje (vse, kar se začne z < ali >) zamešalo z oznako; prav
+    tako gole črke 'obj' ne pomenijo nič (glagol 'objavlja' jih vsebuje).
+    Oznaka '>rel' velja za NASLEDNJO besedo, oznaka '<rel' za PREJŠNJO;
+    beseda brez oznake je glagolsko jedro (V)."""
+    oblike: list[str] = []   # zaporedje besed, vsaka z vlogo S/V/O
+    cakajoca: str | None = None  # vloga iz oznake '>rel', čaka naslednjo besedo
+    for b in str(drevo).split():
+        if b in OZNAKE:
+            if b.startswith(">"):
+                cakajoca = OZNAKE[b]
+            else:  # '<rel' označi prejšnjo besedo
+                if not oblike:
+                    return ""
+                oblike[-1] = OZNAKE[b]
+        else:
+            oblike.append(cakajoca if cakajoca else "V")
+            cakajoca = None
+    if len(oblike) != 3:
+        return ""  # npr. beseda s presledkom — preskočimo (izpiše se opozorilo)
+    vzorec = "".join(oblike)
+    return vzorec if vzorec in VZORCI else ""
+
+
+def prestej(stark_tsv: Path, stevci: dict[str, int]) -> int:
+    """Iz STARK-ove izhodne tabele sešteje frekvence po vzorcih."""
+    preskocenih = 0
+    with stark_tsv.open(encoding="utf-8") as f:
+        beri = csv.DictReader(f, delimiter="\t")
+        for vrstica in beri:
+            vzorec = razvrsti_drevo(vrstica["Tree"])
+            if vzorec:
+                stevci[vzorec] += int(vrstica["Absolute frequency"])
+            else:
+                preskocenih += 1
+    return preskocenih
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--input", type=Path, required=True, help="datoteka CoNLL-U")
+    ap.add_argument("--label", required=True, help="javno ime korpusa")
+    ap.add_argument("--stark", type=Path, required=True, help="pot do STARK/stark.py")
+    ap.add_argument("--workdir", type=Path, required=True,
+                    help="delovna mapa za kose in vmesne datoteke (velik disk!)")
+    ap.add_argument("--out", type=Path, required=True, help="izhodna tabela .tsv")
+    ap.add_argument("--max-mb", type=float, default=50,
+                    help="največja velikost kosa v MB (privzeto 50)")
+    args = ap.parse_args()
+
+    delo = args.workdir
+    delo.mkdir(parents=True, exist_ok=True)
+
+    # 1) razrez + čiščenje (tudi majhne datoteke gredo skozi isti korak,
+    #    da so vse enako očiščene; majhna datoteka da en sam kos)
+    print(f"{args.label}: režem na kose po {args.max_mb} MB in čistim ...")
+    kosi = razdeli_na_kose(args.input, delo / "kosi", args.max_mb)
+    print(f"{args.label}: {len(kosi)} kosov")
+
+    # 2) STARK na vsakem kosu + 3) sprotno seštevanje vzorcev
+    stevci = {v: 0 for v in VZORCI}
+    preskocenih = 0
+    for i, kos in enumerate(kosi, 1):
+        izhod = delo / f"stark_{i:04d}.tsv"
+        if not izhod.exists():  # če je bil zagon prekinjen, končane kose preskoči
+            pozeni_stark(args.stark, kos, izhod, delo / "shramba")
+        preskocenih += prestej(izhod, stevci)
+        print(f"  kos {i}/{len(kosi)} končan", flush=True)
+    if preskocenih:
+        print(f"OPOZORILO: {preskocenih} nerazvrstljivih zadetkov preskočenih")
+
+    # Zapis začasne tabele v isti osnovni shemi kot neposredni ekstraktor.
+    skupaj = sum(stevci.values())
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    with args.out.open("w", encoding="utf-8") as w:
+        w.write("corpus\tpattern\tcount\ttotal\tproportion\n")
+        for v in VZORCI:
+            delez = stevci[v] / skupaj if skupaj else 0.0
+            w.write(f"{args.label}\t{v}\t{stevci[v]}\t{skupaj}\t{delez:.6f}\n")
+    svo_percentage = 100 * stevci["SVO"] / skupaj if skupaj else 0.0
+    print(f"{args.label}: n={skupaj}, SVO={stevci['SVO']} "
+          f"({svo_percentage:.1f}%) -> {args.out}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite it as below."
+license: MIT
+title: "Word order in Slovenian: reproducibility package"
+abstract: >-
+  Scripts, canonical result tables and figures reproducing the quantitative
+  subject-verb-object word-order analyses of a master's thesis on genre and
+  register variation in Slovenian.
+type: software
+authors:
+  - family-names: "Hüll"
+    given-names: "Nives"
+    affiliation: "University of Ljubljana"
+keywords:
+  - word order
+  - Slovenian
+  - Universal Dependencies
+  - corpus linguistics
+  - reproducibility
+references:
+  - type: thesis
+    title: >-
+      Besedni red v slovenskih besedilih: Korpusna analiza žanrske in slogovne
+      variacije z metodami NLP
+    authors:
+      - family-names: "Hüll"
+        given-names: "Nives"
+    thesis-type: "Master's thesis"
+    institution:
+      name: "University of Ljubljana"

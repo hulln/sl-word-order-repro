@@ -1,0 +1,19 @@
+corpus_id	corpus	total	SVO_n	SVO_proportion	SOV_n	SOV_proportion	VSO_n	VSO_proportion	VOS_n	VOS_proportion	OSV_n	OSV_proportion	OVS_n	OVS_proportion	dominant_order	dominant_flag	entropy_nat	extraction_status
+ssj	UD Slovenian-SSJ	1969	1406	0.714068	132	0.067039	80	0.040630	37	0.018791	32	0.016252	282	0.143220	SVO	dominant	0.971765	stark_direct_exact
+sst	UD Slovenian-SST	168	108	0.642857	18	0.107143	16	0.095238	4	0.023810	4	0.023810	18	0.107143	SVO	dominant	1.164587	stark_direct_exact
+suk-literary	SUK literary	162	112	0.691358	8	0.049383	6	0.037037	4	0.024691	4	0.024691	28	0.172840	SVO	dominant	1.011979	stark_direct_exact
+suk-publicistic	SUK publicistic/general	2837	2035	0.717307	193	0.068030	102	0.035953	51	0.017977	46	0.016214	410	0.144519	SVO	dominant	0.959367	stark_direct_exact
+suk-professional	SUK professional	1105	831	0.752036	50	0.045249	46	0.041629	17	0.015385	20	0.018100	141	0.127602	SVO	dominant	0.886263	stark_direct_exact
+aigent-gpt5	AI-GenT GPT-5	1920	1708	0.889583	89	0.046354	16	0.008333	7	0.003646	8	0.004167	92	0.047917	SVO	dominant	0.475242	stark_direct_exact
+aigent-gams27b	AI-GenT GaMS-27B	352	346	0.982955	3	0.008523	1	0.002841	0	0.000000	0	0.000000	2	0.005682	SVO	dominant	0.103546	stark_direct_exact
+aigent-gemma2-27b	AI-GenT gemma-2-27b	608	582	0.957237	2	0.003289	8	0.013158	0	0.000000	2	0.003289	14	0.023026	SVO	dominant	0.223266	stark_direct_exact
+janes-news	JANES-News	57631	41928	0.727525	3348	0.058094	3077	0.053391	1805	0.031320	1499	0.026010	5974	0.103659	SVO	dominant	0.991545	verified_reference_stark_direct_exact
+janes-blog	JANES-Blog	162867	120350	0.738947	9867	0.060583	6899	0.042360	4387	0.026936	4379	0.026887	16985	0.104288	SVO	dominant	0.957669	verified_reference_stark_direct_exact
+janes-forum	JANES-Forum	159153	111712	0.701916	9516	0.059792	12236	0.076882	7319	0.045987	4418	0.027759	13952	0.087664	SVO	dominant	1.068606	verified_reference_stark_direct_exact
+janes-tweet	JANES-Tweet	496602	384653	0.774570	28770	0.057934	17310	0.034857	11291	0.022737	10597	0.021339	43981	0.088564	SVO	dominant	0.862688	verified_reference_stark_direct_exact
+janes-wiki	JANES-Wiki	11281	8232	0.729723	455	0.040333	754	0.066838	492	0.043613	286	0.025352	1062	0.094141	SVO	dominant	0.992483	verified_reference_stark_direct_exact
+classla-wikipedia	CLASSLA-Wikipedia	296395	225336	0.760256	10613	0.035807	7554	0.025486	6398	0.021586	4386	0.014798	42108	0.142067	SVO	dominant	0.843517	verified_reference_stark_direct_exact
+parlamint	ParlaMint-SI	497572	337886	0.679070	31837	0.063985	18345	0.036869	17326	0.034821	10377	0.020855	81801	0.164400	SVO	dominant	1.054847	verified_reference_stark_direct_exact
+kdsp	KDSP	48234	32121	0.665941	2478	0.051375	5310	0.110088	2103	0.043600	1186	0.024588	5036	0.104408	SVO	dominant	1.129761	verified_reference_stark_direct_exact
+human-essays	Human essays	1671	1237	0.740275	109	0.065230	132	0.078995	11	0.006583	37	0.022142	145	0.086774	SVO	dominant	0.930762	verified_reference_stark_direct_exact
+gpt5-essays	GPT-5 essays	3248	2902	0.893473	125	0.038485	45	0.013855	5	0.001539	25	0.007697	146	0.044951	SVO	dominant	0.472167	verified_reference_stark_direct_exact
