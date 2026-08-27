@@ -496,7 +496,9 @@ cannot be rerun against it.
 ## Licence
 
 The code and documentation written for this repository are released under the
-**MIT Licence** ([`LICENSE`](LICENSE)).
+**MIT Licence** ([`LICENSE`](LICENSE)). The MIT text covers this repository only;
+the paragraph below is the important qualification, and it is not part of the
+licence grant.
 
 **MIT covers this repository's own code and documentation, and nothing else.** It
 grants no rights whatsoever over the language corpora the pipeline analyses. No

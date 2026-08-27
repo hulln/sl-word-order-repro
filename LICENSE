@@ -19,14 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-This licence covers the code and documentation authored for this repository.
-
-It does NOT cover, and does NOT grant any rights to redistribute, the language
-corpora the pipeline analyses. No corpus files are distributed in this
-repository. Every corpus keeps the licence of its original release; those
-licences are listed in README.md and inputs/README.md, and several are
-non-commercial or share-alike. Consult the linked record before redistributing
-any corpus data.
