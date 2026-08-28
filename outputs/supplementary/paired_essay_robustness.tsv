@@ -1,0 +1,5 @@
+test	unit	n_used	statistic_name	statistic	df	p_value	permutations	seed	effect_name	effect_value	notes
+paired_label_swap_permutation	document pair	691	pearson_chi_square	236.996527	5	0.000050	20000	20260828	mean_paired_svo_share_difference_gpt5_minus_human	+0.1476	Primary robustness result; all six patterns; 656 pairs contribute at least one instance; p is at the 1/20001 resolution floor (p < 0.0001)
+sign_test_svo_share	document pair	538	pairs_with_higher_gpt5_share	249		4.309e-13					Diagnostic; GPT-5 higher=249, human higher=112, tied=177
+wilcoxon_signed_rank_svo_share	document pair	538	W	13485.0		3.736e-22					Diagnostic; zeros dropped; 361 untied pairs
+pooled_chi_square_main_analysis	instance	4919	pearson_chi_square	236.996527	5	3.383e-49					Reference row for the unchanged unpaired main analysis

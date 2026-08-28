@@ -1,0 +1,2 @@
+test	scope	instances	clusters	clusters_literary	clusters_publicistic	clusters_professional	statistic_name	statistic	df	asymptotic_p	min_expected	cells_under_5	permutations	seed	permutation_p	conclusion
+Pearson 3 x 6 document-label permutation	SUK written genres	4104	1149	54	845	250	pearson_chi_square	13.765731	10	0.183948	2.76	2	20000	20260828	0.250037	H1 remains unsupported

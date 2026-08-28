@@ -3,9 +3,11 @@
 
 STARK processes whole files and cannot group by SUK's `# term = zvrst / ...`
 document metadata, so the STARK-per-genre run needs physical per-genre files.
-Uses the SAME genre mapping as `extract_svo_by_genre.py` (leposlovno /
-strokovno / publicisticno_splosno); documents without a mapped genre are
-skipped and reported. Document boundaries (`# newdoc`) reset the genre.
+Uses the same genre mapping as `extract_word_order_direct.py`. The values
+`leposlovno`, `strokovno`, and `publicisticno_splosno` are source-metadata
+labels for literary, professional, and publicistic/general material.
+Documents without a mapped genre are skipped and reported. Document boundaries
+(`# newdoc`) reset the genre.
 
 Output: <outdir>/suk_<genre>.conllu + a per-genre sentence count on stdout.
 

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Compute thesis statistics from canonical numerical analysis outputs."""
+"""Compute canonical summary tables and thesis statistics.
+
+Reads ``word_order_counts.tsv`` and ``ner_word_order.tsv`` and writes
+``word_order_summary.tsv`` and ``statistical_tests.tsv`` under ``outputs/data``.
+The tests comprise Pearson chi-square comparisons, H1/H2 permutation tests and
+NER Fisher exact tests, with Holm adjustment where applicable.
+"""
 
 from __future__ import annotations
 
@@ -37,22 +43,38 @@ TEST_COLUMNS = (
 )
 PERMUTATIONS = 20_000
 H1_SEED = 20260715
-PAIR_SEED = 20260714
 SELECTED_PAIRS = (
-    ("sst", "suk-literary"),
-    ("sst", "suk-professional"),
-    ("sst", "suk-publicistic"),
-    ("ssj", "sst"),
-    ("suk-literary", "suk-publicistic"),
-    ("suk-literary", "suk-professional"),
-    ("suk-publicistic", "suk-professional"),
-    ("human-essays", "gpt5-essays"),
+    # The first six rows and their independent streams reproduce the frozen
+    # UD 2.18 genre-comparison artifact. Later rows cannot shift those streams.
+    ("suk-professional", "suk-publicistic", 20260714),
+    ("suk-professional", "suk-literary", 20260715),
+    ("suk-professional", "sst", 20260716),
+    ("suk-publicistic", "suk-literary", 20260717),
+    ("suk-publicistic", "sst", 20260718),
+    ("suk-literary", "sst", 20260719),
+    ("ssj", "sst", 20260720),
+    ("human-essays", "gpt5-essays", 20260721),
 )
 H2_PAIRS = {
     frozenset(("suk-professional", "sst")),
     frozenset(("suk-publicistic", "sst")),
     frozenset(("suk-professional", "suk-literary")),
     frozenset(("suk-publicistic", "suk-literary")),
+}
+CANONICAL_TOTALS = {
+    "ssj": 1969,
+    "sst": 168,
+    "suk-literary": 162,
+    "suk-publicistic": 2837,
+    "suk-professional": 1105,
+    "human-essays": 1671,
+    "gpt5-essays": 3248,
+}
+CANONICAL_H2_PERMUTATION_P = {
+    frozenset(("suk-professional", "suk-literary")): "0.546773",
+    frozenset(("suk-publicistic", "suk-literary")): "0.724414",
+    frozenset(("suk-professional", "sst")): "0.000950",
+    frozenset(("suk-publicistic", "sst")): "0.001800",
 }
 
 
@@ -74,6 +96,10 @@ def load_word_matrix(manifest: list[dict[str, str]]) -> tuple[dict[str, np.ndarr
         total = int(corpus_rows[0]["total"])
         if counts.sum() != total:
             raise RuntimeError(f"{corpus_id}: counts do not sum to total")
+        if corpus_id in CANONICAL_TOTALS and total != CANONICAL_TOTALS[corpus_id]:
+            raise RuntimeError(
+                f"{corpus_id}: expected canonical total {CANONICAL_TOTALS[corpus_id]}, found {total}"
+            )
         matrix[corpus_id] = counts
         metadata[corpus_id] = corpus_rows[0]
     return matrix, metadata
@@ -201,22 +227,29 @@ def holm(values: list[float]) -> list[float]:
 
 
 def selected_permutation_tests(matrix: dict[str, np.ndarray]) -> list[dict[str, object]]:
-    rng = np.random.default_rng(PAIR_SEED)
     calculations = []
-    for corpus_a, corpus_b in SELECTED_PAIRS:
+    for corpus_a, corpus_b, seed in SELECTED_PAIRS:
         chi2, pearson_p, permutation_p, degrees, cells_under_five = permutation_pair(
-            matrix[corpus_a], matrix[corpus_b], rng
+            matrix[corpus_a], matrix[corpus_b], np.random.default_rng(seed)
         )
-        calculations.append((corpus_a, corpus_b, chi2, pearson_p, permutation_p, degrees, cells_under_five))
+        expected = CANONICAL_H2_PERMUTATION_P.get(frozenset((corpus_a, corpus_b)))
+        if expected is not None and f"{permutation_p:.6f}" != expected:
+            raise RuntimeError(
+                f"{corpus_a}/{corpus_b}: expected frozen permutation p={expected}, "
+                f"found {permutation_p:.6f}"
+            )
+        calculations.append(
+            (corpus_a, corpus_b, seed, chi2, pearson_p, permutation_p, degrees, cells_under_five)
+        )
     h2_indices = [
         index
-        for index, (a, b, *_rest) in enumerate(calculations)
+        for index, (a, b, _seed, *_rest) in enumerate(calculations)
         if frozenset((a, b)) in H2_PAIRS
     ]
-    adjusted = holm([calculations[index][4] for index in h2_indices])
+    adjusted = holm([calculations[index][5] for index in h2_indices])
     adjusted_by_index = dict(zip(h2_indices, adjusted))
     rows = []
-    for index, (a, b, chi2, pearson_p, permutation_p, degrees, cells_under_five) in enumerate(calculations):
+    for index, (a, b, seed, chi2, pearson_p, permutation_p, degrees, cells_under_five) in enumerate(calculations):
         family = "h2_prespecified" if index in adjusted_by_index else "selected_validation"
         rows.append(base_test_row(
             test_family=family,
@@ -231,7 +264,7 @@ def selected_permutation_tests(matrix: dict[str, np.ndarray]) -> list[dict[str, 
             n_a=int(matrix[a].sum()),
             n_b=int(matrix[b].sum()),
             permutations=PERMUTATIONS,
-            seed=PAIR_SEED,
+            seed=seed,
             notes=f"Pearson asymptotic p={pearson_p:.12g}; expected cells under 5={cells_under_five}",
         ))
     return rows
@@ -259,6 +292,10 @@ def h1_test(matrix: dict[str, np.ndarray]) -> dict[str, object]:
         random_chi2 = float(((random_table - expected) ** 2 / expected).sum())
         extreme += random_chi2 >= chi2
     permutation_p = (extreme + 1) / (PERMUTATIONS + 1)
+    if f"{permutation_p:.6f}" != "0.183991":
+        raise RuntimeError(
+            f"H1: expected frozen permutation p=0.183991, found {permutation_p:.6f}"
+        )
     return base_test_row(
         test_family="h1_omnibus",
         test_id="suk_three_genres__permutation_chi_square",

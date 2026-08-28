@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Poženi STARK-ovo besednoredno poizvedbo na enem korpusu CoNLL-U.
+"""Run the STARK word-order query on one CoNLL-U corpus.
 
-Kaj naredi (samo troje):
-  1. če je datoteka prevelika za STARK, jo razreže na kose (na mejah povedi);
-  2. na vsakem kosu požene STARK z NATANKO istimi nastavitvami kot glavna
-     analiza (poizvedba: glagol s samostalniškim osebkom in predmetom);
-  3. STARK-ove zadetke prešteje v šest besednorednih vzorcev in zapiše
-     začasno tabelo za gradnik kanoničnega rezultata.
+This script does three things:
+  1. split files that are too large for STARK at sentence boundaries;
+  2. run STARK on every chunk with exactly the main analysis settings (a verb
+     with nominal subject and object heads); and
+  3. classify STARK matches into the six word-order patterns and write a
+     temporary table for the canonical result builder.
 
-Glavni gradnik rezultat primerja z neodvisnim neposrednim ekstraktorjem in
-zahteva popolno ujemanje vseh šestih vzorcev in skupnega števila.
+The main builder compares this result with the independent direct extractor
+and requires exact agreement for every pattern and for the total.
 """
 from __future__ import annotations
 import argparse
@@ -18,30 +18,29 @@ import subprocess
 import sys
 from pathlib import Path
 
-# Poizvedba in vzorci — NE spreminjaj, sicer rezultati niso primerljivi.
+# Query and patterns: changing these would make results incomparable.
 POIZVEDBA = "upos=VERB >nsubj upos=NOUN >obj upos=NOUN"
 VZORCI = ["SVO", "SOV", "VSO", "VOS", "OSV", "OVS"]
 
 
 def razdeli_na_kose(vhod: Path, mapa: Path, max_mb: float) -> list[Path]:
-    """Veliko datoteko razreže na kose po ~max_mb, vedno na meji povedi
-    (prazna vrstica), da nobena poved ni presekana. Vrne seznam kosov.
+    """Split a large file into approximately ``max_mb`` chunks.
 
-    Ob tem vsako poved tudi OČISTI za STARK (ki se ustavi ob prazni glavi):
-      - koren, zapisan kot HEAD=_ z relacijo root, popravi v HEAD=0
-        (ista tehnična posebnost kot v korpusu SUK);
-      - povedi, v katerih katera druga pojavnica nima številčne glave (torej
-        skladnja zanje sploh ni zapisana), izpusti in jih prešteje.
-    Izpuščene povedi ne morejo vsebovati zadetkov poizvedbe, ker njihove
-    skladenjske povezave ne obstajajo; število izpuščenih se izpiše, da
-    je mogoče vpliv preveriti."""
+    Chunks always end at a blank-line sentence boundary. Sentences are also
+    cleaned for STARK, which stops on a missing dependency head: a root written
+    as ``HEAD=_`` is changed to ``HEAD=0`` (the same technical case occurs in
+    SUK), while a sentence containing any other integer-ID token without a
+    numeric head is skipped and counted. Such a sentence cannot match the query
+    because its dependency relations are absent. The skipped count is reported
+    so its impact can be checked.
+    """
     mapa.mkdir(parents=True, exist_ok=True)
     kosi: list[Path] = []
     vrstice: list[str] = []
     velikost = 0
     max_b = int(max_mb * 1024 * 1024)
     poved: list[str] = []
-    cakajoci_komentarji: list[str] = []  # komentarni blok, ki čaka svojo poved
+    cakajoci_komentarji: list[str] = []  # comment block waiting for its sentence
     popravljeni_koreni = 0
     popravljene_oznake = 0
     izpuscene_povedi = 0
@@ -56,29 +55,30 @@ def razdeli_na_kose(vhod: Path, mapa: Path, max_mb: float) -> list[Path]:
         vrstice, velikost = [], 0
 
     def ociscena_poved(p: list[str]) -> list[str] | None:
-        """Vrne očiščeno poved ali None, če jo je treba izpustiti.
+        """Return a cleaned sentence, or ``None`` when it must be skipped.
 
-        Čiščenje (poizvedba bere le UPOS in DEPREL, zato je vse troje varno):
-          - vrstica pojavnice brez natanko 10 stolpcev -> izpusti celo poved;
-          - neveljaven FEATS/DEPS (npr. gola oznaka MSD v tvitih) -> '_';
-          - koren s HEAD=_ -> HEAD=0; druga pojavnica brez glave -> izpusti poved."""
+        The query reads only UPOS and DEPREL, so these cleanups are safe:
+          - skip a sentence containing a token row without exactly 10 columns;
+          - replace invalid FEATS/DEPS (for example a bare MSD tag) with ``_``;
+          - change a root with ``HEAD=_`` to 0, but skip any other headless token.
+        """
         nonlocal popravljeni_koreni, popravljene_oznake
         cista: list[str] = []
         for v in p:
             if not v.startswith("#") and v.strip():
                 cols = v.rstrip("\n").split("\t")
                 if len(cols) != 10:
-                    return None  # ni veljavna vrstica CoNLL-U
+                    return None  # not a valid CoNLL-U row
                 spremenjena = False
-                if cols[5] != "_" and "=" not in cols[5]:  # FEATS mora biti _ ali Ime=Vrednost
+                if cols[5] != "_" and "=" not in cols[5]:  # FEATS is _ or Name=Value
                     cols[5] = "_"; popravljene_oznake += 1; spremenjena = True
-                if cols[8] != "_" and ":" not in cols[8]:  # DEPS mora biti _ ali glava:rel
+                if cols[8] != "_" and ":" not in cols[8]:  # DEPS is _ or head:relation
                     cols[8] = "_"; spremenjena = True
                 if cols[0].isdigit() and not cols[6].isdigit():
                     if cols[7] == "root" and cols[6] == "_":
                         cols[6] = "0"; popravljeni_koreni += 1; spremenjena = True
                     else:
-                        return None  # pojavnica brez glave -> poved brez skladnje
+                        return None  # a headless token means syntax is absent
                 if spremenjena:
                     v = "\t".join(cols) + "\n"
             cista.append(v)
@@ -88,9 +88,9 @@ def razdeli_na_kose(vhod: Path, mapa: Path, max_mb: float) -> list[Path]:
         nonlocal poved, velikost, izpuscene_povedi, cakajoci_komentarji
         if not poved:
             return
-        # Blok, ki vsebuje samo komentarje (npr. ločen '# newdoc' blok v tvitih),
-        # ne sme stati sam — pyconll bi iz njega naredil poved brez pojavnic in
-        # STARK bi se ustavil. Zato ga pripnemo k NASLEDNJI povedi.
+        # A comment-only block (for example a separate ``# newdoc`` block in
+        # tweets) cannot stand alone: pyconll would create a tokenless sentence
+        # and STARK would stop. Attach it to the next sentence instead.
         if all(v.startswith("#") for v in poved):
             cakajoci_komentarji.extend(poved)
             poved = []
@@ -109,7 +109,7 @@ def razdeli_na_kose(vhod: Path, mapa: Path, max_mb: float) -> list[Path]:
         if velikost >= max_b:
             zapisi()
 
-    with vhod.open(encoding="utf-8-sig") as f:  # utf-8-sig odstrani morebitni BOM
+    with vhod.open(encoding="utf-8-sig") as f:  # utf-8-sig removes an optional BOM
         for vrstica in f:
             if not vrstica.strip():
                 sprejmi_poved()
@@ -118,14 +118,14 @@ def razdeli_na_kose(vhod: Path, mapa: Path, max_mb: float) -> list[Path]:
         sprejmi_poved()
     zapisi()
     if popravljeni_koreni or izpuscene_povedi or popravljene_oznake:
-        print(f"  čiščenje: popravljenih korenov {popravljeni_koreni}, "
-              f"popravljenih oznak FEATS {popravljene_oznake}, "
-              f"izpuščenih povedi {izpuscene_povedi}")
+        print(f"  cleaning: corrected roots {popravljeni_koreni}, "
+              f"corrected FEATS tags {popravljene_oznake}, "
+              f"skipped sentences {izpuscene_povedi}")
     return kosi
 
 
 def pozeni_stark(stark_py: Path, vhod: Path, izhod: Path, shramba: Path) -> None:
-    """Požene STARK na eni datoteki z nastavitvami javne besednoredne analize."""
+    """Run STARK on one file with the public word-order analysis settings."""
     ukaz = [sys.executable, str(stark_py),
             "--input", str(vhod), "--output", str(izhod),
             "--internal_saves", str(shramba),
@@ -138,30 +138,28 @@ def pozeni_stark(stark_py: Path, vhod: Path, izhod: Path, shramba: Path) -> None
             "--example", "no"]
     rezultat = subprocess.run(ukaz, capture_output=True, text=True)
     if rezultat.returncode != 0:
-        sys.exit(f"STARK se je ustavil z napako na {vhod}:\n{rezultat.stderr[-2000:]}")
+        sys.exit(f"STARK failed on {vhod}:\n{rezultat.stderr[-2000:]}")
 
 
 OZNAKE = {"<nsubj": "S", ">nsubj": "S", "<obj": "O", ">obj": "O"}
 
 
 def razvrsti_drevo(drevo: str) -> str:
-    """Iz STARK-ovega zapisa drevesa (npr. 'mama >nsubj kupuje >obj jabolka')
-    prebere linearni vrstni red in vrne enega od šestih vzorcev.
+    """Classify STARK's linear tree string into one of the six patterns.
 
-    Kot oznako relacije štejemo SAMO natanko besede '<nsubj', '>nsubj',
-    '<obj', '>obj'. Vse drugo je beseda iz besedila — tudi npr. '>>' ali
-    '<b>', ki ju spletni zapisi pogosto vsebujejo in bi ju površnejše
-    razpoznavanje (vse, kar se začne z < ali >) zamešalo z oznako; prav
-    tako gole črke 'obj' ne pomenijo nič (glagol 'objavlja' jih vsebuje).
-    Oznaka '>rel' velja za NASLEDNJO besedo, oznaka '<rel' za PREJŠNJO;
-    beseda brez oznake je glagolsko jedro (V)."""
-    oblike: list[str] = []   # zaporedje besed, vsaka z vlogo S/V/O
-    cakajoca: str | None = None  # vloga iz oznake '>rel', čaka naslednjo besedo
+    Only the exact tokens ``<nsubj``, ``>nsubj``, ``<obj``, and ``>obj`` count
+    as relation markers. Everything else is text, including strings such as
+    ``>>`` or ``<b>`` that occur in web material. A ``>rel`` marker applies to
+    the next word, a ``<rel`` marker to the previous word, and an unmarked word
+    is the verbal head (V).
+    """
+    oblike: list[str] = []   # word sequence, with one S/V/O role per word
+    cakajoca: str | None = None  # role from ``>rel``, waiting for the next word
     for b in str(drevo).split():
         if b in OZNAKE:
             if b.startswith(">"):
                 cakajoca = OZNAKE[b]
-            else:  # '<rel' označi prejšnjo besedo
+            else:  # ``<rel`` marks the preceding word
                 if not oblike:
                     return ""
                 oblike[-1] = OZNAKE[b]
@@ -169,13 +167,13 @@ def razvrsti_drevo(drevo: str) -> str:
             oblike.append(cakajoca if cakajoca else "V")
             cakajoca = None
     if len(oblike) != 3:
-        return ""  # npr. beseda s presledkom — preskočimo (izpiše se opozorilo)
+        return ""  # for example a token containing a space; skip and warn
     vzorec = "".join(oblike)
     return vzorec if vzorec in VZORCI else ""
 
 
 def prestej(stark_tsv: Path, stevci: dict[str, int]) -> int:
-    """Iz STARK-ove izhodne tabele sešteje frekvence po vzorcih."""
+    """Sum pattern frequencies from a STARK output table."""
     preskocenih = 0
     with stark_tsv.open(encoding="utf-8") as f:
         beri = csv.DictReader(f, delimiter="\t")
@@ -190,38 +188,38 @@ def prestej(stark_tsv: Path, stevci: dict[str, int]) -> int:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--input", type=Path, required=True, help="datoteka CoNLL-U")
-    ap.add_argument("--label", required=True, help="javno ime korpusa")
-    ap.add_argument("--stark", type=Path, required=True, help="pot do STARK/stark.py")
+    ap.add_argument("--input", type=Path, required=True, help="CoNLL-U file")
+    ap.add_argument("--label", required=True, help="public corpus name")
+    ap.add_argument("--stark", type=Path, required=True, help="path to STARK/stark.py")
     ap.add_argument("--workdir", type=Path, required=True,
-                    help="delovna mapa za kose in vmesne datoteke (velik disk!)")
-    ap.add_argument("--out", type=Path, required=True, help="izhodna tabela .tsv")
+                    help="working directory for chunks and intermediate files (large disk needed)")
+    ap.add_argument("--out", type=Path, required=True, help="output TSV table")
     ap.add_argument("--max-mb", type=float, default=50,
-                    help="največja velikost kosa v MB (privzeto 50)")
+                    help="maximum chunk size in MB (default: 50)")
     args = ap.parse_args()
 
     delo = args.workdir
     delo.mkdir(parents=True, exist_ok=True)
 
-    # 1) razrez + čiščenje (tudi majhne datoteke gredo skozi isti korak,
-    #    da so vse enako očiščene; majhna datoteka da en sam kos)
-    print(f"{args.label}: režem na kose po {args.max_mb} MB in čistim ...")
+    # 1) Split and clean. Small files take the same path for consistent
+    # cleaning and simply produce one chunk.
+    print(f"{args.label}: splitting into {args.max_mb} MB chunks and cleaning ...")
     kosi = razdeli_na_kose(args.input, delo / "kosi", args.max_mb)
-    print(f"{args.label}: {len(kosi)} kosov")
+    print(f"{args.label}: {len(kosi)} chunks")
 
-    # 2) STARK na vsakem kosu + 3) sprotno seštevanje vzorcev
+    # 2) Run STARK on each chunk; 3) accumulate pattern counts as it runs.
     stevci = {v: 0 for v in VZORCI}
     preskocenih = 0
     for i, kos in enumerate(kosi, 1):
         izhod = delo / f"stark_{i:04d}.tsv"
-        if not izhod.exists():  # če je bil zagon prekinjen, končane kose preskoči
+        if not izhod.exists():  # resume an interrupted run by keeping finished chunks
             pozeni_stark(args.stark, kos, izhod, delo / "shramba")
         preskocenih += prestej(izhod, stevci)
-        print(f"  kos {i}/{len(kosi)} končan", flush=True)
+        print(f"  chunk {i}/{len(kosi)} complete", flush=True)
     if preskocenih:
-        print(f"OPOZORILO: {preskocenih} nerazvrstljivih zadetkov preskočenih")
+        print(f"WARNING: skipped {preskocenih} unclassifiable matches")
 
-    # Zapis začasne tabele v isti osnovni shemi kot neposredni ekstraktor.
+    # Write a temporary table with the direct extractor's basic schema.
     skupaj = sum(stevci.values())
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with args.out.open("w", encoding="utf-8") as w:

@@ -59,6 +59,8 @@ def main() -> None:
 
     print("[4/5] Computing statistics", flush=True)
     run("compute_statistics.py")
+    run("supplementary_manual_subset.py")
+    run("supplementary_robustness.py")
 
     print("[5/5] Generating figures", flush=True)
     run("make_figures.py")

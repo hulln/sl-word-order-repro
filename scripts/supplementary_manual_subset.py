@@ -14,7 +14,8 @@ release as the main analysis.
 
 The statistical procedure is the canonical one, imported from
 ``compute_statistics``: a permutation test on Pearson's chi-square with 20,000
-reassignments and a fixed seed, followed by Holm adjustment over the four tests.
+reassignments and independent fixed seeds, followed by Holm adjustment over the
+four tests. It writes ``outputs/supplementary/manual_subset_h2.tsv``.
 
 This is supplementary evidence, not part of the main 18-corpus analysis.
 """
@@ -25,7 +26,7 @@ import csv
 
 import numpy as np
 
-from compute_statistics import PAIR_SEED, PERMUTATIONS, holm, permutation_pair
+from compute_statistics import PERMUTATIONS, holm, permutation_pair
 from pipeline_common import PATTERNS, ROOT, read_tsv, write_tsv
 
 SUBSET = ROOT / "reference" / "manual_subset_counts.tsv"
@@ -39,14 +40,15 @@ OUTPUT_COLUMNS = (
     "permutations", "seed", "notes",
 )
 
-# Order matters: the shared random stream makes the result reproducible only in
-# this order. The first two comparisons are the ones H2 predicts.
+# Each comparison has the independent stream used by the frozen UD 2.18
+# supplementary artifact. Adding a row therefore cannot shift another row.
 PAIRS = (
-    ("suk-professional-manual", "sst"),
-    ("suk-publicistic-manual", "sst"),
-    ("suk-professional-manual", "suk-literary-manual"),
-    ("suk-publicistic-manual", "suk-literary-manual"),
+    ("suk-professional-manual", "suk-literary-manual", 20260814),
+    ("suk-publicistic-manual", "suk-literary-manual", 20260815),
+    ("suk-professional-manual", "sst", 20260816),
+    ("suk-publicistic-manual", "sst", 20260817),
 )
+FROZEN_P_VALUES = ("0.985801", "0.897005", "0.026749", "0.052897")
 
 
 def counts_from(path, columns, wanted):
@@ -66,23 +68,29 @@ def counts_from(path, columns, wanted):
 
 
 def main() -> None:
-    matrix = counts_from(SUBSET, SUBSET_COLUMNS, [c for pair in PAIRS for c in pair if c != "sst"])
+    matrix = counts_from(
+        SUBSET, SUBSET_COLUMNS, [c for a, b, _seed in PAIRS for c in (a, b) if c != "sst"]
+    )
     word_columns = (
         "corpus_id", "corpus", "pattern", "count", "total", "proportion", "extraction_status"
     )
     matrix.update(counts_from(WORD_COUNTS, word_columns, ["sst"]))
 
-    rng = np.random.default_rng(PAIR_SEED)
     calculated = []
-    for corpus_a, corpus_b in PAIRS:
+    for (corpus_a, corpus_b, seed), expected_p in zip(PAIRS, FROZEN_P_VALUES):
         chi2, pearson_p, permutation_p, degrees, small = permutation_pair(
-            matrix[corpus_a], matrix[corpus_b], rng
+            matrix[corpus_a], matrix[corpus_b], np.random.default_rng(seed)
         )
-        calculated.append((corpus_a, corpus_b, chi2, pearson_p, permutation_p, degrees, small))
+        if f"{permutation_p:.6f}" != expected_p:
+            raise RuntimeError(
+                f"{corpus_a}/{corpus_b}: expected frozen permutation p={expected_p}, "
+                f"found {permutation_p:.6f}"
+            )
+        calculated.append((corpus_a, corpus_b, seed, chi2, pearson_p, permutation_p, degrees, small))
 
-    adjusted = holm([item[4] for item in calculated])
+    adjusted = holm([item[5] for item in calculated])
     rows = []
-    for (a, b, chi2, pearson_p, permutation_p, degrees, small), holm_p in zip(calculated, adjusted):
+    for (a, b, seed, chi2, pearson_p, permutation_p, degrees, small), holm_p in zip(calculated, adjusted):
         rows.append({
             "comparison": f"{a}__{b}",
             "corpus_a": a, "corpus_b": b,
@@ -90,7 +98,7 @@ def main() -> None:
             "statistic_name": "pearson_chi_square_with_permutation_p",
             "statistic": f"{chi2:.12g}", "df": degrees,
             "p_value": f"{permutation_p:.12g}", "p_adjusted": f"{holm_p:.12g}",
-            "permutations": PERMUTATIONS, "seed": PAIR_SEED,
+            "permutations": PERMUTATIONS, "seed": seed,
             "notes": (
                 f"supplementary manually checked subset; Pearson asymptotic p={pearson_p:.12g}; "
                 f"expected cells under 5={small}"

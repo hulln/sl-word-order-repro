@@ -8,7 +8,7 @@ import glob
 import os
 from pathlib import Path
 
-os.environ.setdefault("MPLCONFIGDIR", "/tmp/mag-redesign-mplconfig")
+os.environ.setdefault("MPLCONFIGDIR", "/tmp/sl-word-order-repro-mplconfig")
 
 import matplotlib
 
@@ -32,25 +32,25 @@ WORD_INPUT = DATA / "word_order_summary.tsv"
 NER_INPUT = DATA / "ner_word_order.tsv"
 TEST_INPUT = DATA / "statistical_tests.tsv"
 
-# Preserve the exact PDF page dimensions of the approved redesign candidates.
+# Preserve the exact PDF page dimensions of the committed thesis figures.
 TARGET_PAGE_POINTS = {
-    "fig_cloveski_gpt5_stacked_redesign_candidate": (492.314, 173.982),
-    "fig_h1_h2_stacked_redesign_candidate": (484.986, 256.191),
-    "fig_jsd_matrix_redesign_candidate": (399.429, 344.934),
-    "fig_ner_predmet_dumbbell_redesign_candidate": (461.378, 360.0),
-    "fig_potek_raziskave_redesign_candidate": (514.177, 244.224),
-    "fig_registers_heatmap_redesign_candidate": (506.525, 293.918),
-    "fig_svo_entropija_redesign_candidate": (486.735, 285.958),
+    "fig_human_gpt5_stacked": (492.314, 173.982),
+    "fig_h1_h2_stacked": (484.986, 256.191),
+    "fig_jsd_matrix": (399.429, 344.934),
+    "fig_ner_object_dumbbell": (461.378, 360.0),
+    "fig_research_workflow": (514.177, 244.224),
+    "fig_register_patterns_heatmap": (506.525, 293.918),
+    "fig_svo_entropy": (486.735, 285.958),
 }
 
 FINAL_STEMS = {
-    "fig_potek_raziskave_redesign_candidate": "fig_potek_raziskave",
-    "fig_h1_h2_stacked_redesign_candidate": "fig_h1_h2_vzorci",
-    "fig_registers_heatmap_redesign_candidate": "fig_registri_vzorci",
-    "fig_cloveski_gpt5_stacked_redesign_candidate": "fig_cloveski_gpt5_vzorci",
-    "fig_jsd_matrix_redesign_candidate": "fig_jsd_matrix",
-    "fig_svo_entropija_redesign_candidate": "fig_svo_entropija",
-    "fig_ner_predmet_dumbbell_redesign_candidate": "fig_ner_predmeti",
+    "fig_research_workflow": "fig_research_workflow",
+    "fig_h1_h2_stacked": "fig_h1_h2_patterns",
+    "fig_register_patterns_heatmap": "fig_register_patterns",
+    "fig_human_gpt5_stacked": "fig_human_gpt5_patterns",
+    "fig_jsd_matrix": "fig_jsd_matrix",
+    "fig_svo_entropy": "fig_svo_entropy",
+    "fig_ner_object_dumbbell": "fig_ner_objects",
 }
 
 PATTERNS = ["SVO", "SOV", "VSO", "VOS", "OSV", "OVS"]
@@ -102,6 +102,8 @@ HEAT_CMAP = LinearSegmentedColormap.from_list(
 )
 
 REGISTER_LABELS = {
+    # These exact display forms are frozen to the committed thesis figures.
+    # In particular, keep "Janes" title case and the established qualifiers.
     "SSJ": "SSJ",
     "SST": "SST",
     "JANES-Tweet": "Janes-Tweet",
@@ -182,7 +184,7 @@ def save_pdf(fig: plt.Figure, stem: str) -> Path:
         pad_inches=0,
         metadata={
             "Title": output_stem,
-            "Creator": "scripts/figures/generate_thesis_figures.py",
+            "Creator": "scripts/make_figures.py",
         },
     )
     plt.close(fig)
@@ -580,7 +582,7 @@ def figure_workflow() -> Path:
         linespacing=1.15,
     )
     fig.subplots_adjust(left=0.02, right=0.98, top=0.98, bottom=0.02)
-    return save_pdf(fig, "fig_potek_raziskave_redesign_candidate")
+    return save_pdf(fig, "fig_research_workflow")
 
 
 def figure_h1_h2() -> Path:
@@ -621,7 +623,7 @@ def figure_h1_h2() -> Path:
     )
     pattern_legend(ax, -0.18)
     fig.subplots_adjust(left=0.18, right=0.985, top=0.98, bottom=0.25)
-    return save_pdf(fig, "fig_h1_h2_stacked_redesign_candidate")
+    return save_pdf(fig, "fig_h1_h2_stacked")
 
 
 def figure_human_gpt() -> Path:
@@ -633,7 +635,7 @@ def figure_human_gpt() -> Path:
     ax.set_ylim(-0.48, 1.58)
     pattern_legend(ax, -0.30)
     fig.subplots_adjust(left=0.22, right=0.985, top=0.97, bottom=0.34)
-    return save_pdf(fig, "fig_cloveski_gpt5_stacked_redesign_candidate")
+    return save_pdf(fig, "fig_human_gpt5_stacked")
 
 
 def combined_svo_entropy(registers: pd.DataFrame, summary: pd.DataFrame) -> pd.DataFrame:
@@ -759,7 +761,7 @@ def figure_svo_entropy() -> Path:
     ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _position: sl_decimal(value)))
     finish_axes(ax, "both")
     fig.subplots_adjust(left=0.11, right=0.985, top=0.97, bottom=0.14)
-    return save_pdf(fig, "fig_svo_entropija_redesign_candidate")
+    return save_pdf(fig, "fig_svo_entropy")
 
 
 def finish_vector_matrix(ax: plt.Axes, n_rows: int, n_cols: int, equal: bool) -> None:
@@ -838,7 +840,7 @@ def figure_jsd() -> Path:
     )
     colorbar.set_label("Jensen–Shannonova razdalja", fontsize=7.8, color=MID)
     fig.subplots_adjust(left=0.25, right=0.96, top=0.79, bottom=0.10)
-    return save_pdf(fig, "fig_jsd_matrix_redesign_candidate")
+    return save_pdf(fig, "fig_jsd_matrix")
 
 
 def figure_register_heatmap() -> Path:
@@ -888,7 +890,7 @@ def figure_register_heatmap() -> Path:
     colorbar.ax.tick_params(labelsize=7.3, length=2, width=0.5, colors=MID)
     colorbar.set_label("Delež vzorca znotraj vira (%)", fontsize=7.8, color=MID)
     fig.subplots_adjust(left=0.27, right=0.985, top=0.88, bottom=0.12)
-    return save_pdf(fig, "fig_registers_heatmap_redesign_candidate")
+    return save_pdf(fig, "fig_register_patterns_heatmap")
 
 
 def figure_ner() -> Path:
@@ -1009,7 +1011,7 @@ def figure_ner() -> Path:
         columnspacing=1.4,
     )
     fig.subplots_adjust(left=0.25, right=0.985, top=0.88, bottom=0.12, hspace=0.42)
-    return save_pdf(fig, "fig_ner_predmet_dumbbell_redesign_candidate")
+    return save_pdf(fig, "fig_ner_object_dumbbell")
 
 
 def print_values() -> None:

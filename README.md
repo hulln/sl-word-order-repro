@@ -61,13 +61,13 @@ flowchart TB
     CFG("<b>config/corpora.tsv</b><br/>18-set inventory<br/>paths · preparation · optional validation pins")
 
     PREP("<b>prepared/</b><br/>canonical CoNLL-U<br/>checksums.sha256")
-    REF("<b>reference/</b><br/>verified counts<br/>opt-in only")
+    REF("<b>reference/</b><br/>verified aggregate and<br/>supplementary numerical inputs")
 
     PIPE("<b>scripts/</b><br/>prepare → extract → analyse<br/>statistics → figures")
 
     DATA("<b>outputs/data/</b><br/>4 canonical TSV tables")
     FIG("<b>outputs/figures/</b><br/>7 thesis figures · PDF")
-    SUP("<b>outputs/supplementary/</b><br/>manual H2 check")
+    SUP("<b>outputs/supplementary/</b><br/>supplementary checks")
 
     GUIDE --> PREP
     PREP --> PIPE
@@ -100,7 +100,9 @@ Details live next to the data they describe: [`inputs/README.md`](inputs/README.
 for corpus sources, versions, licences and preparation;
 [`prepared/README.md`](prepared/README.md) for checksums and what is pinned;
 [`reference/README.md`](reference/README.md) for what the stored counts are and how
-they were verified.
+they were verified; and
+[`outputs/supplementary/README.md`](outputs/supplementary/README.md) for the
+supplementary analyses.
 
 ## Data flow
 
@@ -132,7 +134,7 @@ flowchart TB
     UD("<b>UD</b><br/>SSJ 2.18 · SST 2.18<br/>merge splits · SST + NER")
     SUP("<b>SUK + supplied JANES</b><br/>SUK → Literary · Publicistic · Professional<br/>JANES News · Blog · Forum · Tweet")
     PUB("<b>Other public corpora</b><br/>JANES-Wiki · CLASSLA-Wikipedia<br/>ParlaMint-SI 4.0 · KDSP")
-    ESS("<b>Matched essays</b><br/>Human 4y-ss · GPT-5 4y-ss/pap<br/>691 docs · deterministic NER enrichment")
+    ESS("<b>Matched essays</b><br/>Human 4y-ss · GPT-5 4y-ss/pap<br/>deterministic NER enrichment")
     AIG("<b>AI-GenT supplementary comparison</b><br/>GPT-5 · GaMS · Gemma<br/>4y-gs / default")
 
     subgraph STATES[" "]
@@ -149,8 +151,7 @@ flowchart TB
     STATS("<b>STATISTICS</b><br/>canonical statistical tests")
     FIG("<b>7 THESIS FIGURES</b>")
 
-    MANUAL("<b>manual subset</b>")
-    H2("<b>supplementary H2</b><br/>separate check")
+    CHECKS("<b>SUPPLEMENTARY CHECKS</b>")
 
     UD --> PREP
     SUP --> PREP
@@ -165,8 +166,8 @@ flowchart TB
     CACHE -.-> RESULT
 
     RESULT --> STATS --> FIG
-    RESULT -.-> H2
-    MANUAL -.-> H2
+    RESULT -.-> CHECKS
+    CACHE -.-> CHECKS
 
     classDef source fill:#edf3f6,stroke:#8ca5b3,stroke-width:1.4px,color:#24343d,font-size:17px
     classDef prepared fill:#d9e8ef,stroke:#52788d,stroke-width:2px,color:#1f3440,font-size:18px
@@ -182,7 +183,7 @@ flowchart TB
     class WORD,NERIN,NER analysis
     class RESULT,STATS result
     class FIG final
-    class MANUAL,H2 secondary
+    class CHECKS secondary
 
     style STATES fill:transparent,stroke:transparent
     linkStyle default stroke:#829098,stroke-width:1.35px
@@ -206,6 +207,14 @@ The 18 analysis sets do not all enter the workflow in the same way:
 Sources, exact paths, licences and caveats are in
 [`inputs/README.md`](inputs/README.md).
 
+## Statistical outputs
+
+Main statistics are in `outputs/data/statistical_tests.tsv`. The manually
+reviewed and robustness analyses are kept separately under
+`outputs/supplementary/` and are described in its local README. Run
+`scripts/supplementary_manual_subset.py` and
+`scripts/supplementary_robustness.py` to reproduce them.
+
 ## Run from a fresh clone
 
 ```bash
@@ -214,13 +223,15 @@ cd sl-word-order-repro
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 python3 scripts/compute_statistics.py
-python3 scripts/make_figures.py
 python3 scripts/supplementary_manual_subset.py
+python3 scripts/supplementary_robustness.py
+python3 scripts/make_figures.py
 ```
 
-These commands recompute the summary, statistical tests, seven figures and the
-supplementary check from the included numerical tables. They need neither
-corpora nor STARK.
+These commands recompute the summary, main statistical tests, all supplementary
+checks, and seven figures from the included numerical tables. They need neither
+corpora nor STARK. The robustness script takes roughly one minute on a typical
+laptop because it performs the frozen 20,000-permutation checks.
 
 ## Rerun extraction
 
@@ -250,7 +261,8 @@ are required. Only preparation steps that add CLASSLA NER need
 - ParlaMint is rebuilt by concatenating the distributed CoNLL-U files in
   lexicographically sorted full-path order.
 - The 691 human and GPT-5 essays are matched by document. GPT-5 syntax comes from
-  AI-GenT; the human syntactic annotator is undocumented.
+  AI-GenT; the human syntactic annotator remains undocumented in the available
+  provenance evidence.
 - The supplementary AI-GenT `4y-gs` comparison uses different generated texts
   and prompts. Its 205 GPT-5 source documents overlap the matched 691, so it is
   not an independent replication.
