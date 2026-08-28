@@ -1,0 +1,3 @@
+corpus_id	corpus	query	total	SVO_n	SVO_proportion	SOV_n	SOV_proportion	VSO_n	VSO_proportion	VOS_n	VOS_proportion	OSV_n	OSV_proportion	OVS_n	OVS_proportion	entropy_nat	top_order	second_order	top_second_ratio	dominant_order	dominant_flag
+ssj	UD Slovenian-SSJ	upos=VERB >nsubj _ >obj _	3908	2131	0.545292	427	0.109263	108	0.027636	83	0.021238	333	0.085210	826	0.211361	1.291911	SVO	OVS	2.579903	SVO	dominant
+sst	UD Slovenian-SST	upos=VERB >nsubj _ >obj _	835	327	0.391617	174	0.208383	39	0.046707	20	0.023952	130	0.155689	145	0.173653	1.520016	SVO	SOV	1.879310	NO DOMINANT ORDER	no_dominant_order

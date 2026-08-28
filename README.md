@@ -17,9 +17,13 @@ The main analysis uses this dependency query:
 upos=VERB >nsubj upos=NOUN >obj upos=NOUN
 ```
 
-It selects a `VERB` with an exact `nsubj` and `obj`, both headed by `NOUN`.
-Relation subtypes and `iobj` are excluded. All matching subject × object pairs
-are counted and classified as SVO, SOV, VSO, VOS, OSV or OVS.
+It selects a `VERB` with `nsubj` and `obj` dependents, both headed by `NOUN`.
+STARK runs with `label_subtypes=no`, so relation subtypes are collapsed to their
+base labels for STARK matching, whereas the independent direct extractor
+requires exact `nsubj` and `obj`. No `nsubj`/`obj` subtypes occur in the analysed
+Slovenian prepared sources, so this distinction does not affect the reported
+counts. `iobj` remains outside the query. All matching subject × object pairs are
+counted and classified as SVO, SOV, VSO, VOS, OSV or OVS.
 
 The separate named-entity analysis uses the same relations but allows `NOUN` or
 `PROPN` argument heads.

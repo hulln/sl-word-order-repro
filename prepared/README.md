@@ -9,7 +9,12 @@ authoritative prepared hash and count inventory for all 18 corpora is
 `scripts/prepare_corpora.py` builds files when a supported source is available,
 then checks CoNLL-U structure, sentence count, SHA-256 and required NER tags.
 `expected_sentences` is the number of non-empty, blank-line-delimited CoNLL-U
-blocks in the prepared file, used for validation.
+blocks in the prepared file, including comment-only blocks, and is used for
+validation. Corpus sizes quoted in the thesis count only blocks containing at
+least one word/token row. The resulting manifest-minus-thesis differences are
+0 for JANES-News, +7,371 for JANES-Blog, +25,160 for JANES-Forum, +1 for
+JANES-Tweet and 0 for JANES-Wiki. Comment-only blocks cannot contribute S/V/O
+instances and therefore do not affect the thesis results.
 Blank validation fields in `config/corpora.tsv` are skipped, not guessed.
 
 ```bash

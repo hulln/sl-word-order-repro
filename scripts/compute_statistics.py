@@ -54,6 +54,8 @@ SELECTED_PAIRS = (
     ("suk-literary", "sst", 20260719),
     ("ssj", "sst", 20260720),
     ("human-essays", "gpt5-essays", 20260721),
+    ("gpt5-essays", "aigent-gpt5", 20260722),
+    ("suk-literary", "kdsp", 20260723),
 )
 H2_PAIRS = {
     frozenset(("suk-professional", "sst")),
@@ -75,6 +77,10 @@ CANONICAL_H2_PERMUTATION_P = {
     frozenset(("suk-publicistic", "suk-literary")): "0.724414",
     frozenset(("suk-professional", "sst")): "0.000950",
     frozenset(("suk-publicistic", "sst")): "0.001800",
+}
+CANONICAL_SUPPLEMENTARY_PERMUTATION_P = {
+    frozenset(("gpt5-essays", "aigent-gpt5")): "0.0785960702",
+    frozenset(("suk-literary", "kdsp")): "0.0072496375",
 }
 
 
@@ -133,7 +139,7 @@ def build_summary(
         row["dominant_order"] = PATTERNS[dominant]
         row["dominant_flag"] = (
             "dominant"
-            if proportions[second] == 0 or proportions[dominant] >= 2 * proportions[second]
+            if proportions[second] == 0 or proportions[dominant] > 2 * proportions[second]
             else "no_dominant_order"
         )
         row["entropy_nat"] = f"{entropy_natural(counts):.6f}"
@@ -237,6 +243,14 @@ def selected_permutation_tests(matrix: dict[str, np.ndarray]) -> list[dict[str, 
             raise RuntimeError(
                 f"{corpus_a}/{corpus_b}: expected frozen permutation p={expected}, "
                 f"found {permutation_p:.6f}"
+            )
+        supplementary_expected = CANONICAL_SUPPLEMENTARY_PERMUTATION_P.get(
+            frozenset((corpus_a, corpus_b))
+        )
+        if supplementary_expected is not None and f"{permutation_p:.10f}" != supplementary_expected:
+            raise RuntimeError(
+                f"{corpus_a}/{corpus_b}: expected supplementary permutation "
+                f"p={supplementary_expected}, found {permutation_p:.10f}"
             )
         calculations.append(
             (corpus_a, corpus_b, seed, chi2, pearson_p, permutation_p, degrees, cells_under_five)
