@@ -41,47 +41,67 @@ cache.
 ## Repository structure
 
 ```mermaid
-flowchart LR
-  subgraph DOC[" "]
-    direction TB
-    CFG["<b>config/corpora.tsv</b><br/>inventory of all 18 corpus sets:<br/>version, paths, checksums,<br/>annotation layers"]
-    INP["<b>inputs/README.md</b><br/>where to obtain every corpus,<br/>with links and licences"]
-  end
+---
+config:
+  layout: elk
+  theme: base
+  fontFamily: Arial
+  themeVariables:
+    fontFamily: Arial
+    fontSize: 17px
+    primaryTextColor: "#24343d"
+    lineColor: "#829098"
+    background: "#ffffff"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    htmlLabels: true
+    curve: linear
+    nodeSpacing: 42
+    rankSpacing: 48
+    padding: 16
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: LINEAR_SEGMENTS
+    nodePlacementAlignment: BALANCED
+---
+flowchart TB
+    GUIDE("<b>inputs/README.md</b><br/>sources · licences<br/>download instructions")
+    CFG("<b>config/corpora.tsv</b><br/>18-set inventory<br/>paths · preparation · optional validation pins")
 
-  subgraph DATA[" "]
-    direction TB
-    PREP["<b>prepared/</b><br/>canonical CoNLL-U files<br/>the analysis actually reads<br/>+ checksums.sha256"]
-    REF["<b>reference/</b><br/>verified counts for corpora<br/>that cannot be rebuilt here<br/><i>opt-in only</i>"]
-  end
+    PREP("<b>prepared/</b><br/>canonical CoNLL-U<br/>checksums.sha256")
+    REF("<b>reference/</b><br/>verified counts<br/>opt-in only")
 
-  SCR["<b>scripts/</b><br/>12 Python scripts:<br/>prepare → extract → analyse<br/>→ statistics → figures"]
+    PIPE("<b>scripts/</b><br/>prepare → extract → analyse<br/>statistics → figures")
 
-  subgraph OUT[" "]
-    direction TB
-    ODATA["<b>outputs/data/</b><br/>4 canonical TSV tables"]
-    OFIG["<b>outputs/figures/</b><br/>7 thesis figures, PDF"]
-    OSUP["<b>outputs/supplementary/</b><br/>one separate supplementary check"]
-  end
+    DATA("<b>outputs/data/</b><br/>4 canonical TSV tables")
+    FIG("<b>outputs/figures/</b><br/>7 thesis figures · PDF")
+    SUP("<b>outputs/supplementary/</b><br/>manual H2 check")
 
-  CFG -->|"drives"| SCR
-  INP -.->|"tells you how to fill"| PREP
-  PREP -->|"read by"| SCR
-  REF -.->|"only with --use-reference-cache"| SCR
-  SCR -->|"writes"| ODATA
-  ODATA -->|"read by make_figures.py"| OFIG
-  SCR -.->|"supplementary check"| OSUP
+    GUIDE --> PREP
+    PREP --> PIPE
+    CFG --> PIPE
+    REF -.-> PIPE
+    PIPE --> DATA
+    DATA --> FIG
+    PIPE -.-> SUP
 
-  classDef doc fill:#eef3f7,stroke:#4a6b82,color:#1b2b36
-  classDef data fill:#dbe9f2,stroke:#2f5f80,color:#12222c
-  classDef cache fill:#f6efe2,stroke:#9a7b3f,color:#2c2418
-  classDef code fill:#e4ede4,stroke:#4a7050,color:#16241a
-  classDef out fill:#0072B2,stroke:#004b75,color:#ffffff
-  class CFG,INP doc
-  class PREP data
-  class REF cache
-  class SCR code
-  class ODATA,OFIG out
-  class OSUP cache
+    classDef source fill:#edf3f6,stroke:#8ca5b3,stroke-width:1.4px,color:#24343d,font-size:17px
+    classDef prepared fill:#d9e8ef,stroke:#52788d,stroke-width:2px,color:#1f3440,font-size:17px
+    classDef cache fill:#f4efe5,stroke:#a58e69,stroke-width:1.6px,stroke-dasharray:6 4,color:#473d2e,font-size:16px
+    classDef analysis fill:#eeeaf3,stroke:#817394,stroke-width:1.6px,color:#302a38,font-size:17px
+    classDef result fill:#dceaf0,stroke:#52788d,stroke-width:1.7px,color:#1f3440,font-size:17px
+    classDef final fill:#c9dde7,stroke:#466e82,stroke-width:2px,color:#18313d,font-size:17px
+    classDef secondary fill:#f3f1ec,stroke:#a39c8e,stroke-width:1.3px,stroke-dasharray:5 4,color:#4a4740,font-size:15px
+
+    class GUIDE,CFG source
+    class PREP prepared
+    class REF cache
+    class PIPE analysis
+    class DATA result
+    class FIG final
+    class SUP secondary
+
+    linkStyle default stroke:#829098,stroke-width:1.35px
 ```
 
 Details live next to the data they describe: [`inputs/README.md`](inputs/README.md)
@@ -93,136 +113,87 @@ they were verified.
 ## Data flow
 
 ```mermaid
+---
+config:
+  layout: elk
+  theme: base
+  fontFamily: Arial
+  themeVariables:
+    fontFamily: Arial
+    fontSize: 17px
+    primaryTextColor: "#24343d"
+    lineColor: "#829098"
+    background: "#ffffff"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    htmlLabels: true
+    curve: linear
+    nodeSpacing: 30
+    rankSpacing: 42
+    padding: 16
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: LINEAR_SEGMENTS
+    nodePlacementAlignment: BALANCED
+---
 flowchart TB
-  subgraph S["① SOURCE — you obtain these; see inputs/README.md"]
-    direction LR
-    S_UD["UD Slovenian-SSJ 2.18<br/>UD Slovenian-SST 2.18"]
-    S_SUK["SUK-derived CoNLL-U composite<br/>prepared by the thesis supervisor"]
-    S_JAN["Janes-News · Blog · Forum · Tweet<br/>CLASSLA-annotated, supplied"]
-    S_JW["Janes-Wiki 1.0<br/>CLARIN vertical"]
-    S_CW["CLASSLA-Wikipedia 1.0 sl<br/>analysis-ready CoNLL-U"]
-    S_PM["ParlaMint-SI .ana 4.0"]
-    S_KD["KDSP 1.0<br/>262 prose texts, 1836–1918"]
-    S_HU["Šolar 3.0 — 4y-ss<br/>691 human essays"]
-    S_GP["AI-GenT 1.0 — 4y-ss / GPT-5 / pap<br/>691 generated essays"]
-    S_AG["AI-GenT 1.0 — 4y-gs / default<br/>GPT-5 · GaMS-27B · gemma-2-27b"]
-  end
+    UD("<b>UD</b><br/>SSJ 2.18 · SST 2.18<br/>merge splits · SST + NER")
+    SUP("<b>SUK + supplied JANES</b><br/>SUK → Literary · Publicistic · Professional<br/>JANES News · Blog · Forum · Tweet")
+    PUB("<b>Other public corpora</b><br/>JANES-Wiki · CLASSLA-Wikipedia<br/>ParlaMint-SI 4.0 · KDSP")
+    ESS("<b>Matched essays</b><br/>Human 4y-ss · GPT-5 4y-ss/pap<br/>691 docs · deterministic NER enrichment")
+    AIG("<b>AI-GenT robustness</b><br/>GPT-5 · GaMS · Gemma<br/>4y-gs / default")
 
-  subgraph P["② PREPARATION"]
-    direction LR
-    P_UDM["merge train+dev+test"]
-    P_NER["add CLASSLA 2.2.1 NER<br/>trees untouched"]
-    P_SPL["split by genre metadata<br/>repair HEAD=_ roots"]
-    P_CP["copy as supplied"]
-    P_V2T["vertical → text → CLASSLA"]
-    P_GZ["decompress only<br/>never re-annotated"]
-    P_CAT["concatenate per-year files"]
-    P_CLA["CLASSLA full stack"]
-  end
+    subgraph STATES[" "]
+      direction LR
+      PREP("<b>PREPARED INPUT</b><br/>exact corpora · fresh analysis")
+      CACHE("<b>VERIFIED REFERENCE COUNTS</b><br/>recorded result · not a rebuilt corpus")
+    end
 
-  subgraph PR["③ PREPARED — the canonical analysis inputs"]
-    direction LR
-    R_SSJ["ssj"]
-    R_SST["sst"]
-    R_SUK["suk-literary<br/>suk-publicistic<br/>suk-professional"]
-    R_AIG["aigent-gpt5<br/>aigent-gams27b<br/>aigent-gemma2-27b"]
-    R_BIG["janes-news · janes-blog<br/>janes-forum · janes-tweet<br/>janes-wiki · classla-wikipedia<br/>parlamint · kdsp"]
-    R_ESS["human-essays<br/>gpt5-essays"]
-  end
+    WORD("<b>WORD-ORDER ANALYSIS</b><br/>STARK + direct CoNLL-U<br/>exact agreement required<br/><i>mismatch → stop</i>")
+    NERIN("<b>NER-capable inputs</b>")
+    NER("<b>NER ANALYSIS</b>")
 
-  subgraph C["④ VERIFIED REFERENCE CACHE — not a fresh run"]
-    CACHE["reference/word_order_counts.tsv — 10 corpora<br/>reference/ner_word_order_counts.tsv — 3 corpora<br/><br/>opt-in via --use-reference-cache<br/>every row stamped verified_reference_*"]
-  end
+    RESULT("<b>CANONICAL RESULTS</b><br/>word-order counts + summary · NER results")
+    STATS("<b>STATISTICS</b><br/>canonical statistical tests")
+    FIG("<b>7 THESIS FIGURES</b>")
 
-  subgraph A["⑤ ANALYSIS"]
-    direction TB
-    HUB(["each prepared corpus present locally"])
-    A_ST["STARK extraction"]
-    A_DI["independent direct<br/>CoNLL-U extraction"]
-    A_EQ{"identical on all<br/>six patterns?"}
-    A_MRG["add CLASSLA 2.2.1 NER<br/>deterministic derived step"]
-    A_NER["analyze_ner.py<br/>NOUN or PROPN arguments"]
-  end
+    MANUAL("<b>manual subset</b>")
+    H2("<b>supplementary H2</b><br/>separate check")
 
-  subgraph D["⑥ CANONICAL DATA — outputs/data/"]
-    direction LR
-    D_WC["word_order_counts.tsv"]
-    D_NE["ner_word_order.tsv"]
-    D_SU["word_order_summary.tsv"]
-    D_ST["statistical_tests.tsv"]
-  end
+    UD --> PREP
+    SUP --> PREP
+    PUB --> PREP
+    ESS --> PREP
+    AIG --> PREP
 
-  F["⑦ FIGURES — make_figures.py<br/>seven thesis PDFs"]
-  STOP["run fails"]
+    PREP --> WORD
+    PREP --> NERIN --> NER
+    WORD --> RESULT
+    NER --> RESULT
+    CACHE -.-> RESULT
 
-  S_UD --> P_UDM --> R_SSJ
-  P_UDM --> P_NER --> R_SST
-  S_SUK --> P_SPL --> R_SUK
-  S_AG --> P_CP --> R_AIG
-  S_JAN --> P_CP --> R_BIG
-  S_JW --> P_V2T --> R_BIG
-  S_CW --> P_GZ --> R_BIG
-  S_PM --> P_CAT --> R_BIG
-  S_KD --> P_CLA --> R_BIG
-  S_HU --> R_ESS
-  S_GP --> R_ESS
+    RESULT --> STATS --> FIG
+    RESULT -.-> H2
+    MANUAL -.-> H2
 
-  R_SSJ --> HUB
-  R_SST --> HUB
-  R_SUK --> HUB
-  R_AIG --> HUB
-  R_BIG --> HUB
-  R_ESS --> HUB
+    classDef source fill:#edf3f6,stroke:#8ca5b3,stroke-width:1.4px,color:#24343d,font-size:17px
+    classDef prepared fill:#d9e8ef,stroke:#52788d,stroke-width:2px,color:#1f3440,font-size:18px
+    classDef cache fill:#f4efe5,stroke:#a58e69,stroke-width:1.6px,stroke-dasharray:6 4,color:#473d2e,font-size:16px
+    classDef analysis fill:#eeeaf3,stroke:#817394,stroke-width:1.5px,color:#302a38,font-size:17px
+    classDef result fill:#dceaf0,stroke:#52788d,stroke-width:1.7px,color:#1f3440,font-size:17px
+    classDef final fill:#c9dde7,stroke:#466e82,stroke-width:2px,color:#18313d,font-size:18px
+    classDef secondary fill:#f3f1ec,stroke:#a39c8e,stroke-width:1.3px,stroke-dasharray:5 4,color:#4a4740,font-size:15px
 
-  R_BIG -. "if not available locally" .-> CACHE
-  R_ESS -. "if not available locally" .-> CACHE
+    class UD,SUP,PUB,ESS,AIG source
+    class PREP prepared
+    class CACHE cache
+    class WORD,NERIN,NER analysis
+    class RESULT,STATS result
+    class FIG final
+    class MANUAL,H2 secondary
 
-  HUB --> A_ST --> A_EQ
-  HUB --> A_DI --> A_EQ
-  A_EQ -->|"yes → stark_direct_exact"| D_WC
-  A_EQ -->|"no"| STOP
-  CACHE -->|"verified_reference_stark_direct_exact"| D_WC
-
-  R_SSJ --> A_NER
-  R_SST --> A_NER
-  R_SUK --> A_NER
-  R_ESS --> A_MRG --> A_NER
-  A_NER --> D_NE
-  CACHE -->|"verified_reference_counts"| D_NE
-
-  D_WC --> D_SU
-  D_WC --> D_ST
-  D_NE --> D_ST
-  D_SU --> F
-  D_ST --> F
-  D_NE --> F
-
-  SUPIN["reference/manual_subset_counts.tsv<br/>SUK subset with manually checked syntax"] --> SUP
-  D_WC -->|"canonical SST row"| SUP
-  SUP["supplementary_manual_subset.py<br/>same permutation + Holm procedure"] --> SUPOUT["outputs/supplementary/<br/>manual_subset_h2.tsv"]
-
-  classDef src fill:#eef3f7,stroke:#4a6b82,color:#1b2b36
-  classDef prep fill:#e4ede4,stroke:#4a7050,color:#16241a
-  classDef prepared fill:#cfe2ef,stroke:#2f5f80,color:#12222c
-  classDef cache fill:#f6efe2,stroke:#9a7b3f,color:#2c2418
-  classDef ana fill:#e8e2f0,stroke:#5d4b80,color:#221b2e
-  classDef out fill:#0072B2,stroke:#004b75,color:#ffffff
-  classDef fail fill:#f3dede,stroke:#8b3a3a,color:#3a1414
-  class S_UD,S_SUK,S_JAN,S_JW,S_CW,S_PM,S_KD,S_HU,S_GP,S_AG src
-  class P_UDM,P_NER,P_SPL,P_CP,P_V2T,P_GZ,P_CAT,P_CLA prep
-  class R_SSJ,R_SST,R_SUK,R_AIG,R_BIG,R_ESS prepared
-  class CACHE cache
-  class HUB,A_ST,A_DI,A_EQ,A_MRG,A_NER ana
-  class D_WC,D_NE,D_SU,D_ST,F out
-  class STOP fail
-  class SUPIN,SUP,SUPOUT supp
-  classDef supp fill:#f6efe2,stroke:#9a7b3f,color:#2c2418,stroke-dasharray:4 3
-  style S fill:#fbfcfd,stroke:#c3d0da
-  style P fill:#fbfcfd,stroke:#c3d0da
-  style PR fill:#fbfcfd,stroke:#c3d0da
-  style C fill:#fdfaf4,stroke:#d8c69f
-  style A fill:#fbfcfd,stroke:#c3d0da
-  style D fill:#fbfcfd,stroke:#c3d0da
+    style STATES fill:transparent,stroke:transparent
+    linkStyle default stroke:#829098,stroke-width:1.35px
 ```
 
 ## The corpora
