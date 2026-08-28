@@ -261,9 +261,11 @@ are required. Only preparation steps that add CLASSLA NER need
 
 ## Licence and citation
 
-Code and documentation: **MIT** ([`LICENSE`](LICENSE)).
+Code and repository content: **GNU GPL version 3 or later**
+([`LICENSE`](LICENSE); SPDX: `GPL-3.0-or-later`).
 
-MIT covers this repository only and grants no rights over any corpus. No corpus
-files are distributed here; each keeps the licence of its original release —
-listed in [`inputs/README.md`](inputs/README.md) — and several are non-commercial
-or share-alike. To cite the package, see [`CITATION.cff`](CITATION.cff).
+The GPL covers this repository only and grants no rights over any corpus. No
+corpus files are distributed here; each keeps the licence of its original
+release — listed in [`inputs/README.md`](inputs/README.md) — and several are
+non-commercial or share-alike. To cite the package, see
+[`CITATION.cff`](CITATION.cff).

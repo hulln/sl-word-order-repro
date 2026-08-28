@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this reproducibility package, please cite it as below."
-license: MIT
+license: GPL-3.0-or-later
 title: "Word order in Slovenian: reproducibility package"
 abstract: >-
   Scripts, canonical result tables and figures reproducing the quantitative
