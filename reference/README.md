@@ -1,24 +1,21 @@
-# Verified reference caches
+# Verified stored counts
 
-Reference files support an explicitly requested lightweight reproduction. They
-are analytical evidence, not raw/source corpora and not substitutes disguised
-as full extraction.
+For some corpora the exact analysed file is not distributed here. This directory
+stores aggregate results, not reconstructed corpora. “Verified” means the six
+word-order counts were obtained independently with STARK and the direct
+CoNLL-U extractor and agreed exactly.
 
-`word_order_counts.tsv` contains 10 corpora × 6 patterns. Every row comes from
-counts for which the thesis STARK query and the independent direct CoNLL-U
-implementation agreed exactly. It covers the large JANES, Wikipedia,
-ParlaMint-SI and KDSP inputs plus the non-redistributed Human/GPT-5 essay pair.
+- `word_order_counts.tsv` supplies 10 corpora × 6 patterns when
+  `--use-reference-cache` is requested.
+- `ner_word_order_counts.tsv` supplies the NER splits for JANES-News and the
+  human/GPT-5 essay pair when their prepared files are absent.
+- `manual_subset_counts.tsv` supplies the SUK side of the separate supplementary
+  H2 check.
 
-`ner_word_order_counts.tsv` contains the historical six-pattern NER splits for
-JANES-News and the Human/GPT-5 essays, whose prepared CoNLL-U is unavailable in
-this package. Entity status is based on the argument head token: case-normalized
-`NER=B-*` or `NER=I-*` is `entity`; `O` or absent is `common`.
+If a prepared corpus is present, it is analysed instead of using stored counts.
+Output rows identify stored results with `verified_reference_*` statuses.
 
-The word-order cache is consumed only with `--use-reference-cache`. The output
-records `verified_reference_stark_direct_exact`. The NER cache is likewise
-opt-in and records `verified_reference_counts`. Corpora present in `prepared/`
-are always reanalysed instead of being replaced by cached rows.
-
-Source/generation provenance for the thesis essay pair remains unresolved; the
-cache preserves only verified aggregate counts and does not imply that the raw
-essays are publicly available.
+For the essay pair, GPT-5 source and generation are documented by AI-GenT 1.0.
+The human syntactic annotator remains undocumented. The derived annotated Human
+subset is not distributed in this repository and must be obtained or prepared
+from the source data.

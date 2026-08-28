@@ -1,42 +1,34 @@
 # Word order in Slovenian: reproducibility package
 
-Reproduces the quantitative analyses and the seven figures of a master's thesis on
-subject–verb–object word order in Slovenian (University of Ljubljana, Digital
-Linguistics). The study asks how the relative order of subject, verb and object
-varies across standard written, spoken, web, encyclopaedic, parliamentary,
-historical-prose and human-versus-machine-generated Slovenian, and whether
-registers differ in how fixed or variable that order is.
+This repository accompanies a master's thesis on subject–verb–object word order
+in Slovenian. It compares the six possible S/V/O orders across written, spoken,
+web, parliamentary, historical and human-versus-machine-generated texts, runs
+the thesis statistics and recreates the seven figures.
 
-All examples come from one query over dependency-annotated corpora:
+Some corpora can be rebuilt from public sources. For others, the exact analysed
+file cannot be redistributed or reconstructed here, so the repository includes
+previously verified aggregate counts instead.
+
+## Main word-order query
+
+The main analysis uses this dependency query:
 
 ```text
 upos=VERB >nsubj upos=NOUN >obj upos=NOUN
 ```
 
-The predicate must be a `VERB` and both arguments common nouns (`NOUN`), with
-relations exactly `nsubj` and `obj`; subtypes and `iobj` are excluded. Every
-matching subject × object pair is classified as SVO, SOV, VSO, VOS, OSV or OVS.
+It selects a `VERB` with an exact `nsubj` and `obj`, both headed by `NOUN`.
+Relation subtypes and `iobj` are excluded. All matching subject × object pairs
+are counted and classified as SVO, SOV, VSO, VOS, OSV or OVS.
 
-## What you can reproduce
+The separate named-entity analysis uses the same relations but allows `NOUN` or
+`PROPN` argument heads.
 
-Three levels apply to different corpora:
+## What a fresh clone contains
 
-- **Level 1 — source-to-result.** You obtain the official release, this package
-  builds the analysis corpus and extracts the counts on your machine.
-- **Level 2 — prepared-input-to-result.** The exact analysed file is available to
-  you, but this package cannot rebuild it from a public source. Counts are
-  recomputed from that file, which is identified by SHA-256.
-- **Level 3 — downstream-from-verified-counts.** The analysis corpus is not
-  available, so stored counts verified at analysis time are used instead.
-
-> **A cached count is a recorded analysis result, not a rebuilt corpus.** At level 3
-> nothing is recomputed from text, and the corpus preparation behind those numbers
-> cannot be rechecked. Every such row is marked `verified_reference_*` in the output.
-
-Statistics, all seven figures and the supplementary check are recomputed in full
-regardless. The **verified-cache workflow** is what an outside reader can run today;
-the **full workflow** requires all 18 analysis corpora and never falls back to the
-cache.
+No CoNLL-U corpus files are tracked in Git. A fresh clone contains the numerical
+results, statistics and figures, plus verified stored counts for corpora that may
+be unavailable. It does not contain prepared corpora.
 
 ## Repository structure
 
@@ -107,7 +99,7 @@ flowchart TB
 Details live next to the data they describe: [`inputs/README.md`](inputs/README.md)
 for corpus sources, versions, licences and preparation;
 [`prepared/README.md`](prepared/README.md) for checksums and what is pinned;
-[`reference/README.md`](reference/README.md) for what the cached counts are and how
+[`reference/README.md`](reference/README.md) for what the stored counts are and how
 they were verified.
 
 ## Data flow
@@ -141,7 +133,7 @@ flowchart TB
     SUP("<b>SUK + supplied JANES</b><br/>SUK → Literary · Publicistic · Professional<br/>JANES News · Blog · Forum · Tweet")
     PUB("<b>Other public corpora</b><br/>JANES-Wiki · CLASSLA-Wikipedia<br/>ParlaMint-SI 4.0 · KDSP")
     ESS("<b>Matched essays</b><br/>Human 4y-ss · GPT-5 4y-ss/pap<br/>691 docs · deterministic NER enrichment")
-    AIG("<b>AI-GenT robustness</b><br/>GPT-5 · GaMS · Gemma<br/>4y-gs / default")
+    AIG("<b>AI-GenT supplementary comparison</b><br/>GPT-5 · GaMS · Gemma<br/>4y-gs / default")
 
     subgraph STATES[" "]
       direction LR
@@ -196,87 +188,76 @@ flowchart TB
     linkStyle default stroke:#829098,stroke-width:1.35px
 ```
 
-## The corpora
+## Corpus routes
 
-18 analysis sets from 12 public resources plus one non-public essay pair. Sources,
-versions, licences and preparation steps are in
+The 18 analysis sets do not all enter the workflow in the same way:
+
+| Corpus | Available route |
+|---|---|
+| SSJ; SST | Rebuild from the public UD 2.18 releases. SST also needs the annotation dependencies. |
+| SUK literary / publicistic / professional | Reanalyse from the exact supervisor-prepared composite or derived files. The public SUK CoNLL-U is not the same corpus. |
+| JANES News / Blog / Forum / Tweet | Reanalyse if the exact supervisor-prepared files are available; otherwise use verified stored counts. |
+| JANES-Wiki; KDSP | The historical preparation is not runnable here; use verified stored counts unless the exact prepared files are available. |
+| CLASSLA-Wikipedia; ParlaMint-SI | Rebuild from the public releases, or use verified stored counts. |
+| Human essays | Reanalyse from the prepared matched subset if available; otherwise use verified stored counts. |
+| GPT-5 essays | Normalize the AI-GenT essay cell to the pinned base file, then add NER; preparation performs only the NER step. Otherwise use verified stored counts. |
+| AI-GenT supplementary GPT-5 / GaMS-27B / gemma-2-27b | Copy the public analysis-ready `4y-gs`, default-prompt files. |
+
+Sources, exact paths, licences and caveats are in
 [`inputs/README.md`](inputs/README.md).
 
-| Corpus | Source / version | How you get it | Level |
-|---|---|---|---|
-| SSJ | UD Slovenian-SSJ r2.18 | rebuilt by this package | 1 |
-| SST | UD Slovenian-SST r2.18 | rebuilt; NER step needs the annotation extras | 1 |
-| SUK literary / publicistic / professional | SUK 1.1, via a composite prepared by the thesis supervisor | not distributed here pending a redistribution decision; runs from the composite | 2 |
-| JANES News / Blog / Forum / Tweet | Janes-* 1.0, JANES v0.4 base; UD conversion prepared by the thesis supervisor | verified counts | 3 |
-| JANES-Wiki | Janes-Wiki 1.0, Wikipedia talk pages | verified counts | 3 |
-| CLASSLA-Wikipedia | CLASSLA-Wikipedia 1.0, Slovenian | public download, else verified counts | 1 / 3 |
-| ParlaMint-SI | ParlaMint.ana 4.0 | public download, else verified counts | 1 / 3 |
-| KDSP | KDSP 1.0 | verified counts | 3 |
-| Human essays | Šolar 3.0, the 691 fourth-year secondary essays | verified counts | 3 |
-| GPT-5 essays | AI-GenT 1.0, `sl/Solar/4y-ss/GPT-5/pap` | from AI-GenT, else verified counts | 2 / 3 |
-| AI-GenT gpt-5 / GaMS-27B / gemma-2-27b | AI-GenT 1.0, `sl/Solar/4y-gs`, default prompt | public download | 1 |
-
-No corpus files are tracked in this repository.
-
-## Quickstart
+## Run from a fresh clone
 
 ```bash
 git clone https://github.com/hulln/sl-word-order-repro.git
 cd sl-word-order-repro
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
+python3 scripts/compute_statistics.py
+python3 scripts/make_figures.py
+python3 scripts/supplementary_manual_subset.py
 ```
 
-Extraction uses [STARK](https://github.com/clarinsi/STARK) (Krsnik & Dobrovoljc,
-TLT 2025, <https://aclanthology.org/2025.tlt-1.5/>), which is not bundled; the
-thesis used upstream commit `fd0202d` (`v3.1.0-3-gfd0202d`). This package runs
-STARK with its own interpreter, so STARK's dependencies go into the same
-environment, and then the workflow runs:
+These commands recompute the summary, statistical tests, seven figures and the
+supplementary check from the included numerical tables. They need neither
+corpora nor STARK.
+
+## Rerun extraction
+
+First obtain the corpus files described in [`inputs/README.md`](inputs/README.md).
+Extraction also needs [STARK](https://github.com/clarinsi/STARK); the thesis used
+commit `fd0202d` (`v3.1.0-3-gfd0202d`). Install its requirements in the same
+environment, then run:
 
 ```bash
 .venv/bin/pip install -r /path/to/STARK/requirements.txt
 python3 scripts/run_all.py --stark /path/to/STARK/stark.py --use-reference-cache
 ```
 
-Drop `--use-reference-cache` for the full workflow. `compute_statistics.py` and
-`make_figures.py` need neither corpora nor STARK — they run from `outputs/data/`,
-which holds the six-pattern counts, the summary with entropy, the named-entity
-table and the statistical tests (χ², Jensen–Shannon, cosine, fixed-seed
-permutation, Fisher, Holm). Only the stages that add a CLASSLA named-entity layer
-need `requirements-annotation.txt`, which pulls in PyTorch.
-
-## Supplementary check
-
-`outputs/supplementary/` holds one check that sits outside the main 18-corpus
-analysis: the H2 genre comparisons repeated on the SUK subset whose syntax is
-manually checked, against the canonical SST. Run it with
-`python3 scripts/supplementary_manual_subset.py`.
+This is not a fresh-clone command. The reference option covers ten corpora only;
+SSJ, SST, the three SUK subsets and the three AI-GenT `4y-gs` files must already
+exist under `prepared/`. Without `--use-reference-cache`, all 18 prepared files
+are required. Only preparation steps that add CLASSLA NER need
+`requirements-annotation.txt`.
 
 ## Limitations
 
-- **The full workflow is not currently achievable from public sources.** The four
-  JANES sets, JANES-Wiki, KDSP and the human essays cannot be reconstructed in the
-  form analysed; they are level 3.
-- **The SUK composite** covers more of SUK than the release distributes as CoNLL-U
-  and cannot be rebuilt from it. Its query-relevant layer (FORM, UPOS, HEAD,
-  DEPREL) was verified identical to SUK 1.1. The prepared files are not
-  distributed here pending a redistribution decision.
-- **ParlaMint** concatenation order was not recorded, so the concatenated file is
-  not byte-reproducible; order cannot change any count.
-- **JANES-Wiki**: CLASSLA re-segmented the text, so the prepared file's sentence
-  count is not established and the manifest pins none.
-- **The essays**: the GPT-5 side is annotated with Trankit (AI-GenT's annotator);
-  the human side's annotator is undocumented and only CLASSLA was ruled out. The
-  two sets are comparable by matched design — 691 paired documents — not by a
-  demonstrated identical annotation procedure. Neither base file carries NER; it is
-  added deterministically by `scripts/add_ner_annotation.py`.
-- **Named-entity results for automatically labelled sources are exploratory**: the
-  criterion is the label on the argument's head token, not givenness or topicality.
-  For Janes-News, the relationship between the analysed conversion and the public
-  anonymised release could not be established.
-- **`all_pairwise`** is computed over every pair mechanically and so includes pairs
-  the thesis never compares — SSJ overlaps SUK by design. The prespecified tests
-  are `h1_omnibus` and `h2_prespecified`.
+- The full extraction cannot be completed from public sources alone: the exact
+  SUK composite, four JANES conversions, JANES-Wiki preparation, KDSP preparation
+  and human essay file are not distributed here.
+- The SUK composite is wider than the public CoNLL-U release. Where comparison
+  was possible, its query-relevant fields matched SUK 1.1.
+- ParlaMint is rebuilt by concatenating the distributed CoNLL-U files in
+  lexicographically sorted full-path order.
+- The 691 human and GPT-5 essays are matched by document. GPT-5 syntax comes from
+  AI-GenT; the human syntactic annotator is undocumented.
+- The supplementary AI-GenT `4y-gs` comparison uses different generated texts
+  and prompts. Its 205 GPT-5 source documents overlap the matched 691, so it is
+  not an independent replication.
+- Automatically labelled NER results are exploratory and classify only the
+  argument head token.
+- `all_pairwise` includes mechanical comparisons outside the thesis hypotheses.
+  The prespecified tests are `h1_omnibus` and `h2_prespecified`.
 
 ## Licence and citation
 

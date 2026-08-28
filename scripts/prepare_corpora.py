@@ -152,7 +152,7 @@ def decompress_conllu(source: Path, destination: Path) -> None:
 
 
 def concatenate_ana(source: Path, destination: Path) -> None:
-    files = sorted(source.rglob("*.conllu"))
+    files = sorted(source.rglob("*.conllu"), key=lambda path: str(path))
     if not files:
         raise RuntimeError(f"{source}: no .conllu files found")
     destination.parent.mkdir(parents=True, exist_ok=True)

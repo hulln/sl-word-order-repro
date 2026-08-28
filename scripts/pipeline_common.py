@@ -119,25 +119,22 @@ def validate_conllu(path: Path, expected_sentences: str = "") -> dict[str, int]:
     if not path.is_file():
         raise RuntimeError(f"Prepared corpus is missing: {path}")
     sentence_blocks = 0
-    sentence_ids = 0
     tokens = 0
     ner_tokens = 0
-    in_sentence = False
+    in_block = False
     with path.open(encoding="utf-8-sig", errors="strict") as handle:
         for line_number, line in enumerate(handle, 1):
             if not line.strip():
-                if in_sentence:
+                if in_block:
                     sentence_blocks += 1
-                    in_sentence = False
+                    in_block = False
                 continue
+            in_block = True
             if line.startswith("#"):
-                if line.startswith("# sent_id = "):
-                    sentence_ids += 1
                 continue
             columns = line.rstrip("\n").split("\t")
             if len(columns) != 10:
                 raise RuntimeError(f"{path}:{line_number}: expected 10 CoNLL-U columns")
-            in_sentence = True
             if not columns[0].isdigit():
                 continue
             tokens += 1
@@ -147,9 +144,9 @@ def validate_conllu(path: Path, expected_sentences: str = "") -> dict[str, int]:
                 )
             if any(part.upper().startswith("NER=") for part in columns[9].split("|")):
                 ner_tokens += 1
-    if in_sentence:
+    if in_block:
         sentence_blocks += 1
-    sentence_count = sentence_ids or sentence_blocks
+    sentence_count = sentence_blocks
     if expected_sentences and sentence_count != int(expected_sentences):
         raise RuntimeError(
             f"{path}: expected {expected_sentences} sentences, found {sentence_count}"
