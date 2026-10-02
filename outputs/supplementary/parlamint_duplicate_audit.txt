@@ -1,0 +1,158 @@
+ParlaMint-SI exact-text duplicate audit (explanatory only)
+Generated UTC: 2026-10-01T21:21:49+00:00
+Input: /mnt/local-hddpool/niveshull/thesis/corpora/parlamint-si.conllu
+Input SHA-256: be53ad8a8b28e1f7996ba79de045b1c3516324cd8adbe902ea2500e7d02bd81e
+Canonical extractor: /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/canonical/scripts/extract_word_order_direct.py
+Canonical extractor SHA-256: 2276cbbc7317e7d1c11848be2c8c9c4e790df0585653c19e68a059c320a982a3
+Reused implementation: /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/scripts/dedup_sensitivity.py
+Reused implementation SHA-256: 93a773aa703c340ef0e92b841180b987d87a3a1a3958d7be03def035fe2afd1e
+Audit script SHA-256: 4adcba838904e5d42eb6c1b4fde309868bd90ff19365587ad8d66a6bbe273d41
+Completed dedup TSV: /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/results/dedup_sensitivity.tsv
+Completed dedup TSV SHA-256: 7e412bd4e93fd14be4097fb896f91858f0e8634b51170da2d1b6fdc27a3f93c9
+Elapsed seconds before publication: 235.0
+SQLite cache: 64 MiB; disk-backed exact BLOB keys; one sentence in memory
+Reconciliation: VERIFIED against the completed ParlaMint dedup checkpoint, all six orders and sentence totals.
+Identity: exact # text = content, physical line ending removed; integer-token FORM fallback only if absent.
+Within ParlaMint only; preserve first occurrence in file order; no manual normalization.
+Canonical NOUN nsubj / VERB / NOUN obj counts; every matching subject x object pair counts.
+Exact text does not guarantee identical annotations or count vectors. Every occurrence was extracted.
+excess_* = actual contributions of later copies; nominal_excess_* = (occurrences-1)*first_*.
+pattern_count_variants_json gives vector frequencies, retained copies and exact excess by vector.
+No repeated example is classified as a procedural formula; no linguistic or information-structure cause is inferred.
+H1/H2 and other extraction queries are outside this audit.
+
+Sentences before: 3,876,183
+Unique texts retained: 3,133,122
+Later copies removed: 743,061
+Repeated text types (including zero S/V/O instances): 68,984
+FORM-fallback occurrences: 0
+Repeated types with differing count vectors: 0
+Later occurrences with a vector different from the first: 0
+S/V/O instances: 497,572 before; 453,811 after; 43,761 removed
+Entropy (natural log): 1.05484711425 before; 0.994274131895 after
+
+order	before	after	excess_removed	pct_before_due_to_later_copies	share_before_pct	share_after_pct	nominal_excess_using_first
+SVO	337886	326388	11498	3.402922879	67.906956179	71.921570874	11498
+SOV	31837	30434	1403	4.406822251	6.398470975	6.706316065	1403
+VSO	18345	17386	959	5.227582448	3.686903604	3.831110308	959
+VOS	17326	14801	2525	14.573473393	3.482109122	3.261489915	2525
+OSV	10377	10014	363	3.498120844	2.085527321	2.206645498	363
+OVS	81801	54788	27013	33.022823682	16.440032799	12.072867339	27013
+
+OVS reduction concentration (ranked by actual excess_OVS; denominator = total OVS removed)
+Before: 81,801; after: 54,788; removed: 27,013
+Top 5 types (5 positive contributors available): 3,387 removed; 12.538407433% of reduction
+Top 10 types (10 positive contributors available): 4,317 removed; 15.981194240% of reduction
+Top 20 types (20 positive contributors available): 5,356 removed; 19.827490468% of reduction
+
+SVO reduction concentration (ranked by actual excess_SVO; denominator = total SVO removed)
+Before: 337,886; after: 326,388; removed: 11,498
+Top 5 types (5 positive contributors available): 1,190 removed; 10.349626022% of reduction
+Top 10 types (10 positive contributors available): 1,557 removed; 13.541485476% of reduction
+Top 20 types (20 positive contributors available): 2,114 removed; 18.385806227% of reduction
+
+TOP 30 BY excess_total (positive contributors; ties by first sentence index)
+rank	occurrences	first_index	excess_total	excess_OVS	excess_SVO	first_counts	excess_counts	count_vectors_identical	sentence_text_json
+1	513	4692	1024	1024	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1024}	1	"Predlog zakona je v obravnavo zboru predložila vlada Republike Slovenije."
+2	784	1243041	783	783	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":783}	1	"Predlog zakona je v obravnavo zboru predložila Vlada."
+3	627	1244710	626	626	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":626}	1	"Predlog zakona je v obravnavo Državnemu zboru predložila Vlada."
+4	612	90	611	0	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":1,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":0,"VOS":611,"OSV":0,"OVS":0}	1	"Želijo besedo predstavniki poslanskih skupin?"
+5	270	6015	538	538	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":538}	1	"Predlog zakona je v obravnavo zboru predložila Vlada Republike Slovenije."
+6	209	966170	416	416	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":416}	1	"Predlog sklepa je v obravnavo zboru predložila Mandatno-volilna komisija."
+7	417	984983	416	0	416	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":416,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Vsi prijavljeni razpravljavci, ki ste to želeli, ste dobili besedo."
+8	306	3445	305	0	0	{"SVO":0,"SOV":0,"VSO":1,"VOS":0,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":305,"VOS":0,"OSV":0,"OVS":0}	1	"Želi predstavnik vlade besedo?"
+9	301	270163	300	0	300	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":300,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod minister, imate besedo za odgovor."
+10	257	289225	256	0	0	{"SVO":0,"SOV":1,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":0,"SOV":256,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Ugotavljam, da je zbor predlagani sklep sprejel."
+11	240	939009	239	239	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":239}	1	"Predlog zakona je obravnaval Odbor za finance in monetarno politiko kot matično delovno telo."
+12	214	2811162	213	0	213	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":213,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod minister, imate besedo za dopolnitev odgovora."
+13	208	640467	207	207	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":207}	1	"Besedo ima gospod Jožef Horvat."
+14	204	2029	203	0	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":1,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":0,"VOS":203,"OSV":0,"OVS":0}	1	"Želi besedo predstavnik sekretariata?"
+15	174	12100	173	173	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":173}	1	"Besedo ima gospod Jože Tanko."
+16	164	170821	163	163	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":163}	1	"Besedo ima gospod Jožef Jerovšek."
+17	161	314594	160	0	0	{"SVO":0,"SOV":1,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":0,"SOV":160,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Ugotavljam, da je zbor uradno prečiščeno besedilo navedenega zakona potrdil."
+18	154	3167706	153	0	153	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":153,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod poslanec, imate besedo za obrazložitev zahteve za dopolnitev odgovora."
+19	149	205517	148	148	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":148}	1	"Besedo ima gospod Janko Veber."
+20	148	966074	147	147	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":147}	1	"Predlog zakona je obravnaval Odbor za zunanjo politiko kot matično delovno telo, ki je zboru pisno poročal."
+21	126	290200	125	0	0	{"SVO":0,"SOV":1,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":0,"SOV":125,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Ugotavljam, da zbor predlaganega sklepa ni sprejel, zato je zakonodajni postopek o predlogu zakona končan."
+22	116	601	115	0	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":1,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":0,"VOS":115,"OSV":0,"OVS":0}	1	"Želi besedo predstavnik vlade?"
+23	116	952390	115	115	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":115}	1	"Predlog zakona je obravnaval Odbor za notranjo politiko, javno upravo in pravosodje kot matično delovno telo."
+24	116	1329251	115	115	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":115}	1	"Besedo ima gospod Franco Juri."
+25	114	426	113	0	0	{"SVO":0,"SOV":0,"VSO":1,"VOS":0,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":113,"VOS":0,"OSV":0,"OVS":0}	1	"Želi poročevalec komisije besedo?"
+26	109	634181	108	0	108	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":108,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Poslanec, ki ne bo zadovoljen z odgovorom, lahko zahteva dopolnitev odgovora, ne more pa postaviti dodatnega vprašanja."
+27	106	786862	105	105	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":105}	1	"Besedo ima gospod Zvonko Černač."
+28	105	37297	104	0	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":1,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":0,"VOS":104,"OSV":0,"OVS":0}	1	"Želi besedo predstavnica sekretariata?"
+29	102	110897	101	101	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":101}	1	"Besedo ima gospod Franc Pukšič."
+30	98	205	97	0	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":1,"OSV":0,"OVS":0}	{"SVO":0,"SOV":0,"VSO":0,"VOS":97,"OSV":0,"OVS":0}	1	"Želi besedo predstavnik sekretariata za zakonodajo in pravne zadeve?"
+
+TOP 30 BY excess_OVS (positive contributors; ties by first sentence index)
+rank	occurrences	first_index	excess_total	excess_OVS	excess_SVO	first_counts	excess_counts	count_vectors_identical	sentence_text_json
+1	513	4692	1024	1024	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1024}	1	"Predlog zakona je v obravnavo zboru predložila vlada Republike Slovenije."
+2	784	1243041	783	783	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":783}	1	"Predlog zakona je v obravnavo zboru predložila Vlada."
+3	627	1244710	626	626	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":626}	1	"Predlog zakona je v obravnavo Državnemu zboru predložila Vlada."
+4	270	6015	538	538	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":538}	1	"Predlog zakona je v obravnavo zboru predložila Vlada Republike Slovenije."
+5	209	966170	416	416	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":416}	1	"Predlog sklepa je v obravnavo zboru predložila Mandatno-volilna komisija."
+6	240	939009	239	239	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":239}	1	"Predlog zakona je obravnaval Odbor za finance in monetarno politiko kot matično delovno telo."
+7	208	640467	207	207	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":207}	1	"Besedo ima gospod Jožef Horvat."
+8	174	12100	173	173	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":173}	1	"Besedo ima gospod Jože Tanko."
+9	164	170821	163	163	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":163}	1	"Besedo ima gospod Jožef Jerovšek."
+10	149	205517	148	148	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":148}	1	"Besedo ima gospod Janko Veber."
+11	148	966074	147	147	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":147}	1	"Predlog zakona je obravnaval Odbor za zunanjo politiko kot matično delovno telo, ki je zboru pisno poročal."
+12	116	952390	115	115	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":115}	1	"Predlog zakona je obravnaval Odbor za notranjo politiko, javno upravo in pravosodje kot matično delovno telo."
+13	116	1329251	115	115	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":115}	1	"Besedo ima gospod Franco Juri."
+14	106	786862	105	105	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":105}	1	"Besedo ima gospod Zvonko Černač."
+15	102	110897	101	101	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":101}	1	"Besedo ima gospod Franc Pukšič."
+16	94	12355	93	93	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":93}	1	"Predlog zakona je obravnaval odbor za finance in monetarno politiko kot matično delovno telo."
+17	93	749908	92	92	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":92}	1	"Besedo ima gospod Marijan Pojbič."
+18	93	2002108	92	92	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":92}	1	"Besedo ima gospod Tomaž Lisec."
+19	46	2437506	90	90	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":2}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":90}	1	"Besedo ima Poslanska skupina Združena levica, zanjo Luka Mesec."
+20	90	1048464	89	89	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":89}	1	"Predlog zakona je obravnaval Odbor za delo, družino, socialne zadeve in invalide kot matično delovno telo."
+21	87	655528	86	86	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":86}	1	"Besedo ima gospod Ivan Grill."
+22	86	2397019	85	85	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":85}	1	"Besedo ima gospa Anja Bah Žibert."
+23	85	6325	84	84	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":84}	1	"Predlog zakona je obravnaval odbor za notranjo politiko kot matično delovno telo."
+24	85	742907	84	84	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":84}	1	"Besedo ima gospa Breda Pečan."
+25	81	88386	80	80	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":80}	1	"Besedo ima gospod Rudolf Petan."
+26	81	1366946	80	80	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":80}	1	"Besedo ima gospod Zvonko Lah."
+27	79	1956589	78	78	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":78}	1	"Besedo ima gospod Franc Breznik."
+28	77	170646	76	76	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":76}	1	"Besedo ima gospod Bogdan Barovič."
+29	77	2506156	76	76	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":76}	1	"Besedo ima Poslanska skupina Socialnih demokratov, zanjo gospod Janko Veber."
+30	76	50694	75	75	0	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":1}	{"SVO":0,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":75}	1	"Predlog zakona je obravnaval Odbor za gospodarstvo kot matično delovno telo."
+
+TOP 30 BY excess_SVO (positive contributors; ties by first sentence index)
+rank	occurrences	first_index	excess_total	excess_OVS	excess_SVO	first_counts	excess_counts	count_vectors_identical	sentence_text_json
+1	417	984983	416	0	416	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":416,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Vsi prijavljeni razpravljavci, ki ste to želeli, ste dobili besedo."
+2	301	270163	300	0	300	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":300,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod minister, imate besedo za odgovor."
+3	214	2811162	213	0	213	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":213,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod minister, imate besedo za dopolnitev odgovora."
+4	154	3167706	153	0	153	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":153,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod poslanec, imate besedo za obrazložitev zahteve za dopolnitev odgovora."
+5	109	634181	108	0	108	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":108,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Poslanec, ki ne bo zadovoljen z odgovorom, lahko zahteva dopolnitev odgovora, ne more pa postaviti dodatnega vprašanja."
+6	87	359684	86	0	86	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":86,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa ministrica, imate besedo za odgovor."
+7	81	3166326	80	0	80	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":80,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod poslanec, imate besedo za postopkovni predlog."
+8	79	2676344	78	0	78	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":78,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Predsednik Vlade Republike Slovenije dr. Miro Cerar, imate besedo za odgovor."
+9	64	1611187	63	0	63	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":63,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Ker matično delovno telo v okviru druge obravnave ni sprejelo nobenega amandmaja, amandmajev na seji zbora ni možno vlagati, zato prehajamo na odločanje o predlogu zakona."
+10	61	2676394	60	0	60	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":60,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Predsednik Vlade Republike Slovenije dr. Miro Cerar, imate besedo za dopolnitev odgovora."
+11	61	3218250	60	0	60	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":60,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa poslanka, imate besedo za obrazložitev zahteve za dopolnitev odgovora."
+12	60	1050693	59	0	59	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":59,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Bogdan Barovič bo predstavil stališče Poslanske skupine Slovenske nacionalne stranke."
+13	60	1057403	59	0	59	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":59,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Janko Veber bo predstavil stališče Poslanske skupine Socialnih demokratov."
+14	60	2112256	59	0	59	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":59,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa Marjana Kotnik Poropat bo predstavila stališče Poslanske skupine Demokratične stranke upokojencev Slovenije."
+15	59	1048564	58	0	58	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":58,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Jožef Horvat bo predstavil stališče Poslanske skupine Nove Slovenije."
+16	58	216477	57	0	57	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":57,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Ugotavljam, da amandma ni dobil podpore."
+17	29	3252823	56	0	56	{"SVO":2,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":56,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod poslanec, imate besedo za postopkovni predlog, da Državni zbor na naslednji seji opravi razpravo o odgovoru."
+18	54	82615	53	0	53	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":53,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa ministrica, imate besedo."
+19	51	1095880	50	0	50	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":50,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Vsi prijavljeni razpravljavci ste dobili besedo."
+20	47	17199	46	0	46	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":46,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod minister, želite besedo?"
+21	46	1098426	45	0	45	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":45,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Jakob Presečnik bo predstavil stališče Poslanske skupine Slovenske ljudske stranke."
+22	45	2441743	44	0	44	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":44,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa Iva Dimic bo predstavila stališče Poslanske skupine Nove Slovenije – krščanskih demokratov."
+23	44	210772	43	0	43	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":43,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Amandma ni dobil podpore."
+24	44	2396381	43	0	43	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":43,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Jožef Horvat bo predstavil stališče Poslanske skupine Nove Slovenije – krščanskih demokratov."
+25	44	2535407	43	0	43	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":43,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Jan Škoberne bo predstavil stališče Poslanske skupine Socialnih demokratov."
+26	43	2810287	42	0	42	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":42,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa ministrica, imate besedo za dopolnitev odgovora."
+27	42	645998	41	0	41	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":41,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Poslanske skupine so mi že posredovale predloge za člane komisije, ki vodi glasovanje."
+28	42	1402368	41	0	41	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":41,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospod Janez Ribič bo predstavil stališče Poslanske skupine Slovenske ljudske stranke."
+29	40	13420	39	0	39	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":39,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Ugotavljam, da amandma ni dobil potrebne podpore."
+30	39	2432922	38	0	38	{"SVO":1,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	{"SVO":38,"SOV":0,"VSO":0,"VOS":0,"OSV":0,"OVS":0}	1	"Gospa Marija Bačič bo predstavila stališče Poslanske skupine Socialnih demokratov."
+
+TSV contains every repeated type and unaltered decoded text; use a CSV-aware TSV reader for quoted tabs/quotes.
+Report sentence_text_json is reversible display escaping, not normalization or truncation.
+Sort TSV numerically by occurrences, excess_total, excess_OVS or excess_SVO.
+The concentration denominators are count reductions, not changes in percentage share.
+Differing count vectors may reflect differing tokenization, POS or dependencies; this audit does not diagnose them.
+Inherited UTF-8 errors='ignore' matches dedup_sensitivity.py; raw source identity is pinned by SHA-256.

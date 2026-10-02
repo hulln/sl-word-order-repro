@@ -219,6 +219,13 @@ reviewed and robustness analyses are kept separately under
 `scripts/supplementary_manual_subset.py` and
 `scripts/supplementary_robustness.py` to reproduce them.
 
+The completed [exact-text repetition sensitivity check](outputs/supplementary/repetition_sensitivity.md)
+uses `scripts/dedup_sensitivity.py` and `scripts/inspect_parlamint_duplicates.py`.
+It requires the four exact prepared corpora and an external output/scratch
+directory; aggregate reference counts alone are insufficient. Preserved results,
+raw logs, the ParlaMint audit and a targeted manual spot-check note are included.
+The primary frequency-based results remain the basis of the main comparison.
+
 ## Run from a fresh clone
 
 ```bash
@@ -232,8 +239,8 @@ python3 scripts/supplementary_robustness.py
 python3 scripts/make_figures.py
 ```
 
-These commands recompute the summary, main statistical tests, all supplementary
-checks, and seven figures from the included numerical tables. They need neither
+These commands recompute the summary, main statistical tests, supplementary
+checks backed by the included numerical tables, and seven figures. They need neither
 corpora nor STARK. The robustness script takes roughly one minute on a typical
 laptop because it performs the frozen 20,000-permutation checks.
 

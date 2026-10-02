@@ -1,0 +1,21 @@
+nohup: ignoring input
+[2026-10-01T21:18:06+00:00] parlamint-si.conllu SHA-256: 100.0% (6.09/6.09 GiB), 513.8 MiB/s, elapsed 0.2 min, ETA 0.0 min 
+[2026-10-01T21:18:06+00:00] Input and canonical extractor SHA-256 verified
+[2026-10-01T21:18:37+00:00] parlamint-si.conllu duplicate audit: 15.0% (0.91/6.09 GiB), 30.7 MiB/s, elapsed 0.5 min, ETA 2.9 min sentences=640,000, unique=493,213
+[2026-10-01T21:19:07+00:00] parlamint-si.conllu duplicate audit: 29.5% (1.80/6.09 GiB), 30.2 MiB/s, elapsed 1.0 min, ETA 2.4 min sentences=1,190,000, unique=921,862
+[2026-10-01T21:19:38+00:00] parlamint-si.conllu duplicate audit: 43.6% (2.66/6.09 GiB), 29.5 MiB/s, elapsed 1.5 min, ETA 2.0 min sentences=1,730,000, unique=1,360,270
+[2026-10-01T21:20:10+00:00] parlamint-si.conllu duplicate audit: 57.9% (3.53/6.09 GiB), 29.3 MiB/s, elapsed 2.1 min, ETA 1.5 min sentences=2,270,000, unique=1,797,971
+[2026-10-01T21:20:41+00:00] parlamint-si.conllu duplicate audit: 71.7% (4.37/6.09 GiB), 29.0 MiB/s, elapsed 2.6 min, ETA 1.0 min sentences=2,790,000, unique=2,234,658
+[2026-10-01T21:21:12+00:00] parlamint-si.conllu duplicate audit: 85.6% (5.22/6.09 GiB), 28.7 MiB/s, elapsed 3.1 min, ETA 0.5 min sentences=3,310,000, unique=2,671,735
+[2026-10-01T21:21:44+00:00] parlamint-si.conllu duplicate audit: 98.5% (6.00/6.09 GiB), 28.3 MiB/s, elapsed 3.6 min, ETA 0.1 min sentences=3,820,000, unique=3,088,914
+[2026-10-01T21:21:47+00:00] parlamint-si.conllu duplicate audit: 100.0% (6.09/6.09 GiB), 28.3 MiB/s, elapsed 3.7 min, ETA 0.0 min sentences=3,876,183, unique=3,133,122
+[2026-10-01T21:21:47+00:00] All six before/after counts and sentence totals reconcile with completed dedup run
+[2026-10-01T21:21:47+00:00] Scratch SQLite size: 0.561 GiB
+[2026-10-01T21:21:47+00:00] Report export: 10,000 repeated types written
+[2026-10-01T21:21:47+00:00] Report export: 20,000 repeated types written
+[2026-10-01T21:21:48+00:00] Report export: 30,000 repeated types written
+[2026-10-01T21:21:48+00:00] Report export: 40,000 repeated types written
+[2026-10-01T21:21:48+00:00] Report export: 50,000 repeated types written
+[2026-10-01T21:21:49+00:00] Report export: 60,000 repeated types written
+[2026-10-01T21:21:49+00:00] Outputs: /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/parlamint-audit/results/parlamint_duplicate_examples.tsv; /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/parlamint-audit/results/parlamint_duplicate_audit.txt
+[2026-10-01T21:21:49+00:00] Elapsed: 3.9 minutes; temporary SQLite removed

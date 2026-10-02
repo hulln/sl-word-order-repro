@@ -1,0 +1,146 @@
+nohup: ignoring input
+[2026-10-01T19:38:51+00:00] Canonical extractor: /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/canonical/scripts/extract_word_order_direct.py; SHA-256=2276cbbc7317e7d1c11848be2c8c9c4e790df0585653c19e68a059c320a982a3; unchanged flush_sentence() plus canonical classify()
+[2026-10-01T19:38:51+00:00] Reference config/corpora.tsv: SHA-256=ecec27bcbe51e0b0fde355c165269a2e8347c9819daa50f5fff19285c984c4e0
+[2026-10-01T19:38:51+00:00] Reference outputs/data/word_order_summary.tsv: SHA-256=6d9fb032ea1469dea4e694beb9b33fe241463674b7cde1fa28d232d3566d7381
+[2026-10-01T19:38:51+00:00] Identity: exact # text content; integer-token FORM fallback; first occurrence; within corpus only. Entropy: natural log. JSD: sqrt(base-2 Jensen-Shannon divergence). SQLite cache: 64 MiB.
+[2026-10-01T19:39:17+00:00] janes_tweet.conllu SHA-256: 100.0% (10.99/10.99 GiB), 423.6 MiB/s, elapsed 0.4 min, ETA 0.0 min 
+[2026-10-01T19:39:17+00:00] janes-tweet: SHA-256 verified
+[2026-10-01T19:39:47+00:00] janes_tweet.conllu ordinary extraction: 10.5% (1.16/10.99 GiB), 39.3 MiB/s, elapsed 0.5 min, ETA 4.3 min sentences=2,110,000, retained=2,110,000
+[2026-10-01T19:40:17+00:00] janes_tweet.conllu ordinary extraction: 21.2% (2.34/10.99 GiB), 39.7 MiB/s, elapsed 1.0 min, ETA 3.7 min sentences=4,190,000, retained=4,190,000
+[2026-10-01T19:40:48+00:00] janes_tweet.conllu ordinary extraction: 31.8% (3.50/10.99 GiB), 39.7 MiB/s, elapsed 1.5 min, ETA 3.2 min sentences=6,260,000, retained=6,260,000
+[2026-10-01T19:41:18+00:00] janes_tweet.conllu ordinary extraction: 42.5% (4.68/10.99 GiB), 39.8 MiB/s, elapsed 2.0 min, ETA 2.7 min sentences=8,380,000, retained=8,380,000
+[2026-10-01T19:41:48+00:00] janes_tweet.conllu ordinary extraction: 53.1% (5.83/10.99 GiB), 39.7 MiB/s, elapsed 2.5 min, ETA 2.2 min sentences=10,490,000, retained=10,490,000
+[2026-10-01T19:42:18+00:00] janes_tweet.conllu ordinary extraction: 63.8% (7.02/10.99 GiB), 39.8 MiB/s, elapsed 3.0 min, ETA 1.7 min sentences=12,640,000, retained=12,640,000
+[2026-10-01T19:42:48+00:00] janes_tweet.conllu ordinary extraction: 74.5% (8.19/10.99 GiB), 39.8 MiB/s, elapsed 3.5 min, ETA 1.2 min sentences=14,740,000, retained=14,740,000
+[2026-10-01T19:43:18+00:00] janes_tweet.conllu ordinary extraction: 85.3% (9.38/10.99 GiB), 39.9 MiB/s, elapsed 4.0 min, ETA 0.7 min sentences=16,790,000, retained=16,790,000
+[2026-10-01T19:43:48+00:00] janes_tweet.conllu ordinary extraction: 95.8% (10.54/10.99 GiB), 39.8 MiB/s, elapsed 4.5 min, ETA 0.2 min sentences=18,890,000, retained=18,890,000
+[2026-10-01T19:44:00+00:00] janes_tweet.conllu ordinary extraction: 100.0% (10.99/10.99 GiB), 39.8 MiB/s, elapsed 4.7 min, ETA 0.0 min sentences=19,707,683, retained=19,707,683
+[2026-10-01T19:44:00+00:00] janes-tweet: ordinary total AND all six counts verified; starting deduplication
+[2026-10-01T19:44:30+00:00] janes_tweet.conllu deduplication: 7.8% (0.86/10.99 GiB), 29.2 MiB/s, elapsed 0.5 min, ETA 5.9 min sentences=1,560,000, retained=1,205,824
+[2026-10-01T19:45:00+00:00] janes_tweet.conllu deduplication: 15.1% (1.66/10.99 GiB), 28.2 MiB/s, elapsed 1.0 min, ETA 5.6 min sentences=2,990,000, retained=2,279,063
+[2026-10-01T19:45:30+00:00] janes_tweet.conllu deduplication: 22.2% (2.44/10.99 GiB), 27.6 MiB/s, elapsed 1.5 min, ETA 5.3 min sentences=4,360,000, retained=3,305,406
+[2026-10-01T19:46:00+00:00] janes_tweet.conllu deduplication: 28.8% (3.16/10.99 GiB), 26.9 MiB/s, elapsed 2.0 min, ETA 5.0 min sentences=5,650,000, retained=4,254,484
+[2026-10-01T19:46:31+00:00] janes_tweet.conllu deduplication: 35.4% (3.89/10.99 GiB), 26.5 MiB/s, elapsed 2.5 min, ETA 4.6 min sentences=6,970,000, retained=5,230,259
+[2026-10-01T19:47:01+00:00] janes_tweet.conllu deduplication: 42.0% (4.61/10.99 GiB), 26.1 MiB/s, elapsed 3.0 min, ETA 4.2 min sentences=8,260,000, retained=6,180,207
+[2026-10-01T19:47:31+00:00] janes_tweet.conllu deduplication: 48.3% (5.32/10.99 GiB), 25.8 MiB/s, elapsed 3.5 min, ETA 3.8 min sentences=9,530,000, retained=7,110,063
+[2026-10-01T19:48:01+00:00] janes_tweet.conllu deduplication: 54.6% (6.00/10.99 GiB), 25.5 MiB/s, elapsed 4.0 min, ETA 3.3 min sentences=10,790,000, retained=8,018,127
+[2026-10-01T19:48:31+00:00] janes_tweet.conllu deduplication: 60.8% (6.68/10.99 GiB), 25.2 MiB/s, elapsed 4.5 min, ETA 2.9 min sentences=12,040,000, retained=8,902,918
+[2026-10-01T19:49:01+00:00] janes_tweet.conllu deduplication: 66.8% (7.35/10.99 GiB), 25.0 MiB/s, elapsed 5.0 min, ETA 2.5 min sentences=13,250,000, retained=9,765,975
+[2026-10-01T19:49:31+00:00] janes_tweet.conllu deduplication: 72.8% (8.01/10.99 GiB), 24.8 MiB/s, elapsed 5.5 min, ETA 2.1 min sentences=14,410,000, retained=10,588,714
+[2026-10-01T19:50:01+00:00] janes_tweet.conllu deduplication: 78.4% (8.62/10.99 GiB), 24.4 MiB/s, elapsed 6.0 min, ETA 1.7 min sentences=15,510,000, retained=11,371,776
+[2026-10-01T19:50:31+00:00] janes_tweet.conllu deduplication: 84.1% (9.24/10.99 GiB), 24.2 MiB/s, elapsed 6.5 min, ETA 1.2 min sentences=16,570,000, retained=12,124,084
+[2026-10-01T19:51:01+00:00] janes_tweet.conllu deduplication: 89.4% (9.83/10.99 GiB), 23.9 MiB/s, elapsed 7.0 min, ETA 0.8 min sentences=17,610,000, retained=12,865,635
+[2026-10-01T19:51:31+00:00] janes_tweet.conllu deduplication: 94.4% (10.38/10.99 GiB), 23.5 MiB/s, elapsed 7.5 min, ETA 0.4 min sentences=18,620,000, retained=13,581,307
+[2026-10-01T19:52:03+00:00] janes_tweet.conllu deduplication: 99.8% (10.97/10.99 GiB), 23.2 MiB/s, elapsed 8.1 min, ETA 0.0 min sentences=19,660,000, retained=14,305,292
+[2026-10-01T19:52:05+00:00] janes_tweet.conllu deduplication: 100.0% (10.99/10.99 GiB), 23.2 MiB/s, elapsed 8.1 min, ETA 0.0 min sentences=19,707,683, retained=14,337,522
+[2026-10-01T19:52:05+00:00] janes-tweet: exact identity index size 0.80 GiB (removed now)
+[2026-10-01T19:52:05+00:00] janes-tweet: VERIFIED RESULT; input SHA-256=4a3f1c85f45094941670bf1d1fad7e50dc1fe117b3aa18d7a583ebdf0ca83bb1
+[2026-10-01T19:52:05+00:00]   Sentences: 19,707,683 before; 14,337,522 unique after; 5,370,161 duplicates (27.249073%); 19,707,683 FORM fallbacks
+[2026-10-01T19:52:05+00:00]   S/V/O instances: 496,602 before; 484,129 after
+[2026-10-01T19:52:05+00:00]   Six orders after: SVO=374,000 (77.252137%); SOV=28,201 (5.825100%); VSO=17,112 (3.534595%); VOS=11,165 (2.306204%); OSV=10,489 (2.166571%); OVS=43,162 (8.915392%)
+[2026-10-01T19:52:05+00:00]   SVO: 77.456997757% before; 77.252137344% after; absolute change=0.204860413 percentage points
+[2026-10-01T19:52:05+00:00]   Shannon entropy (natural log): 0.862688231379 before; 0.868615310539 after; absolute change=0.00592707916021
+[2026-10-01T19:52:05+00:00]   Jensen-Shannon distance (base 2), pre vs post: 0.00222618825321
+[2026-10-01T19:52:06+00:00] janes.wiki.conllu SHA-256: 100.0% (0.37/0.37 GiB), 504.1 MiB/s, elapsed 0.0 min, ETA 0.0 min 
+[2026-10-01T19:52:06+00:00] janes-wiki: SHA-256 verified
+[2026-10-01T19:52:14+00:00] janes.wiki.conllu ordinary extraction: 100.0% (0.37/0.37 GiB), 44.6 MiB/s, elapsed 0.1 min, ETA 0.0 min sentences=392,019, retained=392,019
+[2026-10-01T19:52:14+00:00] janes-wiki: ordinary total AND all six counts verified; starting deduplication
+[2026-10-01T19:52:24+00:00] janes.wiki.conllu deduplication: 100.0% (0.37/0.37 GiB), 38.0 MiB/s, elapsed 0.2 min, ETA 0.0 min sentences=392,019, retained=237,252
+[2026-10-01T19:52:24+00:00] janes-wiki: exact identity index size 0.02 GiB (removed now)
+[2026-10-01T19:52:24+00:00] janes-wiki: VERIFIED RESULT; input SHA-256=aa398403028feede657d8fb21cb5b4e92e64b10738e650d7345d9d9a838b0e42
+[2026-10-01T19:52:24+00:00]   Sentences: 392,019 before; 237,252 unique after; 154,767 duplicates (39.479464%); 0 FORM fallbacks
+[2026-10-01T19:52:24+00:00]   S/V/O instances: 11,281 before; 10,411 after
+[2026-10-01T19:52:24+00:00]   Six orders after: SVO=7,519 (72.221689%); SOV=425 (4.082221%); VSO=733 (7.040630%); VOS=474 (4.552877%); OSV=226 (2.170781%); OVS=1,034 (9.931803%)
+[2026-10-01T19:52:24+00:00]   SVO: 72.972254233% before; 72.221688599% after; absolute change=0.750565634 percentage points
+[2026-10-01T19:52:24+00:00]   Shannon entropy (natural log): 0.99248300072 before; 1.00559072889 after; absolute change=0.0131077281739
+[2026-10-01T19:52:24+00:00]   Jensen-Shannon distance (base 2), pre vs post: 0.0146715001417
+[2026-10-01T19:52:33+00:00] classlawiki-sl.conllu SHA-256: 100.0% (4.15/4.15 GiB), 487.1 MiB/s, elapsed 0.1 min, ETA 0.0 min 
+[2026-10-01T19:52:33+00:00] classla-wikipedia: SHA-256 verified
+[2026-10-01T19:53:03+00:00] classlawiki-sl.conllu ordinary extraction: 35.2% (1.46/4.15 GiB), 49.6 MiB/s, elapsed 0.5 min, ETA 0.9 min sentences=1,380,000, retained=1,380,000
+[2026-10-01T19:53:33+00:00] classlawiki-sl.conllu ordinary extraction: 70.2% (2.91/4.15 GiB), 49.5 MiB/s, elapsed 1.0 min, ETA 0.4 min sentences=2,920,000, retained=2,920,000
+[2026-10-01T19:53:58+00:00] classlawiki-sl.conllu ordinary extraction: 100.0% (4.15/4.15 GiB), 49.8 MiB/s, elapsed 1.4 min, ETA 0.0 min sentences=4,124,409, retained=4,124,409
+[2026-10-01T19:53:58+00:00] classla-wikipedia: ordinary total AND all six counts verified; starting deduplication
+[2026-10-01T19:54:28+00:00] classlawiki-sl.conllu deduplication: 26.9% (1.11/4.15 GiB), 37.9 MiB/s, elapsed 0.5 min, ETA 1.4 min sentences=1,010,000, retained=868,202
+[2026-10-01T19:54:58+00:00] classlawiki-sl.conllu deduplication: 51.9% (2.15/4.15 GiB), 36.6 MiB/s, elapsed 1.0 min, ETA 0.9 min sentences=2,090,000, retained=1,727,969
+[2026-10-01T19:55:29+00:00] classlawiki-sl.conllu deduplication: 75.6% (3.14/4.15 GiB), 35.5 MiB/s, elapsed 1.5 min, ETA 0.5 min sentences=3,110,000, retained=2,577,042
+[2026-10-01T19:55:59+00:00] classlawiki-sl.conllu deduplication: 99.9% (4.14/4.15 GiB), 35.1 MiB/s, elapsed 2.0 min, ETA 0.0 min sentences=4,120,000, retained=3,331,759
+[2026-10-01T19:55:59+00:00] classlawiki-sl.conllu deduplication: 100.0% (4.15/4.15 GiB), 35.1 MiB/s, elapsed 2.0 min, ETA 0.0 min sentences=4,124,409, retained=3,335,155
+[2026-10-01T19:55:59+00:00] classla-wikipedia: exact identity index size 0.33 GiB (removed now)
+[2026-10-01T19:55:59+00:00] classla-wikipedia: VERIFIED RESULT; input SHA-256=d163fd9647110e6721131f5d204516f2b3f8ca102c61611807da87349b17ec8d
+[2026-10-01T19:55:59+00:00]   Sentences: 4,124,409 before; 3,335,155 unique after; 789,254 duplicates (19.136172%); 0 FORM fallbacks
+[2026-10-01T19:55:59+00:00]   S/V/O instances: 296,395 before; 292,736 after
+[2026-10-01T19:55:59+00:00]   Six orders after: SVO=222,475 (75.998511%); SOV=10,512 (3.590949%); VSO=7,509 (2.565110%); VOS=6,293 (2.149719%); OSV=4,346 (1.484614%); OVS=41,601 (14.211098%)
+[2026-10-01T19:55:59+00:00]   SVO: 76.025573981% before; 75.998510603% after; absolute change=0.027063377 percentage points
+[2026-10-01T19:55:59+00:00]   Shannon entropy (natural log): 0.843517314359 before; 0.84433663747 after; absolute change=0.000819323111808
+[2026-10-01T19:55:59+00:00]   Jensen-Shannon distance (base 2), pre vs post: 0.000599056525518
+[2026-10-01T19:56:28+00:00] parlamint-si.conllu SHA-256: 100.0% (6.09/6.09 GiB), 212.8 MiB/s, elapsed 0.5 min, ETA 0.0 min 
+[2026-10-01T19:56:28+00:00] parlamint: SHA-256 verified
+[2026-10-01T19:56:59+00:00] parlamint-si.conllu ordinary extraction: 21.7% (1.32/6.09 GiB), 44.9 MiB/s, elapsed 0.5 min, ETA 1.8 min sentences=890,000, retained=890,000
+[2026-10-01T19:57:29+00:00] parlamint-si.conllu ordinary extraction: 43.1% (2.62/6.09 GiB), 44.6 MiB/s, elapsed 1.0 min, ETA 1.3 min sentences=1,710,000, retained=1,710,000
+[2026-10-01T19:57:59+00:00] parlamint-si.conllu ordinary extraction: 65.0% (3.96/6.09 GiB), 44.9 MiB/s, elapsed 1.5 min, ETA 0.8 min sentences=2,540,000, retained=2,540,000
+[2026-10-01T19:58:29+00:00] parlamint-si.conllu ordinary extraction: 86.6% (5.28/6.09 GiB), 44.9 MiB/s, elapsed 2.0 min, ETA 0.3 min sentences=3,350,000, retained=3,350,000
+[2026-10-01T19:58:47+00:00] parlamint-si.conllu ordinary extraction: 100.0% (6.09/6.09 GiB), 45.0 MiB/s, elapsed 2.3 min, ETA 0.0 min sentences=3,876,183, retained=3,876,183
+[2026-10-01T19:58:47+00:00] parlamint: ordinary total AND all six counts verified; starting deduplication
+[2026-10-01T19:59:17+00:00] parlamint-si.conllu deduplication: 18.4% (1.12/6.09 GiB), 37.8 MiB/s, elapsed 0.5 min, ETA 2.2 min sentences=770,000, retained=595,806
+[2026-10-01T19:59:48+00:00] parlamint-si.conllu deduplication: 35.4% (2.16/6.09 GiB), 36.4 MiB/s, elapsed 1.0 min, ETA 1.8 min sentences=1,420,000, retained=1,107,980
+[2026-10-01T20:00:18+00:00] parlamint-si.conllu deduplication: 51.9% (3.16/6.09 GiB), 35.6 MiB/s, elapsed 1.5 min, ETA 1.4 min sentences=2,040,000, retained=1,609,361
+[2026-10-01T20:00:48+00:00] parlamint-si.conllu deduplication: 67.9% (4.14/6.09 GiB), 35.0 MiB/s, elapsed 2.0 min, ETA 1.0 min sentences=2,650,000, retained=2,116,404
+[2026-10-01T20:01:18+00:00] parlamint-si.conllu deduplication: 83.6% (5.09/6.09 GiB), 34.5 MiB/s, elapsed 2.5 min, ETA 0.5 min sentences=3,230,000, retained=2,605,945
+[2026-10-01T20:01:49+00:00] parlamint-si.conllu deduplication: 98.5% (6.00/6.09 GiB), 33.9 MiB/s, elapsed 3.0 min, ETA 0.0 min sentences=3,820,000, retained=3,088,914
+[2026-10-01T20:01:51+00:00] parlamint-si.conllu deduplication: 100.0% (6.09/6.09 GiB), 33.9 MiB/s, elapsed 3.1 min, ETA 0.0 min sentences=3,876,183, retained=3,133,122
+[2026-10-01T20:01:51+00:00] parlamint: exact identity index size 0.49 GiB (removed now)
+[2026-10-01T20:01:51+00:00] parlamint: VERIFIED RESULT; input SHA-256=be53ad8a8b28e1f7996ba79de045b1c3516324cd8adbe902ea2500e7d02bd81e
+[2026-10-01T20:01:51+00:00]   Sentences: 3,876,183 before; 3,133,122 unique after; 743,061 duplicates (19.169915%); 0 FORM fallbacks
+[2026-10-01T20:01:51+00:00]   S/V/O instances: 497,572 before; 453,811 after
+[2026-10-01T20:01:51+00:00]   Six orders after: SVO=326,388 (71.921571%); SOV=30,434 (6.706316%); VSO=17,386 (3.831110%); VOS=14,801 (3.261490%); OSV=10,014 (2.206645%); OVS=54,788 (12.072867%)
+[2026-10-01T20:01:51+00:00]   SVO: 67.906956179% before; 71.921570874% after; absolute change=4.014614695 percentage points
+[2026-10-01T20:01:51+00:00]   Shannon entropy (natural log): 1.05484711425 before; 0.994274131895 after; absolute change=0.0605729823596
+[2026-10-01T20:01:51+00:00]   Jensen-Shannon distance (base 2), pre vs post: 0.0539653665419
+[2026-10-01T20:01:51+00:00] ROBUSTNESS: four deduplicated distributions; every other source held at canonical counts. ParlaMint OVS scope is the nine-source register comparison. Strict ties require review.
+[2026-10-01T20:01:51+00:00] CLAIM JANES-Tweet highest SVO among all analyzed human sources: before_margin=0.0143142377609; after_margin=0.0125362674015; preserved
+[2026-10-01T20:01:51+00:00] CLAIM ParlaMint highest OVS in nine-source register comparison: before_margin=0.0211804194097; after_margin=-0.0224912351926; tie/reversal
+[2026-10-01T20:01:51+00:00] CLAIM CLASSLA-Wikipedia lowest entropy in nine-source comparison: before_margin=0.0191709170206; after_margin=0.024278673069; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Tweet second-lowest entropy in nine-source comparison: before_margin=0.0949810028618; after_margin=0.0890539237016; preserved
+[2026-10-01T20:01:51+00:00] CLAIM ParlaMint lowest SVO among seven automatic register sources: before_margin=0.0228462047973; after_margin=-0.0172999421528; tie/reversal
+[2026-10-01T20:01:51+00:00] CLAIM Forum highest entropy among six web sources: before_margin=0.0761232150026; after_margin=0.0630154868287; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Forum highest VSO among six web sources: before_margin=0.0100439477835; after_margin=0.00647569302828; preserved
+[2026-10-01T20:01:51+00:00] CLAIM KDSP lowest SVO among written human sources: before_margin=0.0254169872489; after_margin=0.0254169872489; preserved
+[2026-10-01T20:01:51+00:00] CLAIM KDSP highest entropy among written human sources: before_margin=0.0611545150381; after_margin=0.0611545150381; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): ssj: before_margin=842; after_margin=842; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): sst: before_margin=72; after_margin=72; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): suk-literary: before_margin=56; after_margin=56; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): suk-publicistic: before_margin=1215; after_margin=1215; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): suk-professional: before_margin=549; after_margin=549; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): aigent-gpt5: before_margin=1524; after_margin=1524; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): aigent-gams27b: before_margin=340; after_margin=340; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): aigent-gemma2-27b: before_margin=554; after_margin=554; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): janes-news: before_margin=29980; after_margin=29980; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): janes-blog: before_margin=86380; after_margin=86380; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): janes-forum: before_margin=83808; after_margin=83808; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): janes-tweet: before_margin=296691; after_margin=287676; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): janes-wiki: before_margin=6108; after_margin=5451; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): classla-wikipedia: before_margin=141120; after_margin=139273; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): parlamint: before_margin=174284; after_margin=216812; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): kdsp: before_margin=21501; after_margin=21501; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): human-essays: before_margin=947; after_margin=947; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO dominant (>2 x next order): gpt5-essays: before_margin=2610; after_margin=2610; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO article > talk: before_margin=0.0305331974789; after_margin=0.0377682200481; preserved
+[2026-10-01T20:01:51+00:00] CLAIM VSO talk > article: before_margin=0.0413517863828; after_margin=0.044755202427; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Entropy talk > article: before_margin=0.148965686361; after_margin=0.161254091423; preserved
+[2026-10-01T20:01:51+00:00] CLAIM SVO Tweet > Wikipedia > Blog (Wikipedia > Blog): before_margin=0.0213092374459; after_margin=0.0210386036733; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Entropy SSJ > janes-blog: before_margin=0.0140953304468; after_margin=0.0140953304468; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Entropy SSJ > janes-tweet: before_margin=0.109076333309; after_margin=0.103149254148; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Entropy SSJ > classla-wikipedia: before_margin=0.128247250329; after_margin=0.127427927217; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Entropy Forum > SSJ: before_margin=0.0968416510347; after_margin=0.0968416510347; preserved
+[2026-10-01T20:01:51+00:00] CLAIM ParlaMint entropy higher than majority of web sources: before_margin=2; after_margin=1; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Essay SVO gap > human-source SVO range: before_margin=0.0214847874326; after_margin=0.0235333915646; preserved
+[2026-10-01T20:01:51+00:00] CLAIM JSD gpt5-essays: nearest janes-tweet: before_margin=0.0272109501776; after_margin=0.0252158482442; preserved
+[2026-10-01T20:01:51+00:00] CLAIM JSD human-essays: nearest janes-news: before_margin=0.00349477253554; after_margin=0.00349477253554; preserved
+[2026-10-01T20:01:51+00:00] CLAIM JSD ssj: nearest parlamint: before_margin=0.00929516890303; after_margin=0.0141272207832; preserved
+[2026-10-01T20:01:51+00:00] CLAIM JSD kdsp: nearest janes-forum: before_margin=0.0170024700392; after_margin=0.00981181913274; preserved
+[2026-10-01T20:01:51+00:00] CLAIM JSD GPT-5: KDSP and SST are the two farthest human sources: before_margin=0.0270135392672; after_margin=0.0335466967074; preserved
+[2026-10-01T20:01:51+00:00] CLAIM JSD SST: Forum and KDSP are the two nearest written sources: before_margin=0.00639700154245; after_margin=0.00639700154245; preserved
+[2026-10-01T20:01:51+00:00] CLAIM Human essays closer than GPT-5 to majority of other human sources: before_margin=5; after_margin=5; preserved
+[2026-10-01T20:01:51+00:00] NOT STABLE: at least one stated ranking/direction lost: ParlaMint highest OVS in nine-source register comparison; ParlaMint lowest SVO among seven automatic register sources
+[2026-10-01T20:01:51+00:00] No statistical significance inferred. Approximately-equal/qualitative claims and analyses requiring other extraction queries are outside these six-pattern checks.
+[2026-10-01T20:01:51+00:00] Outputs: /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/results/dedup_sensitivity.tsv; /mnt/local-hddpool/niveshull/thesis/dedup-sensitivity/results/dedup_sensitivity.log

@@ -23,3 +23,24 @@ The scripts are `scripts/supplementary_manual_subset.py`,
 numerical inputs are in `reference/` and are documented in
 `reference/README.md`; the broad-query script reads the canonical prepared SSJ
 and SST CoNLL-U files directly and checks their pinned hashes.
+
+## Exact-text repetition sensitivity
+
+[Procedure, results, hashes and rerun commands](repetition_sensitivity.md)
+document the completed four-corpus check. H1 and H2 are outside its scope.
+
+| File | Evidence |
+|---|---|
+| `dedup_sensitivity.tsv` | All four before/after six-order distributions, sentence and instance counts, natural-log entropy and base-2 JSD distance. |
+| `dedup_sensitivity.log` | Preserved structured production log, including 44 descriptive checks (42 preserved; two ParlaMint rankings reversed). |
+| `dedup_run.stdout.log` | Unedited dedup stdout/stderr capture. |
+| `parlamint_duplicate_audit.txt` | Explanatory audit; exact reconciliation and production code/input hashes. |
+| `parlamint_duplicate_examples.tsv.gz` | Lossless complete TSV of 68,984 repeated text types, including zero-instance types. |
+| `parlamint_audit_run.stdout.log` | Unedited focused audit stdout/stderr capture. |
+| `parlamint_duplicate_manual_check.md` | Researcher's targeted manual spot check, documented separately from automated evidence. |
+| `repetition_sensitivity.sha256` | Hashes of distributed production scripts, evidence and manual note; check from repository root. |
+
+Identical parliamentary texts can recur across different segments and sessions.
+The sensitivity count does not label these as corpus errors or replace the
+primary results. Server paths in the preserved logs record the actual run;
+portable commands pass explicit CLI paths. No corpus files are included.
