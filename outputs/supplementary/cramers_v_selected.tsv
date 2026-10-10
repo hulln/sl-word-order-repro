@@ -1,0 +1,10 @@
+comparison	thesis_location	groups	n	rows	columns	chi_square	cramers_v	source_test_family	source_test_id	source_p_value	source_p_kind
+H1 omnibus: SUK three genre groups	§4.1.1 text	suk-literary,suk-publicistic,suk-professional	4104	3	6	13.765731	0.0410	h1_omnibus	suk_three_genres__permutation_chi_square	0.18399080046	pearson_3x6_with_permutation_p
+strokovno–publicistično	tab:zanri-pari	suk-professional,suk-publicistic	3942	2	6	10.803380	0.0524	selected_validation	suk-professional__suk-publicistic__permutation_chi_square	0.0544472776361	pearson_chi_square_with_permutation_p
+strokovno–leposlovno	tab:zanri-pari	suk-professional,suk-literary	1267	2	6	4.054349	0.0566	h2_prespecified	suk-professional__suk-literary__permutation_chi_square	0.546772661367	pearson_chi_square_with_permutation_p
+strokovno–pogovorno	tab:zanri-pari	suk-professional,sst	1273	2	6	22.788332	0.1338	h2_prespecified	suk-professional__sst__permutation_chi_square	0.000949952502375	pearson_chi_square_with_permutation_p
+publicistično–leposlovno	tab:zanri-pari	suk-publicistic,suk-literary	2999	2	6	2.823065	0.0307	h2_prespecified	suk-publicistic__suk-literary__permutation_chi_square	0.724413779311	pearson_chi_square_with_permutation_p
+publicistično–pogovorno	tab:zanri-pari	suk-publicistic,sst	3005	2	6	21.284946	0.0842	h2_prespecified	suk-publicistic__sst__permutation_chi_square	0.0017999100045	pearson_chi_square_with_permutation_p
+leposlovno–pogovorno	tab:zanri-pari	suk-literary,sst	330	2	6	10.532640	0.1787	selected_validation	suk-literary__sst__permutation_chi_square	0.0548972551372	pearson_chi_square_with_permutation_p
+SSJ–SST	§4.1.2 text	ssj,sst	2137	2	6	17.093357	0.0894	selected_validation	ssj__sst__permutation_chi_square	0.00669966501675	pearson_chi_square_with_permutation_p
+human essays–GPT-5 essays	§4.1.3 text	human-essays,gpt5-essays	4919	2	6	236.996527	0.2195	selected_validation	human-essays__gpt5-essays__permutation_chi_square	4.9997500125e-05	pearson_chi_square_with_permutation_p

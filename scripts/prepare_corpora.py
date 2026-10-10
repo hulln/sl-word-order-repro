@@ -206,12 +206,20 @@ def validate_prepared(row: dict[str, str], destination: Path) -> dict[str, int]:
 
 
 def write_checksums(manifest: list[dict[str, str]]) -> None:
+    """Record the SHA-256 of every prepared file that is present.
+
+    When no prepared file exists (for example in a fresh clone), the tracked
+    manifest is left untouched instead of being overwritten with an empty file.
+    """
     destination = ROOT / "prepared" / "checksums.sha256"
     lines = []
     for row in manifest:
         path = package_path(row["prepared_input"])
         if path.is_file():
             lines.append(f"{sha256(path)}  {path.name}\n")
+    if not lines:
+        print(f"no prepared corpora present; {destination.relative_to(ROOT)} left unchanged")
+        return
     destination.write_text("".join(lines), encoding="utf-8")
 
 

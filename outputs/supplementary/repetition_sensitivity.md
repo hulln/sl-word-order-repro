@@ -13,7 +13,7 @@ Within each corpus separately, retain the first occurrence in the original file
 order of each identical sentence identity and omit later occurrences from this
 sensitivity count. Identity is the exact content following `# text = `, removing
 only the physical line ending, with no trimming, case folding, whitespace or
-Unicode normalization. If that field is absent, identity is the FORM values of
+Unicode normalisation. If that field is absent, identity is the FORM values of
 integer-ID tokens joined by one space; multiword-token ranges and empty nodes
 are ignored. Empty explicit text is a valid identity. The entire JANES-Tweet
 input uses this FORM fallback (19,707,683 sentences); the other three inputs
@@ -53,12 +53,12 @@ identical-text occurrence, not the percentage of S/V/O instances.
 | ParlaMint-SI | 19.170 | 67.907 | 71.922 | 16.440 | 12.073 | 1.054847 | 0.994274 |
 
 Absolute SVO changes are 0.205, 0.751, 0.027 and 4.015 percentage points,
-respectively. The first three sources change slightly; ParlaMint changes more
+respectively. The first three sources change slightly; ParlaMint-SI changes more
 strongly. Two original rankings are not preserved:
 
-- ParlaMint has the highest OVS share in the original nine-source register
+- ParlaMint-SI has the highest OVS share in the original nine-source register
   comparison. After replacing the four distributions, it no longer does.
-- ParlaMint has the lowest SVO share among the seven automatically analysed
+- ParlaMint-SI has the lowest SVO share among the seven automatically analysed
   register sources in the original comparison. In the sensitivity comparison,
   JANES-Forum has the lowest share instead.
 
@@ -68,7 +68,7 @@ checks under this one procedure; it does not establish stability of all possible
 comparisons. Primary result tables and figures are retained as frequency-based
 results, and no H1/H2 input, test or interpretation is changed.
 
-## Why ParlaMint changes
+## ParlaMint-SI: effect of repeated sentences
 
 The explanatory audit independently extracts every occurrence, including later
 copies, and reconciles exactly with the completed deduplication run:
@@ -105,7 +105,7 @@ Identical text recurring in parliamentary material is not by itself evidence of
 erroneous corpus records. The sensitivity version is not a “cleaned” or
 intrinsically more correct corpus. The supported methodological qualification
 is that the frequency of recurring identical formulations can affect aggregate
-cross-source S/V/O distributions, especially OVS in this ParlaMint input.
+cross-source S/V/O distributions, especially OVS in this ParlaMint-SI input.
 
 ## Provenance and files
 
@@ -151,7 +151,7 @@ sha256sum -c outputs/supplementary/repetition_sensitivity.sha256
 gzip -cd outputs/supplementary/parlamint_duplicate_examples.tsv.gz | sha256sum
 ```
 
-## Rerun with the same prepared corpora
+## Reproducing the analysis
 
 Python 3.10 or newer and its standard library are sufficient; STARK, a parser
 and annotation packages are not needed for this check. Obtain the exact
@@ -215,10 +215,10 @@ audit checks fixed six-order and sentence checkpoints and refuses to overwrite
 its existing reports. It exports a plain TSV; gzip packaging is a later
 lossless archival step. Scratch databases are temporary and are not included.
 No corpus CoNLL-U files are distributed with these additions. The examples TSV
-contains repeated-text audit excerpts from ParlaMint, not the source corpus;
+contains repeated-text audit excerpts from ParlaMint-SI, not the source corpus;
 corpus-derived text retains the corpus licence described in `inputs/README.md`.
 
-## Local verification without the corpora
+## Verification without source corpora
 
 ```bash
 python3 -m py_compile scripts/dedup_sensitivity.py scripts/inspect_parlamint_duplicates.py scripts/test_repetition_sensitivity.py

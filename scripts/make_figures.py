@@ -443,6 +443,46 @@ def draw_stacked_bars(
     finish_axes(ax, "x")
 
 
+WORKFLOW_HEADINGS = [
+    "GRADIVO",
+    "IZLUŠČENJE IN OPREDELITEV\nVZORCEV",
+    "OSREDNJA PRIMERJAVA\nIN OPISNA RAZŠIRITEV",
+    "DOPOLNILNE ANALIZE IN\nPREVERJANJA",
+]
+WORKFLOW_BODIES = [
+    "Korpusi in drevesnice\n"
+    "za slovenščino\n"
+    "Človeški eseji in\n"
+    "eseji modela GPT-5\n\n"
+    "Skladenjske oznake:\n"
+    "ročno pregledane,\n"
+    "kjer so na voljo;\n"
+    "sicer samodejne",
+    "glagol z oznako VERB\n"
+    "osebek (nsubj) in predmet (obj)\n"
+    "z jedrom NOUN\n"
+    "analitična enota: par osebka\n"
+    "in predmeta ob glagolu\n\n"
+    "SVO · SOV · VSO\n"
+    "VOS · OSV · OVS",
+    "H1: tri žanrske skupine SUK\n"
+    "H2: skupine SUK ↔ pogovorno\n"
+    "gradivo SST\n"
+    "SSJ ↔ SST: referenčna primerjava\n"
+    "opisna razširitev: drugi viri\n\n"
+    "delež SVO · entropija\n"
+    "Jensen–Shannonova razdalja\n"
+    "χ² · permutacije · Cramérjev V",
+]
+# Column 4: (block label, items), drawn as three visually separate blocks.
+WORKFLOW_TIER_BLOCKS = [
+    ("Dopolnilna študija primera", ["človeški eseji ↔ eseji GPT-5", "primerjava treh modelov"]),
+    ("Eksplorativna analiza", ["imenske entitete"]),
+    ("Preverjanja robustnosti", ["ročno pregledana podmnožica SUK", "permutacije po dokumentih",
+                                 "širša poizvedba · ACT/PAT", "ročna ↔ samodejna razčlemba"]),
+]
+
+
 def figure_workflow() -> Path:
     fig, ax = plt.subplots(figsize=(7.2, 3.45))
     ax.set_xlim(0, 1)
@@ -452,135 +492,40 @@ def figure_workflow() -> Path:
     centers = [0.095, 0.35, 0.61, 0.87]
     section_y_offset = -0.012
     number_y_offset = -0.004
-    headings = [
-        "GRADIVO",
-        "IZLUŠČENJE IN OPREDELITEV\nVZORCEV",
-        "GLAVNE IN ŠIRŠE\nPRIMERJAVE",
-        "DOPOLNILNE ANALIZE IN\nPREVERJANJA",
-    ]
-    bodies = [
-        "Korpusi in drevesnice\n"
-        "za slovenščino\n"
-        "Človeški eseji in\n"
-        "eseji modela GPT-5\n\n"
-        "Skladenjske oznake:\n"
-        "ročno pregledane,\n"
-        "kjer so na voljo;\n"
-        "sicer samodejne",
-        "glagol z oznako VERB\n"
-        "osebek (nsubj) in predmet (obj)\n"
-        "z jedrom NOUN\n"
-        "analitična enota: par osebka\n"
-        "in predmeta ob glagolu\n\n"
-        "SVO · SOV · VSO\n"
-        "VOS · OSV · OVS",
-        "H1: tri žanrske skupine SUK\n"
-        "H2: izbrane skupine SUK ↔\n"
-        "pogovorno gradivo SST\n"
-        "širša opisna primerjava glede na\n"
-        "register in prenosnik\n\n"
-        "frekvence in deleži\n"
-        "delež SVO · entropija\n"
-        "Jensen–Shannonova razdalja\n"
-        "χ² in permutacijski preizkus\n"
-        "pri izbranih primerjavah",
-        "človeški eseji ↔\n"
-        "eseji modela GPT-5\n"
-        "imenske entitete\n"
-        "udeleženske vloge ACT/PAT\n"
-        "preverjanje samodejne\n"
-        "skladenjske razčlembe\n"
-        "AI-GenT",
-    ]
+    line_step = 0.0385  # one body line at 7.65 pt with line spacing 1.25
 
     for i, center in enumerate(centers):
-        circle = Circle(
-            (center, 0.86),
-            0.029,
-            transform=ax.transAxes,
-            facecolor=ACCENT if i < 3 else "white",
-            edgecolor=ACCENT,
-            linewidth=1.0,
-        )
-        ax.add_patch(circle)
-        ax.text(
-            center,
-            0.86 + number_y_offset,
-            str(i + 1),
-            ha="center",
-            va="center",
-            fontsize=8.2,
-            fontweight="bold",
-            color="white" if i < 3 else ACCENT_DARK,
-        )
+        ax.add_patch(Circle((center, 0.86), 0.029, transform=ax.transAxes,
+                            facecolor=ACCENT if i < 3 else "white", edgecolor=ACCENT, linewidth=1.0))
+        ax.text(center, 0.86 + number_y_offset, str(i + 1), ha="center", va="center", fontsize=8.2,
+                fontweight="bold", color="white" if i < 3 else ACCENT_DARK)
         if i < len(centers) - 1:
-            arrow = FancyArrowPatch(
-                (center + 0.038, 0.86),
-                (centers[i + 1] - 0.038, 0.86),
-                transform=ax.transAxes,
-                arrowstyle="-|>",
-                mutation_scale=8,
-                linewidth=0.8,
-                color="#9DAAAF",
-            )
-            ax.add_patch(arrow)
-        ax.text(
-            center,
-            0.73 + section_y_offset,
-            headings[i],
-            ha="center",
-            va="top",
-            fontsize=9.2,
-            fontweight="bold",
-            color=INK,
-            linespacing=0.92,
-        )
-        ax.plot(
-            [center - 0.065, center + 0.065],
-            [0.625 + section_y_offset, 0.625 + section_y_offset],
-            transform=ax.transAxes,
-            color=ACCENT,
-            linewidth=1.4,
-            solid_capstyle="round",
-        )
-        ax.text(
-            center,
-            0.585 + section_y_offset,
-            bodies[i],
-            ha="center",
-            va="top",
-            fontsize=7.65,
-            color=INK,
-            linespacing=1.25,
-        )
+            ax.add_patch(FancyArrowPatch((center + 0.038, 0.86), (centers[i + 1] - 0.038, 0.86),
+                                         transform=ax.transAxes, arrowstyle="-|>", mutation_scale=8,
+                                         linewidth=0.8, color="#9DAAAF"))
+        ax.text(center, 0.73 + section_y_offset, WORKFLOW_HEADINGS[i], ha="center", va="top", fontsize=9.2,
+                fontweight="bold", color=INK, linespacing=0.92)
+        ax.plot([center - 0.065, center + 0.065], [0.625 + section_y_offset] * 2, transform=ax.transAxes,
+                color=ACCENT, linewidth=1.4, solid_capstyle="round")
+        if i < 3:
+            ax.text(center, 0.585 + section_y_offset, WORKFLOW_BODIES[i], ha="center", va="top", fontsize=7.65,
+                    color=INK, linespacing=1.25)
 
-    ax.text(
-        centers[2],
-        0.18 + section_y_offset,
-        "pogovorno gradivo SST je ločen vir,\nne četrta žanrska skupina SUK",
-        ha="center",
-        va="top",
-        fontsize=7.15,
-        fontstyle="italic",
-        color=MID,
-    )
-    ax.text(
-        centers[3],
-        0.28 + section_y_offset,
-        "samodejno pripisane oznake imenskih\n"
-        "entitet: eksplorativno\n"
-        "ACT/PAT: analiza omejena na eno podmnožico\n"
-        "preverjanje razčlembe: iste povedi SSJ\n"
-        "AI-GenT: brez primerljivega\n"
-        "človeškega gradiva\n"
-        "NER: Fisherjev eksaktni preizkus in\n"
-        "Holmova prilagoditev",
-        ha="center",
-        va="top",
-        fontsize=6.25,
-        color=MID,
-        linespacing=1.15,
-    )
+    # Column 4: three labelled blocks instead of one flat list.
+    y = 0.585 + section_y_offset
+    for number, (label, items) in enumerate(WORKFLOW_TIER_BLOCKS):
+        if number:
+            y -= line_step * 0.55
+        ax.text(centers[3], y, label, ha="center", va="top", fontsize=7.65, fontweight="bold",
+                color=ACCENT_DARK)
+        y -= line_step
+        for item in items:
+            ax.text(centers[3], y, item, ha="center", va="top", fontsize=7.65, color=INK)
+            y -= line_step
+
+    ax.text(centers[2], 0.18 + section_y_offset,
+            "pogovorno gradivo SST je ločen vir,\nne četrta žanrska skupina SUK",
+            ha="center", va="top", fontsize=7.15, fontstyle="italic", color=MID)
     fig.subplots_adjust(left=0.02, right=0.98, top=0.98, bottom=0.02)
     return save_pdf(fig, "fig_research_workflow")
 
@@ -902,8 +847,8 @@ def figure_ner() -> Path:
         "SUK-strokovno": "SUK – strokovno",
     }
     panels = [
-        ("object", "A  PREDMETI", "Delež OVS + OSV med predmeti", (0, 44), 10),
-        ("subject", "B  OSEBKI", "Delež SVO med osebki", (60, 100), 10),
+        ("object", "(a) PREDMETI", "Delež OVS + OSV med predmeti", (0, 44), 10),
+        ("subject", "(b) OSEBKI", "Delež SVO med osebki", (60, 100), 10),
     ]
     subject_ne_offsets = {
         "SSJ": (5, 7, "left", "bottom"),
@@ -984,7 +929,7 @@ def figure_ner() -> Path:
         for i, row in enumerate(df.itertuples()):
             ax.text(
                 -0.020,
-                i + 0.22,
+                i + 0.32,
                 f"n = {sl_int(row.ne_n)} / {sl_int(row.non_ne_n)}",
                 transform=label_transform,
                 ha="right",
@@ -1010,7 +955,7 @@ def figure_ner() -> Path:
         handletextpad=0.5,
         columnspacing=1.4,
     )
-    fig.subplots_adjust(left=0.25, right=0.985, top=0.88, bottom=0.12, hspace=0.42)
+    fig.subplots_adjust(left=0.27, right=0.985, top=0.88, bottom=0.12, hspace=0.42)
     return save_pdf(fig, "fig_ner_object_dumbbell")
 
 

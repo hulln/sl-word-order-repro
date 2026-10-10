@@ -2,7 +2,7 @@
 
 `prepared/` is where the canonical CoNLL-U files read by the analysis scripts
 belong. No CoNLL-U file is tracked in Git. `checksums.sha256` covers only the
-locally materialized `.conllu` files, with paths relative to this directory. The
+locally materialised `.conllu` files, with paths relative to this directory. The
 authoritative prepared hash and count inventory for all 18 corpora is
 `config/corpora.tsv`.
 
@@ -39,7 +39,21 @@ Prepared-file fingerprints may identify retained converted or concatenated files
 that differ from public source distributions.
 
 For the Human/GPT-5 essay pair, the prepared hashes identify canonical
-reconstructions from the exact base inputs and CLASSLA 2.2.1 standard NER model
-[`11356/2014/ner`](https://hdl.handle.net/11356/2014/ner). They reproduce the
-thesis analysis but do not prove byte-for-byte identity with the lost historical
-NER-enriched derivatives.
+reconstructions from the exact base inputs and the CLASSLA-Stanza NER model for
+standard Slovenian 2.2 ([CLARIN.SI 11356/2014](https://hdl.handle.net/11356/2014)).
+They reproduce the thesis analysis but do not prove byte-for-byte identity with
+the lost historical NER-enriched derivatives.
+
+## Named-entity model and the SST rebuild
+
+For SST, `scripts/prepare_corpora.py` merges the UD r2.18 train, dev and test
+files and then adds named-entity tags with CLASSLA-Stanza 2.2.1 and the model
+above (CC BY-SA 4.0), without changing tokens or trees. The merged file before
+tagging has SHA-256
+`56a551446a6f96c9d7cc6b577b60092a12b54bf55397fdf8d34934fa140cba70`; the prepared
+file after tagging has the hash recorded in `config/corpora.tsv`. The `classla`
+package version is pinned in `requirements-annotation.txt`, but the model files
+that CLASSLA downloads are not pinned by checksum. A later rebuild may therefore
+receive a different model, produce a different NER layer and fail the
+prepared-file hash check; the syntax columns are unaffected and can be verified
+against the pre-tagging hash. The same applies to the NER step for the essays.

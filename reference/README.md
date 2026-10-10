@@ -1,7 +1,7 @@
 # Reference numerical inputs
 
 This directory contains verified aggregate fallback counts for unavailable
-analysed corpora and anonymized document, event, speaker and pair count vectors
+analysed corpora and anonymised document, event, speaker and pair count vectors
 for supplementary robustness analyses. It does not contain reconstructed
 corpora. For the aggregate tables, “verified” means the six word-order counts
 were obtained independently with STARK and the direct CoNLL-U extractor and
@@ -21,8 +21,9 @@ agreed exactly.
   691 matched essay pairs, including zero-count sides.
 
 The last four tables are the minimal inputs for
-`scripts/supplementary_robustness.py`. They contain integer counts and grouping
-labels only: no sentences, tokens, corpus text, original document names, event
+`scripts/supplementary_robustness.py` and
+`scripts/supplementary_h2_cluster_bootstrap.py`. They contain integer counts and
+grouping labels only: no sentences, tokens, corpus text, original document names, event
 IDs, speaker IDs, or essay IDs. Source groups were sorted exactly as in the
 frozen analysis and then assigned sequential anonymous IDs. The essay table
 preserves the frozen pair-list order. This deterministic replacement removes
