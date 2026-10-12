@@ -1,0 +1,71 @@
+{
+  "analysis": "ssj_parser_sensitivity_ud218",
+  "thesis_section": "4.2.4",
+  "run_date": "2026-10-12",
+  "note": "The reference annotations are the UD 2.18 release of SSJ, the same file as in the main analysis. CLASSLA-Stanza was not rerun: the comparison uses the automatic parse saved from the historical run, with sentence boundaries and tokenisation identical to the reference. The saved automatic parse is not distributed in this repository.",
+  "reference": {
+    "path": "prepared/ssj.conllu",
+    "release": "UD Slovenian-SSJ 2.18, train+dev+test združeno",
+    "sha256": "a11385ea9184c2dfaac9b16416c303935197e553512810afe3e94114005532d1",
+    "sentence_count": 13435
+  },
+  "automatic_parse": {
+    "annotator": "CLASSLA-Stanza 2.2.1 (saved historical parse; not distributed in this repository)",
+    "source_sha256": "40106516db9e5de0c4b64b5ec7fa9daf02f28d0bed091baab91697d6398ca498",
+    "harmonised_copy_sha256": "d1d453d6dd6548a6afee77f529f54f1f4c92a49f482d1c698c7d33b8ca1d7b34",
+    "classla_rerun": false
+  },
+  "sentence_id_harmonisation": {
+    "identical_ids": 11411,
+    "renamed_ids": 2024,
+    "rule": "elexiswsd<n>.<old identifier>",
+    "matching": "by sentence order; token IDs and token forms are identical in every sentence"
+  },
+  "summaries": {
+    "NOUN": {
+      "gold_n": 1969,
+      "auto_n": 1882,
+      "aligned_n": 1788,
+      "same_pattern": 1780,
+      "changed_pattern": 8,
+      "gold_only": 177,
+      "auto_only": 89,
+      "unclear_alignment": 4,
+      "unclear_gold_instances": 4,
+      "unclear_auto_instances": 5,
+      "manual_review_n": 278,
+      "gold_recall_pct": 90.80751650584052,
+      "same_among_aligned_pct": 99.55257270693512,
+      "changed_or_lost_gold_pct": 9.598781107160995,
+      "gold_entropy_ln": 0.9717645646876958,
+      "auto_entropy_ln": 0.9321189068479,
+      "jensen_shannon_distance_base2": 0.025126358771528662,
+      "gold_sha256": "a11385ea9184c2dfaac9b16416c303935197e553512810afe3e94114005532d1",
+      "auto_sha256": "d1d453d6dd6548a6afee77f529f54f1f4c92a49f482d1c698c7d33b8ca1d7b34",
+      "random_seed": 20260809
+    },
+    "NOUN|PROPN": {
+      "gold_n": 2542,
+      "auto_n": 2445,
+      "aligned_n": 2310,
+      "same_pattern": 2300,
+      "changed_pattern": 10,
+      "gold_only": 217,
+      "auto_only": 116,
+      "unclear_alignment": 15,
+      "unclear_gold_instances": 15,
+      "unclear_auto_instances": 19,
+      "manual_review_n": 358,
+      "gold_recall_pct": 90.87332808811959,
+      "same_among_aligned_pct": 99.56709956709956,
+      "changed_or_lost_gold_pct": 9.520062942564909,
+      "gold_entropy_ln": 0.9711227934034898,
+      "auto_entropy_ln": 0.9342434186875942,
+      "jensen_shannon_distance_base2": 0.019034981234974536,
+      "gold_sha256": "a11385ea9184c2dfaac9b16416c303935197e553512810afe3e94114005532d1",
+      "auto_sha256": "d1d453d6dd6548a6afee77f529f54f1f4c92a49f482d1c698c7d33b8ca1d7b34",
+      "random_seed": 20260809
+    }
+  },
+  "provenance": "Derived from the verified private run manifest (run_manifest_ud218.json, 2026-10-12) and the two summary.json files of that run. The absolute local path of the reference file was replaced by the repository-relative path prepared/ssj.conllu; private analysis paths and script hashes were omitted; Slovenian descriptive strings were restated in English. Every numerical value is unchanged."
+}

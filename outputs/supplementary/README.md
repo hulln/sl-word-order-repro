@@ -5,13 +5,19 @@ p-values are recorded in the TSV files rather than repeated here.
 
 | Output | What it represents |
 |---|---|
-| `manual_subset_h2.tsv` | The four prespecified H2 comparisons on the manually checked SUK syntax subset, with SST as the conversational source. |
+| `manual_subset_h2.tsv` | The four prespecified H2 comparisons on the manually checked SUK syntax subset, with SST as the spoken source. |
 | `h1_document_cluster.tsv` | H1 with whole SUK documents as the permutation unit. |
 | `h2_cluster_robustness.tsv` | The four H2 comparisons with SUK documents and SST speech events as the primary clustering units; SST speaker clustering is included as a sensitivity check. |
 | `paired_essay_robustness.tsv` | The Human/GPT-5 comparison using within-pair label swaps across matched essays. Sign and Wilcoxon rows are diagnostics. |
 | `h2_cluster_bootstrap.tsv` | 95 % cluster-bootstrap intervals for the SVO share and entropy of the four H2 groups (SUK documents, SST speech events); the intervals in thesis Table 4.2. |
 | `cramers_v_selected.tsv` | Cramér's V for the H1 omnibus test, the six genre pairs, SSJ–SST and the human–GPT-5 comparison, computed from the stored chi-square statistics and sample sizes. |
 | `broad_argument_query.tsv` | Sensitivity query `upos=VERB >nsubj _ >obj _` on canonical UD 2.18 SSJ and SST. These are subject × object **instance counts**, not distinct STARK tree-type counts. The file includes all six orders, proportions, entropy and the strict WALS `>2×` dominance decision. |
+
+In the thesis, the H2 “conversational” category is represented by the broader
+spoken material of SST, which also includes public and institutional speech
+events. The historical comparison identifiers `academic-conversational` and
+`journalistic-conversational` in `h2_cluster_robustness.tsv` and in the
+scripts keep their original names so that stored results remain reproducible.
 
 All permutation tests use 20,000 permutations and preserve all six word-order
 categories. The manual-subset comparisons use independent seeds 20260814–20260817.
@@ -62,3 +68,23 @@ CLARIN.SI, <http://hdl.handle.net/11356/1860>), licensed under CC BY 4.0. The
 selection consists of the sentences whose text recurs verbatim in the corpus;
 the texts are unchanged, only counted and ranked. These two files keep the
 corpus licence, which the GPL of this repository does not override.
+
+## Parser sensitivity on SSJ
+
+[Procedure, results, provenance and limits](parser_sensitivity.md) document
+the comparison of the UD 2.18 reference annotation of SSJ with the saved
+CLASSLA-Stanza 2.2.1 automatic parse of the same sentences (thesis
+Section 4.2.4). All published files are aggregates without corpus text.
+
+| File | Evidence |
+|---|---|
+| `parser_sensitivity_distribution.tsv` and `parser_sensitivity_distribution_noun_propn.tsv` | Reference and automatic six-pattern distributions of the canonical `NOUN` query and the `NOUN\|PROPN` variant. |
+| `parser_sensitivity_gold_auto_matrix.tsv` and `parser_sensitivity_gold_auto_matrix_noun_propn.tsv` | Reference × automatic pattern matrices over the aligned instances. |
+| `parser_sensitivity_discrepancy_reasons.tsv` | Multi-label reason counts for the one-sided instances of the canonical query. |
+| `parser_sensitivity_summary.json` | Aggregate summaries of both variants, input checksums and run metadata. |
+
+`scripts/test_parser_sensitivity.py` verifies the published aggregates and
+their agreement with the canonical tables in `outputs/data/`. The saved
+automatic parse is not distributed, so the instance-level comparison cannot
+be re-run from this package; see `parser_sensitivity.md` for the exact
+limits.

@@ -1,0 +1,19 @@
+direction	population_n	reason_code	count	pct_of_population	multi_label	definition
+gold_only	177	relevant_dependency_relation_differs	140	79.09604520	true	At least one source S/O token does not retain the required nsubj/obj relation in the opposite annotation.
+gold_only	177	subject_relation_differs	48	27.11864407	true	The source subject token is not nsubj in the opposite annotation.
+gold_only	177	object_relation_differs	106	59.88700565	true	The source object token is not obj in the opposite annotation.
+gold_only	177	required_relation_retained_but_head_changes	21	11.86440678	true	At least one source argument retains nsubj/obj but is attached to a different head in the opposite annotation.
+gold_only	177	any_relevant_pos_mismatch	33	18.64406780	true	At least one source S/V/O token does not retain the required NOUN/VERB UPOS in the opposite annotation.
+gold_only	177	subject_pos_mismatch	19	10.73446328	true	The source subject token is not NOUN in the opposite annotation.
+gold_only	177	object_pos_mismatch	8	4.51977401	true	The source object token is not NOUN in the opposite annotation.
+gold_only	177	predicate_verb_mismatch	6	3.38983051	true	The source predicate token is not VERB in the opposite annotation.
+gold_only	177	missing_sentence_token_or_unexplained_residual	0	0.00000000	true	A source sentence/token is missing, or no tested relation/head/POS failure explains the one-sided row.
+auto_only	89	relevant_dependency_relation_differs	70	78.65168539	true	At least one source S/O token does not retain the required nsubj/obj relation in the opposite annotation.
+auto_only	89	subject_relation_differs	38	42.69662921	true	The source subject token is not nsubj in the opposite annotation.
+auto_only	89	object_relation_differs	38	42.69662921	true	The source object token is not obj in the opposite annotation.
+auto_only	89	required_relation_retained_but_head_changes	15	16.85393258	true	At least one source argument retains nsubj/obj but is attached to a different head in the opposite annotation.
+auto_only	89	any_relevant_pos_mismatch	19	21.34831461	true	At least one source S/V/O token does not retain the required NOUN/VERB UPOS in the opposite annotation.
+auto_only	89	subject_pos_mismatch	12	13.48314607	true	The source subject token is not NOUN in the opposite annotation.
+auto_only	89	object_pos_mismatch	7	7.86516854	true	The source object token is not NOUN in the opposite annotation.
+auto_only	89	predicate_verb_mismatch	0	0.00000000	true	The source predicate token is not VERB in the opposite annotation.
+auto_only	89	missing_sentence_token_or_unexplained_residual	0	0.00000000	true	A source sentence/token is missing, or no tested relation/head/POS failure explains the one-sided row.
