@@ -45,6 +45,75 @@ the canonical data behind the overview are in
 | `scripts/` | Preparation, extraction, statistics, table and figure scripts. |
 | `inputs/`, `prepared/` | Where corpus files go if the extraction is rerun. Their READMEs describe sources, licences and preparation. |
 
+The directories relate as follows; dotted arrows mark corpus material that
+is not distributed here and the stored reference inputs:
+
+```mermaid
+---
+config:
+  layout: elk
+  theme: base
+  fontFamily: Arial
+  themeVariables:
+    fontFamily: Arial
+    fontSize: 17px
+    primaryTextColor: "#24343d"
+    lineColor: "#829098"
+    background: "#ffffff"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    htmlLabels: true
+    curve: linear
+    nodeSpacing: 42
+    rankSpacing: 48
+    padding: 16
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: LINEAR_SEGMENTS
+    nodePlacementAlignment: BALANCED
+---
+flowchart TB
+    GUIDE("<b>inputs/README.md</b><br/>sources · licences<br/>download instructions")
+    CFG("<b>config/corpora.tsv</b><br/>18-set inventory<br/>versions · preparation · SHA-256 pins")
+
+    PREP("<b>prepared/</b><br/>corpus files if extraction is rerun<br/>none distributed · checksums.sha256")
+    REF("<b>reference/</b><br/>verified aggregate counts<br/>anonymised robustness count vectors")
+
+    PIPE("<b>scripts/</b><br/>prepare → extract → analyse<br/>statistics → tables → figures")
+
+    DATA("<b>outputs/data/</b><br/>4 canonical TSV result tables")
+    TAB("<b>outputs/tables/</b><br/>Table 4.1 TeX + TSV<br/><i>overview PNG/PDF published as-is</i>")
+    FIG("<b>outputs/figures/</b><br/>7 thesis figures · PDF")
+    SUP("<b>outputs/supplementary/</b><br/>robustness and sensitivity checks<br/>SSJ parser-sensitivity aggregates")
+
+    GUIDE --> PREP
+    PREP -. if corpora are obtained .-> PIPE
+    CFG --> PIPE
+    REF -.-> PIPE
+    PIPE --> DATA
+    DATA --> TAB
+    DATA --> FIG
+    PIPE --> SUP
+
+    classDef source fill:#edf3f6,stroke:#8ca5b3,stroke-width:1.4px,color:#24343d,font-size:17px
+    classDef prepared fill:#d9e8ef,stroke:#52788d,stroke-width:2px,color:#1f3440,font-size:17px
+    classDef cache fill:#f4efe5,stroke:#a58e69,stroke-width:1.6px,stroke-dasharray:6 4,color:#473d2e,font-size:16px
+    classDef analysis fill:#eeeaf3,stroke:#817394,stroke-width:1.6px,color:#302a38,font-size:17px
+    classDef result fill:#dceaf0,stroke:#52788d,stroke-width:1.7px,color:#1f3440,font-size:17px
+    classDef final fill:#c9dde7,stroke:#466e82,stroke-width:2px,color:#18313d,font-size:17px
+    classDef secondary fill:#f3f1ec,stroke:#a39c8e,stroke-width:1.3px,stroke-dasharray:5 4,color:#4a4740,font-size:15px
+
+    class GUIDE,CFG source
+    class PREP prepared
+    class REF cache
+    class PIPE analysis
+    class DATA result
+    class TAB,FIG final
+    class SUP secondary
+
+    linkStyle default stroke:#829098,stroke-width:1.35px
+```
+
 ## Main results
 
 | Thesis item | File |
@@ -64,6 +133,106 @@ Jensen–Shannon distances and cosine similarities for all pairs of sources are
 in `statistical_tests.tsv` (family `all_pairwise`). That family also contains
 additional pairwise comparisons outside the thesis hypotheses; the
 prespecified tests are `h1_omnibus` and `h2_prespecified`.
+
+## Data flow
+
+```mermaid
+---
+config:
+  layout: elk
+  theme: base
+  fontFamily: Arial
+  themeVariables:
+    fontFamily: Arial
+    fontSize: 17px
+    primaryTextColor: "#24343d"
+    lineColor: "#829098"
+    background: "#ffffff"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    htmlLabels: true
+    curve: linear
+    nodeSpacing: 30
+    rankSpacing: 42
+    padding: 16
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: LINEAR_SEGMENTS
+    nodePlacementAlignment: BALANCED
+---
+flowchart TB
+    UD("<b>UD 2.18 releases</b><br/>SSJ · SST<br/>merge splits · SST + CLASSLA NER")
+    PUB("<b>Other public releases</b><br/>CLASSLA-Wikipedia · ParlaMint-SI 4.0")
+    AIG("<b>AI-GenT supplementary comparison</b><br/>GPT-5 · GaMS-27B · gemma-2-27b<br/>public analysis-ready 4y-gs files")
+    SUPV("<b>Supervisor-prepared exact files</b><br/>SUK → Literary · Publicistic · Professional<br/>JANES News · Blog · Forum · Tweet")
+    ESS("<b>Matched essays</b><br/>691 human and GPT-5 pairs<br/>CLASSLA 2.2.1 NER added · counts verified")
+    HIST("<b>JANES-Wiki · KDSP</b><br/>historical preparation<br/>not runnable here")
+
+    subgraph STATES[" "]
+      direction LR
+      PREP("<b>PREPARED INPUT</b><br/>exact corpora · fresh extraction")
+      CACHE("<b>VERIFIED REFERENCE INPUTS</b><br/>fallback counts for 10 corpora<br/>anonymised robustness vectors<br/><i>recorded results · not rebuilt corpora</i>")
+    end
+
+    WORD("<b>WORD-ORDER EXTRACTION</b><br/>STARK + direct CoNLL-U reader<br/>exact agreement required<br/><i>mismatch → stop</i>")
+    NERIN("<b>NER-CAPABLE INPUTS</b><br/>8 of the 18 sets")
+    NER("<b>NER ANALYSIS</b><br/>NOUN or PROPN argument heads")
+
+    RESULT("<b>CANONICAL COUNTS</b><br/>word-order + NER counts<br/>outputs/data/")
+    STATS("<b>STATISTICS</b><br/>summary · entropy · all tests<br/>recomputed in a fresh clone")
+    TAB("<b>TABLE 4.1 + OVERVIEW</b><br/>TSV + LaTeX regenerated · outputs/tables/<br/><i>overview PNG/PDF published as-is</i>")
+    FIG("<b>7 THESIS FIGURES</b><br/>outputs/figures/")
+
+    CHECKS("<b>SUPPLEMENTARY CHECKS</b><br/>most rerun from published count vectors<br/><i>repetition + broad-query checks need corpora</i>")
+    PARS("<b>SSJ PARSER SENSITIVITY</b><br/>published aggregates + verification script<br/><i>saved CLASSLA 2.2.1 parse not distributed<br/>comparison cannot be re-run here</i>")
+
+    UD --> PREP
+    PUB --> PREP
+    AIG --> PREP
+    SUPV -.-> PREP
+    ESS -.-> PREP
+    HIST -.-> PREP
+
+    PREP --> WORD
+    PREP --> NERIN
+    NERIN --> NER
+    WORD --> RESULT
+    NER --> RESULT
+    CACHE -.-> RESULT
+
+    RESULT --> STATS
+    STATS --> TAB
+    STATS --> FIG
+    RESULT -->|NER results| FIG
+    RESULT --> CHECKS
+    CACHE -.-> CHECKS
+    RESULT -.-> PARS
+
+    classDef source fill:#edf3f6,stroke:#8ca5b3,stroke-width:1.4px,color:#24343d,font-size:17px
+    classDef prepared fill:#d9e8ef,stroke:#52788d,stroke-width:2px,color:#1f3440,font-size:18px
+    classDef cache fill:#f4efe5,stroke:#a58e69,stroke-width:1.6px,stroke-dasharray:6 4,color:#473d2e,font-size:16px
+    classDef analysis fill:#eeeaf3,stroke:#817394,stroke-width:1.5px,color:#302a38,font-size:17px
+    classDef result fill:#dceaf0,stroke:#52788d,stroke-width:1.7px,color:#1f3440,font-size:17px
+    classDef final fill:#c9dde7,stroke:#466e82,stroke-width:2px,color:#18313d,font-size:18px
+    classDef secondary fill:#f3f1ec,stroke:#a39c8e,stroke-width:1.3px,stroke-dasharray:5 4,color:#4a4740,font-size:15px
+
+    class UD,PUB,AIG,SUPV,ESS,HIST source
+    class PREP prepared
+    class CACHE,PARS cache
+    class WORD,NERIN,NER analysis
+    class RESULT,STATS result
+    class TAB,FIG final
+    class CHECKS secondary
+
+    style STATES fill:transparent,stroke:transparent
+    linkStyle default stroke:#829098,stroke-width:1.35px
+```
+
+Solid arrows run from obtainable inputs. Dotted arrows mark what cannot be
+rebuilt from public material alone: exact prepared files that are not
+distributed here, the stored reference inputs, and the verification-only
+parser-sensitivity route. The exact route for each corpus is in the
+availability table below.
 
 ## Reproduction of the calculations
 
