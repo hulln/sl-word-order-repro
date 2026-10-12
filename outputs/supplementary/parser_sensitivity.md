@@ -22,13 +22,28 @@ were already identical.
 Both annotations go through the same extraction as the main analysis: a
 `VERB` with an `nsubj` and an `obj` dependant, every subject × object pair of
 the same verb being one instance. The canonical query requires `NOUN`
-argument heads; the supplementary variant allows `NOUN` or `PROPN`. Instances
-are then aligned between the two annotations at the level of individual
-(sentence, verb, subject, object) tuples. An aligned pair whose three tokens
-receive the same relative order in both annotations counts as *same pattern*.
-Reference instances with no reliable automatic counterpart are *gold-only*,
-automatic instances absent from the reference are *auto-only*, and instances
-with several or conflicting alignment candidates are *unclear*.
+argument heads; the supplementary variant allows `NOUN` or `PROPN`.
+
+Instances are grouped by `(sent_id, verb_id)` and matched one-to-one. Exact
+`(sent_id, verb_id, subject_id, object_id)` matches are removed first and count
+as *same pattern*. Among the remaining instances, a pair with the same two
+argument tokens but swapped subject/object roles counts as *changed pattern*
+only if the swapped match is unique in both directions. Both instances are
+then removed. This preserves the identity of the tokens while allowing their
+roles, and hence their word-order pattern, to change.
+
+For the remaining instances, any shared argument token creates an overlap
+candidate, irrespective of its role. A pair unique in both directions is
+removed but marked *unclear*, since partial overlap is insufficient for
+reliable alignment. If overlaps remain without such a unique pair, all
+remaining candidates for that sentence and verb are kept together in one
+*unclear* record. When no overlaps remain, unmatched reference instances are
+*gold-only* and unmatched automatic instances are *auto-only*.
+
+Only *same pattern* and *changed pattern* pairs enter the aligned denominator.
+*Unclear* records are excluded; their candidate instances are counted
+separately on each side. Strict retention uses all reference instances as its
+denominator and counts only *same pattern* instances as retained.
 
 ## Published files
 

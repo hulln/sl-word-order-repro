@@ -236,12 +236,13 @@ availability table below.
 
 ## Reproduction of the calculations
 
-Apart from the repetition-sensitivity check, which needs the corpus files (see
-below), and the parser-sensitivity check, whose published aggregates are
-verified rather than recomputed (see
-`outputs/supplementary/parser_sensitivity.md`), everything listed above is
-recomputed from the count tables included in the repository. This needs
-Python 3.10 or newer and the four packages in `requirements.txt`; it needs
+The main statistical calculations are recomputed from the count tables
+included in the repository. The repetition-sensitivity check needs corpus
+files (see below), and the broader-argument query needs the prepared UD 2.18
+SSJ and SST corpora. The parser-sensitivity check verifies the published
+aggregates; its historical comparison cannot be rerun from the public files
+(see `outputs/supplementary/parser_sensitivity.md`). The count-based calculations
+need Python 3.10–3.12 and the four packages in `requirements.txt`; they need
 neither corpus files nor STARK.
 
 ```bash
